@@ -1,0 +1,63 @@
+body{
+    overflow: hidden;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.bg-primary{background-color: #f47c04 !important;}
+.bg-light{background-color: #ffffff !important;}
+.btn-primary{background-color: #f47c04;}
+.bg-mix{background: linear-gradient(180deg, #ffffff 40%, #efefef 0);} /*Background Mixted*/
+.bg-grey{background-color: #efefef !important;}
+
+#colortext{color: #f47c04 !important;}
+
+.btn-primary:hover{ background-color: #f47c04 }
+
+.btn{
+    border: 0;
+}
+
+#sidebar-container{
+    min-height: 700px;
+    min-width: 200px;
+}
+
+#sidebar-container .logo{
+    padding: 14px 20px;
+}
+
+#sidebar-container .menu{
+    width: 288px;
+}
+
+.btn-search{
+    right: 5px;
+}
+
+#content{
+    position: relative;
+    overflow-y: auto;
+    width: 100%;
+    height: 600px;
+    padding-bottom: 50px;
+
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#content h1, p{
+    color: #1a1a1a !important;
+}
+
+.row{
+    color: #1a1a1a !important;
+}
+
+.stat{
+    border-right: 1px solid #efefef;
+}

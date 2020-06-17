@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    #activar rewrite
+    RewriteEngine on
+    ErrorDocument 404 http://localhost/CarLotWebApp/error/index
+
+    #Restringir las rutas para no poder acceder a directorios y ficheros que no existen
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-f
+
+    #Poner una ruta amigable
+    Rewriterule ^(.*)/(.*) index.php?controller=$1&action=$2
+</IfModule>
