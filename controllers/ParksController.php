@@ -10,4 +10,12 @@ class parksController{
         require_once 'views/layout/footer.php';
     }
 
+    public function info(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        require_once 'views/parks/infoperfil.php';
+
+        require_once 'views/layout/footer.php';
+    }
+
 }
