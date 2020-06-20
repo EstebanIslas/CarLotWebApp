@@ -68,7 +68,7 @@
     <section id="hero">
         <div class="container">
             <div class="content-center topmargin-lg">
-                <h1>YOUR FAVORITE SOURCE OF FREE BOOTSTRAP THEMES</h1>
+                <h1>Bienvenido a la página oficial de CarLot</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus nibh ut dapibus ultrices. Donec quis faucibus nulla. Pellentesque habitant morbi tristique 
                     senectus et netus et malesuada fames ac turpis egestas.</p>
                 <a href="" class="btn btn-light topmargin-sm">Descubre</a>
@@ -80,7 +80,7 @@
     <section id="servicios">
         <div class="container">
             <div class="content-center">
-                <h2>We work with exciting brands to build <b>amazing products.</b></h2>
+                <h2>Trabajamos para brindarte <b style="color:#f47c04">un excelente servicio.</b></h2>
                 <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ea consequuntur, odit veniam mollitia aliquam reiciendis dignissimos, vitae sapiente neque, cum dolorum. Suscipit expedita obcaecati nesciunt error ut quidem autem.
                 </p>
@@ -91,7 +91,7 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Keep Calm and eat</h2>
+                                <h2>Ventajas</h2>
                             </a>
                             <a href="">
                                 <p>App/Digital Product</p>
@@ -105,7 +105,7 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Keep Calm and eat</h2>
+                                <h2>Ventajas</h2>
                             </a>
                             <a href="">
                                 <p>App/Digital Product</p>
@@ -119,7 +119,7 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Keep Calm and eat</h2>
+                                <h2>Ventajas</h2>
                             </a>
                             <a href="">
                                 <p>App/Digital Product</p>
@@ -133,7 +133,7 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Keep Calm and eat</h2>
+                                <h2>Ventajas</h2>
                             </a>
                             <a href="">
                                 <p>App/Digital Product</p>
@@ -147,8 +147,8 @@
             </div>
 
             <div class="text-center topmargin-sm">
-                <p>Ready to accelerate your project?</p>
-                <a href="" class="text-dark"><b> Your project </b></a>
+                <p>Listo para contactarte con nosotros?</p>
+                <a href="" class="text-dark"><b>Siente la libertad de expresarte</b></a>
             </div>
         </div>
     </section>
@@ -166,7 +166,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 topmargin-sm">
-                    <h3>Ready to accelerate your project? <b>just let us know</b>.</h3>
+                    <h3>Listo para contactarte con nosotros?<b style="color:#f47c04"> Dejanos conocer tu experiencia</b>.</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui ea consequuntur, odit veniam mollitia aliquam reiciendis dignissimos, vitae sapiente neque, cum dolorum. contact@smartagency.com</p>
                 </div>
                 <div class="col-md-6 topmargin-sm">
