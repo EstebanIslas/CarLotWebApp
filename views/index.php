@@ -39,13 +39,13 @@
                             <a class="nav-link" href="#" id="inicio">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#servicios" id="servicios">Servicios</a>
+                            <a class="nav-link" href="#servicio" id="servicios">Servicios</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#descarga" id="descargas">Descarga</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contacto" id="contacto">Contacto</a>
+                            <a class="nav-link" href="#contactos" id="contacto">Contacto</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,7 +77,7 @@
     </section>
 
     <!-- Sección  -->
-    <section id="servicios">
+    <section id="servicio">
         <div class="container">
             <div class="content-center">
                 <h2>Trabajamos para brindarte <b style="color:#f47c04">un excelente servicio.</b></h2>
@@ -162,7 +162,7 @@
         </div>
     </section>
 
-    <section id="contacto">
+    <section id="contactos">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 topmargin-sm">
