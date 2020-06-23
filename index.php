@@ -3,9 +3,10 @@
 ob_start();
 session_start();
 # Controlador Principal del proyecto
-require_once 'autoload.php';
-require_once 'config/db.php';
-require_once 'config/parameters.php';
+require_once 'autoload.php'; #Tener acceso a todos los controladores
+require_once 'config/db.php'; #Acceso a la BD
+require_once 'config/parameters.php'; #Constante url 'base'
+require_once 'helpers/utils.php'; #Librerias de apoyo
 #require_once 'views/layout/header.php';
 
 #Funcion para llamar controlador de errores

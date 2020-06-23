@@ -25,21 +25,30 @@ class tarifasController{
         #validacion de existencia
         if (isset($_POST)) {
 
-            #Validación basica
-            $tarifas = new Tarifas();
-            $tarifas->setTipo_car($_POST['tipo_car']);
-            $tarifas->setDescripcion($_POST['descripcion']);
-            $tarifas->setTarifa($_POST['tarifa']);
+            if ($tipo_car && $descripcion && $tarifa) {
+                $tipo_car = isset($_POST['tipo_car']) ? $_POST['tipo_car'] : false;
+                $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
+                $tarifa = isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
 
-            $save = $tarifas->save();
+                #Validación basica
+                $tarifas = new Tarifas();
+                $tarifas->setTipo_car($tipo_car);
+                $tarifas->setDescripcion($descripcion);
+                $tarifas->setTarifa($tarifa);
 
-            if ($save) {
-                $_SESSION['register'] = "complete";
-                #echo 'Registro Completado';
+                $save = $tarifas->save();
+                
+                if ($save) {
+                    $_SESSION['register'] = "complete";
+                    #echo 'Registro Completado';
+                }else {
+                    #echo 'Registro Fallido';
+                    $_SESSION['register'] = "failed";
+                }
             }else {
-                #echo 'Registro Fallido';
                 $_SESSION['register'] = "failed";
             }
+
         }else {
             $_SESSION['register'] = "failed";
         }

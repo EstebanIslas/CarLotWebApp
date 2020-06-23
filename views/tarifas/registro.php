@@ -3,6 +3,7 @@
 <?php elseif (isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>
     <div class="container alert alert-danger" role="alert">Error al registrar, verifica tu información!</div>
 <?php endif;?>
+<?php Utils::deleteSession('register') #Borrar sesión de save?>
 
 <section class="py-3">
     <div class="container">
