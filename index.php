@@ -1,7 +1,10 @@
 <?php
 
+ob_start();
+session_start();
 # Controlador Principal del proyecto
 require_once 'autoload.php';
+require_once 'config/db.php';
 require_once 'config/parameters.php';
 #require_once 'views/layout/header.php';
 

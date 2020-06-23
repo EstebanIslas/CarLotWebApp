@@ -1,3 +1,9 @@
+<?php if (isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
+    <div class="container alert alert-success" role="alert">Tarifa registrada con éxito!</div>
+<?php elseif (isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>
+    <div class="container alert alert-danger" role="alert">Error al registrar, verifica tu información!</div>
+<?php endif;?>
+
 <section class="py-3">
     <div class="container">
         <div class="row">
