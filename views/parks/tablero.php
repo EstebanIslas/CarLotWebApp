@@ -14,6 +14,7 @@
 
                 <section class="bg-mix py-3">
                     <div class="container">
+    
                         <div class="card rounded-0">
                             <div class="card-body">
                                 <div class="row">

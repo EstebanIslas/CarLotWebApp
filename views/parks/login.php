@@ -58,13 +58,13 @@
         <!--Fin Menu-->
     </header>
 
-    <section class="login">
+    <section class="login ">
 
         <div class="card rounded-0 mt-5" style="width: 26rem; margin: auto auto">
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body" style="width: 26rem">
                 <div class="">
-                    <form class="form-signin" action="" method="post">
+                    <form class="form-signin" action="<?=base_url?>login/log" method="post">
                         <h4 class="form-signing-heading text-center">Ingresa a Car~Lot</h4>
 
                         <small id="" class="form-text text-muted ml-2 mb-1 mt-5">Correo electrónico:</small>
