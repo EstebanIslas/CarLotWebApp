@@ -22,16 +22,20 @@
             <form action="<?=base_url?>tarifas/save" method="POST">
             <div class="form-group">
                 <label for="tipo_car">Tipos de Automóviles:</label>
-                <input type="text" class="form-control" name="tipo_car">
+                <input type="text" class="form-control" name="tipo_car"
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}">
                 <small id="" class="form-text text-muted">Ingresa el tipo de automóvil que seguirá esta tarifa</small>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
-                <input type="text" class="form-control" name="descripcion">
+                <input type="text" class="form-control" name="descripcion"
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ,.'-]{5,65}">
+                
             </div>
             <div class="form-group">
                 <label for="tarifa">Costo:</label>
-                <input type="number" class="form-control" name="tarifa">
+                <input type="number" class="form-control" name="tarifa"
+                pattern="[0-9,.]{1,3}">
             </div>
             <input type="submit" class="btn btn-primary" value="Registrar">
             </form>

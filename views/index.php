@@ -54,7 +54,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="<?=base_url?>login/index">Iniciar Sesión</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Registrarse</a>
+                                <a class="dropdown-item" href="<?=base_url?>parks/registro">Registrarse</a>
                             </div>
                         </li>
                     </ul>

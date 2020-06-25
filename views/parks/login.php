@@ -46,9 +46,9 @@
                                 Ingresar
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?=base_url?>parks/index">Iniciar Sesión</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Registrarse</a>
+                                <!--a class="dropdown-item" href="<?=base_url?>parks/index">Iniciar Sesión</a>
+                                <div class="dropdown-divider"></div-->
+                                <a class="dropdown-item" href="<?=base_url?>parks/registro">Registrarse</a>
                             </div>
                         </li>
                     </ul>
@@ -78,7 +78,7 @@
                     </form>
                     <div class="text-center">
                         <p><small>¿Listo para administrar tu estacionamiento?</small></p>
-                        <a href="" style="color:#f47c04"><small><b>Registrate</b></small></a>
+                        <a href="<?=base_url?>parks/registro" style="color:#f47c04"><small><b>Registrate</b></small></a>
                     </div>
                 </div>
             </div>

@@ -58,7 +58,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Mi Perfil</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?=base_url?>">Cerrar Sesión</a>
+                                    <a class="dropdown-item" href="<?=base_url?>login/index">Cerrar Sesión</a>
                                 </div>
                             </li>
                         </ul>

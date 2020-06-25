@@ -18,4 +18,8 @@ class parksController{
         require_once 'views/layout/footer.php';
     }
 
+    public function registro(){
+        require_once 'views/parks/registro.php';
+    }
+
 }
