@@ -60,6 +60,17 @@
 
     <section class="login ">
 
+    <?php if (isset($_SESSION['register_park']) && $_SESSION['register_park'] == 'complete'): ?>
+        <div class="container alert alert-success" role="alert">Tarifa registrada con éxito!
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    <?php elseif (isset($_SESSION['register_park']) && $_SESSION['register_park'] == 'failed'): ?>
+        <div class="container alert alert-danger" role="alert">Error al registrar, verifica tu información!
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    <?php endif;?>
+    <?php Utils::deleteSession('register_park') #Borrar sesión de save?>
+
         <div class="card rounded-0 mt-5" style="width: 34rem; margin: auto auto">
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body w-100" style="width: 26rem">
@@ -90,7 +101,7 @@
                         </div>
                         
                         <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Número de Cajones:</small>
-                        <input type="number" name="stock" class="form-control" placeholder="Cajones" required>
+                        <input type="number" name="stock" class="form-control" placeholder="Cajones">
                         
                         <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-3">Días hábiles de trabajo:</small>
                         <div class="row">

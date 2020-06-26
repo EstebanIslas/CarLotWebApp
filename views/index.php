@@ -30,7 +30,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#"><img src="<?=base_url?>assets/images/car_lot.png" class="logo-brand" alt="Car~Lot Logo">Car~Lot</a> <!--Link-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <ion-icon name="menu-outline"></ion-icon><!-- Responsive -->
+                <ion-icon name="arrow"></ion-icon><!-- Responsive -->
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -90,14 +90,14 @@
                 <div class="col-md-6">
                     <div class="servicios-container">
                         <div class="servicios-details">
-                            <a href="#">
-                                <h2>Ventajas</h2>
+                            <a href="#" class="font-weight-bold">
+                                <h2>Administra tu negocio</h2>
                             </a>
                             <a href="">
-                                <p>App/Digital Product</p>
+                                <p>Sé parte de la comunidad de estacionamientos Car~Lot</p>
                             </a>
                         </div>
-                        <img src="<?=base_url?>assets/images/administration_computer.jpg" class="img-fluid" alt="Administración">
+                        <img src="<?=base_url?>assets/images/administracion.jpg" class="img-fluid" alt="Administración">
                     </div>
                 </div>
 
@@ -105,13 +105,13 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Ventajas</h2>
+                                <h2>Encuentra un estacionamiento</h2>
                             </a>
                             <a href="">
-                                <p>App/Digital Product</p>
+                                <p>Al alcance de tu mano, reserva en tiempo real</p>
                             </a>
                         </div>
-                        <img src="<?=base_url?>assets/images/staywithus.jpg" class="img-fluid" alt="Administración">
+                        <img src="<?=base_url?>assets/images/auto_estacionado.jpg" class="img-fluid" alt="Administración">
                     </div>
                 </div>
 
@@ -119,13 +119,13 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Ventajas</h2>
+                                <h2>Mantén seguro tu auto</h2>
                             </a>
                             <a href="">
-                                <p>App/Digital Product</p>
+                                <p>Encuentra el estacionamiento mas cercano a tí</p>
                             </a>
                         </div>
-                        <img src="<?=base_url?>assets/images/find_park.jpg" class="img-fluid" alt="Administración">
+                        <img src="<?=base_url?>assets/images/save_car.jpg" class="img-fluid" alt="Administración">
                     </div>
                 </div>
 
@@ -133,13 +133,13 @@
                     <div class="servicios-container">
                         <div class="servicios-details">
                             <a href="#">
-                                <h2>Ventajas</h2>
+                                <h2>Disfruta de los beneficios</h2>
                             </a>
                             <a href="">
-                                <p>App/Digital Product</p>
+                                <p>Nuestra comunidad de estacionamientos y automovilistas te espera!</p>
                             </a>
                         </div>
-                        <img src="<?=base_url?>assets/images/find_park.jpg" class="img-fluid" alt="Administración">
+                        <img src="<?=base_url?>assets/images/friends.jpg" class="img-fluid" alt="Administración">
                     </div>
                 </div>
 

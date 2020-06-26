@@ -27,7 +27,7 @@
                 <p>Horarios: Dia_Inicio - Dia_Fin De Hora_apertura a hora_cierre</p>
                 <p>Descripcion</p>
                 <p>Tarifa general</p>
-                <a class="btn btn-primary w-100 mt-2" href="">Actualizar Información</a>
+                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/actualizar">Actualizar Información</a>
             </div>
         </div>
     </div>

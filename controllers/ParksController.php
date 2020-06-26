@@ -30,33 +30,44 @@ class parksController{
         require_once 'views/parks/registro.php';
     }
 
+    public function actualizar()
+    {
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        require_once 'views/parks/actualizar.php';
+
+        require_once 'views/layout/footer.php';
+    }
+
     public function save()
     {
         #Si existen valores por POST
         if (isset($_POST)) {
             
-            #Validar True
-            /*if ($nombre && $apellido && $telefono && $correo && $password && $rol && $nombre_park && $calle 
-            && $colonia && $numero_ext && $stock && $dia_ini && $dia_fin && $hora_apertura && $hora_cierre
-            && $descripcion && $tarifa) {*/
+            #Validación basica
+            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
+            $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : false;
+            $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : false;
+            $correo = isset($_POST['correo']) ? $_POST['correo'] : false;
+            $password = isset($_POST['password']) ? $_POST['password'] : false;
+            $nombre_park = isset($_POST['nombre_park']) ? $_POST['nombre_park'] : false;
+            $calle = isset($_POST['calle']) ? $_POST['calle'] : false;
+            $colonia = isset($_POST['colonia']) ? $_POST['colonia'] : false;
+            $numero_ext = isset($_POST['numero_ext']) ? $_POST['numero_ext'] : false;
+            $stock = isset($_POST['stock']) ? $_POST['stock'] : false;
+            $dia_ini = isset($_POST['dia_ini']) ? $_POST['dia_ini'] : false;
+            $dia_fin = isset($_POST['dia_fin']) ? $_POST['dia_fin'] : false;
+            $hora_apertura = isset($_POST['hora_apertura']) ? $_POST['hora_apertura'] : false;
+            $hora_cierre = isset($_POST['hora_cierre']) ? $_POST['hora_cierre'] : false;
+            $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
+            $tarifa= isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
 
-                #Validación basica
-                $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
-                $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : false;
-                $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : false;
-                $correo = isset($_POST['correo']) ? $_POST['correo'] : false;
-                $password = isset($_POST['password']) ? $_POST['password'] : false;
-                $nombre_park = isset($_POST['nombre_park']) ? $_POST['nombre_park'] : false;
-                $calle = isset($_POST['calle']) ? $_POST['calle'] : false;
-                $colonia = isset($_POST['colonia']) ? $_POST['colonia'] : false;
-                $numero_ext = isset($_POST['numero_ext']) ? $_POST['numero_ext'] : false;
-                $stock = isset($_POST['stock']) ? $_POST['stock'] : false;
-                $dia_ini = isset($_POST['dia_ini']) ? $_POST['dia_ini'] : false;
-                $dia_fin = isset($_POST['dia_fin']) ? $_POST['dia_fin'] : false;
-                $hora_apertura = isset($_POST['hora_apertura']) ? $_POST['hora_apertura'] : false;
-                $hora_cierre = isset($_POST['hora_cierre']) ? $_POST['hora_cierre'] : false;
-                $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
-                $tarifa= isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
+            #Validar True
+            if ($nombre && $apellido && $telefono && $correo && $password && $rol && $nombre_park && $calle 
+            && $colonia && $numero_ext && $stock && $dia_ini && $dia_fin && $hora_apertura && $hora_cierre
+            && $descripcion && $tarifa) {
+
+                
 
                 $this->modelParks->setNombre($nombre);
                 $this->modelParks->setApellido($apellido);
@@ -82,9 +93,9 @@ class parksController{
                 }else{
                     $_SESSION['register_park'] = "failed";
                 }
-            /*}else {
+            }else {
                 $_SESSION['register_park'] = "failed";
-            }*/
+            }
         }else {
             $_SESSION['register_park'] = "failed";
         }

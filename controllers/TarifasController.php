@@ -3,6 +3,13 @@
 require_once 'models/tarifas.php';
 
 class tarifasController{
+
+    protected $modelTarifas;
+
+    public function __construct(){
+        $this->modelTarifas = new Tarifas();
+    }
+
     public function index(){
         echo "Controlador Tarifas Acción Index";
     }
@@ -24,19 +31,18 @@ class tarifasController{
         
         #validacion de existencia
         if (isset($_POST)) {
+            $tipo_car = isset($_POST['tipo_car']) ? $_POST['tipo_car'] : false;
+            $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
+            $tarifa = isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
 
             if ($tipo_car && $descripcion && $tarifa) {
-                $tipo_car = isset($_POST['tipo_car']) ? $_POST['tipo_car'] : false;
-                $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
-                $tarifa = isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
-
+                
                 #Validación basica
-                $tarifas = new Tarifas();
-                $tarifas->setTipo_car($tipo_car);
-                $tarifas->setDescripcion($descripcion);
-                $tarifas->setTarifa($tarifa);
+                $this->modelTarifas->setTipo_car($tipo_car);
+                $this->modelTarifas->setDescripcion($descripcion);
+                $this->modelTarifas->setTarifa($tarifa);
 
-                $save = $tarifas->save();
+                $save = $this->modelTarifas->save();
                 
                 if ($save) {
                     $_SESSION['register'] = "complete";
