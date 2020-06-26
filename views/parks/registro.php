@@ -64,13 +64,13 @@
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body w-100" style="width: 26rem">
                 <div class="">
-                    <form class="form-signin" action="#" method="post">
+                    <form class="form-signin" action="<?=base_url?>parks/save" method="post">
                         <h4 class="form-signing-heading text-center">Registra tu estacionamiento</h4>
 
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-5">Nombre de Estacionamiento:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-5">Nombre de Estacionamiento:</small>
                         <input type="text" name="nombre_park" class="form-control mb-3" placeholder="Nombre de Estacionamiento" required>
 
-                        <small id="" class="form-text text-muted ml-2 mb-1">Dirección:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1">Dirección:</small>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -89,10 +89,10 @@
                             </div>
                         </div>
                         
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-1">Número de Cajones:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Número de Cajones:</small>
                         <input type="number" name="stock" class="form-control" placeholder="Cajones" required>
                         
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-3">Días hábiles de trabajo:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-3">Días hábiles de trabajo:</small>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -106,7 +106,7 @@
                             </div>
                         </div>
 
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-2">Horarios hábiles de trabajo:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-2">Horarios hábiles de trabajo:</small>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -120,10 +120,13 @@
                             </div>
                         </div>
 
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-1">Tarifa General:</small>
-                        <input type="number" name="stock" class="form-control" placeholder="Tarifa" required>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Tarifa General:</small>
+                        <input type="number" name="tarifa" class="form-control" placeholder="Tarifa" required>
 
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-3">Nombre de dueño:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Descripcion:</small>
+                        <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" required>
+
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-3">Nombre de dueño:</small>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -136,13 +139,13 @@
                                 </div>
                             </div>
                         </div>
-                        <small id="" class="form-text text-muted ml-2 mb-1">Teléfono:</small>
-                        <input type="tel" name="password" class="form-control" placeholder="Teléfono" required>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1">Teléfono:</small>
+                        <input type="tel" name="telefono" class="form-control" placeholder="Teléfono" required>
 
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-2">Correo:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-2">Correo:</small>
                         <input type="email" name="correo" class="form-control" placeholder="Correo" required>
                         
-                        <small id="" class="form-text text-muted ml-2 mb-1 mt-2">Contraseña:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-2">Contraseña:</small>
                         <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
 
                         <input type="submit" class="btn btn-light topmargin-sm btn-block" value="Ingresar">

@@ -29,13 +29,19 @@ class loginController{
                 if($rol == "0"){
 
                     $_SESSION['park'] = true;
+                    $_SESSION['login'] = "complete";
+                    $_SESSION['user'] = 'failed';
                     echo "<script>location.href='".base_url."parks/index';</script>";
+                }else {
+                    $_SESSION['user'] = 'complete';
+                    echo "<script>location.href='".base_url."login/index';</script>";
                 }
             }else{
 
                 // redireccion al login con alerta
                 #Crear una sesión
-                header("Location".base_url); 
+                $_SESSION['login'] = failed;
+                echo "<script>location.href='".base_url."login/index';</script>";
             }
             #Consulta a la base de datos
             header("Location".base_url."parks/index"); 

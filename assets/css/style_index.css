@@ -169,7 +169,7 @@ section{
 
 .form-control{
     font-size: 15px;
-    border: 1px solid #f5f5f5;
+    border: 1px solid #878787;
     border-radius: 2px;
     height: auto;
 }
@@ -194,6 +194,8 @@ section{
     text-decoration: none;
     color: #f47c04;
 }
+
+#colortext{color: #1a1a1a !important;}
 
 @media (max-width: 575.98px) { 
     h1{ font-size: 40px; line-height: normal;}

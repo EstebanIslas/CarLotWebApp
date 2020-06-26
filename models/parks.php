@@ -18,6 +18,15 @@ class Parks{
     private $image;
     private $tarifa;
 
+    #Tabla Persons
+    private $nombre;
+    private $apellido;
+    private $telefono;
+
+    #Tabla Users
+    private $correo;
+    private $password;
+
     #Database Connection
     public function __construct()
     {
@@ -80,7 +89,15 @@ class Parks{
     }
     function setDia_ini($dia_ini)
     {
-        $this->dia_fin = $dia_ini;
+        $this->dia_ini = $dia_ini;
+    }
+    function getDia_fin()
+    {
+        return $this->dia_fin;
+    }
+    function setDia_fin($dia_fin)
+    {
+        $this->dia_fin = $dia_fin;
     }
     function getHora_apertura()
     {
@@ -147,4 +164,78 @@ class Parks{
         $this->tarifa = $tarifa;
     }
 
+    #SETTERS Y GETTERS USER
+    public function setCorreo($correo){
+        $this->correo = $correo;
+    }
+    
+    public function getCorreo(){
+        return $this->correo;
+    }
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    
+    public function getPassword(){
+        return $this->password;
+    }
+
+    #SETTERS Y GETTERS PERSONS
+
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
+    }
+
+    public function setApellido($apellido){
+        $this->apellido = $apellido;
+    }
+
+    public function getApellido(){
+        return $this->apellido;
+    }
+
+    public function setTelefono($telefono){
+        $this->telefono = $telefono;
+    }
+
+    public function getTelefono(){
+        return $this->telefono;
+    }
+
+    #Save User
+    public function save(){
+        $sql = "Call registroParks(
+            0,
+            '{$this->getNombre()}',
+            '{$this->getApellido()}',
+            '{$this->getTelefono()}',
+            '{$this->getCorreo()}',
+            '{$this->getPassword()}',
+            0,
+            '{$this->getNombre_park()}',
+            '{$this->getCalle()}',
+            '{$this->getColonia()}',
+            '{$this->getNumero_ext()}',
+            '{$this->getStock()}',
+            '{$this->getDia_ini()}',
+            '{$this->getDia_fin()}',
+            '{$this->getHora_apertura()}',
+            '{$this->getHora_cierre()}',
+            '{$this->getDescripcion()}',
+            '{$this->getTarifa()}');";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+
+        if ($save) {
+            $result = true;
+        }
+
+        return $result;
+    }
 }

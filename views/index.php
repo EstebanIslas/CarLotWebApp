@@ -71,7 +71,7 @@
                 <h1>Bienvenido a la página oficial de CarLot</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus nibh ut dapibus ultrices. Donec quis faucibus nulla. Pellentesque habitant morbi tristique 
                     senectus et netus et malesuada fames ac turpis egestas.</p>
-                <a href="" class="btn btn-light topmargin-sm">Descubre</a>
+                <a href="https://periodismodelmotor.com/25-curiosidades-mundo-automovil/162305/" class="btn btn-light topmargin-sm">Descubre</a>
             </div>
         </div>
     </section>

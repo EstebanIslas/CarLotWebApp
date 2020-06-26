@@ -61,6 +61,42 @@
     <section class="login ">
 
         <div class="card rounded-0 mt-5" style="width: 26rem; margin: auto auto">
+        
+        <?php if (isset($_SESSION['register_park']) && $_SESSION['register_park'] == 'complete'):?>
+            <div class="container alert alert-success" role="alert">Estacionamiento registrado con éxito!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif(isset($_SESSION['register_park']) && $_SESSION['register_park'] == 'failed' &&
+        isset($_SESSION['user'])  && $_SESSION['user'] == 'failed'):?>
+            <div class="container alert alert-danger" role="alert">Error al registrar, verifica tu información!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php endif;?>
+
+        <?php Utils::deleteSession('register_park')?>
+
+        <?php if(isset($_SESSION['user'])  && $_SESSION['user'] == 'complete'):?>
+            <div class="alert alert-warning" style="margin: auto auto" role="alert">
+                <p class="text-dark"><small>¿Eres usuario automovilista y no puedes acceder?</small></p>
+                <a href="<?=base_url?>#descarga" class="text-dark"><b>Descarga nuestra app</b></a>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php endif;?>
+
+        <?php Utils::deleteSession('user')?>
+
+        <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'complete'):?>
+            <div class="container alert alert-success" role="alert">Acceso Concedido!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif(isset($_SESSION['login']) && $_SESSION['login'] == 'failed'):?>
+            <div class="container alert alert-danger" role="alert">Error tu usuario o contraseña no coinciden!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>  
+            </div>
+        <?php endif;?>
+
+        <?php Utils::deleteSession('login')?>
+
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body" style="width: 26rem">
                 <div class="">
