@@ -69,7 +69,14 @@
 
 <section class="py-3">
     <div class="container">
-        <p class="lead text-muted font-weight-bold" id="colortext">Servicios de mi Estacionamiento</p>
+        <div class="row mb-3">
+            <div class="col-lg-9">
+                <p class="lead text-muted font-weight-bold" id="colortext">Servicios de mi Estacionamiento</p>
+            </div>
+            <div class="col-lg-3 d-flex">
+                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>parks/servicios">Crear Nuevo Servicio</a>
+            </div>
+        </div>
         <div class="card rounded-0">
             <div class="card-body">
                 <div class="row">

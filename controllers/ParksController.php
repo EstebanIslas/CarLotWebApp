@@ -11,30 +11,37 @@ class parksController{
     }
 
     public function index(){
-        require_once 'views/layout/header.php';
-        #Renderizar la vista para que se muestre principal
-        require_once 'views/parks/tablero.php';
-
-        require_once 'views/layout/footer.php';
+        
+        $req = 'views/parks/tablero.php';
+        $this->design($req);
     }
 
     public function info(){
-        require_once 'views/layout/header.php';
-        #Renderizar la vista para que se muestre principal
-        require_once 'views/parks/infoperfil.php';
-
-        require_once 'views/layout/footer.php';
+        $req = 'views/parks/infoperfil.php';
+        $this->design($req);
     }
 
     public function registro(){
+        #Diseño de index_promocional
         require_once 'views/parks/registro.php';
     }
 
     public function actualizar()
     {
+        $req = 'views/parks/actualizar.php';
+        $this->design($req);
+    }
+
+    public function servicios()
+    {
+        $req = 'views/servicios/registro.php';
+        $this->design($req);
+    }
+
+    private function design($requerir){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
-        require_once 'views/parks/actualizar.php';
+        require_once $requerir;
 
         require_once 'views/layout/footer.php';
     }

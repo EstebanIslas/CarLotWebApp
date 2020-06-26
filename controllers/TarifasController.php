@@ -10,19 +10,21 @@ class tarifasController{
         $this->modelTarifas = new Tarifas();
     }
 
+    private function design($requerir){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        require_once $requerir;
+
+        require_once 'views/layout/footer.php';
+    }
+
     public function index(){
         echo "Controlador Tarifas Acción Index";
     }
 
     public function registro(){
-        #Importa el header
-        require_once 'views/layout/header.php';
-
-        #Renderiza una vista
-        require_once 'views/tarifas/registro.php';
-
-        #importa el footer
-        require_once 'views/layout/footer.php';
+        $req = 'views/tarifas/registro.php';
+        $this->design($req);
     }
 
     public function save(){
