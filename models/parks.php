@@ -1,5 +1,7 @@
 <?php
 
+require_once 'models/users.php';
+
 class Parks{
     private $id;
     private $nombre_park;
@@ -204,6 +206,22 @@ class Parks{
 
     public function getTelefono(){
         return $this->telefono;
+    }
+
+    public function getParks()
+    {
+        $id_person = $_SESSION['usuario']->id_person;
+
+        $sql = "SELECT * FROM parks WHERE id_person = '$id_person' LIMIT 1";
+        $result = $this->db->query($sql);
+
+        if ($result && $result->num_rows == 1) {
+            $estacionamiento = $result->fetch_object();
+        }else{
+            $estacionamiento = null;
+        }
+
+        return $estacionamiento;
     }
 
     #Save User

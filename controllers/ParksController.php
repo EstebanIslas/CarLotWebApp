@@ -2,6 +2,7 @@
 
 require_once 'models/parks.php';
 require_once 'models/tarifas.php';
+require_once 'models/puntuaciones.php';
 
 
 class parksController{
@@ -12,12 +13,16 @@ class parksController{
     public function __construct(){
         $this->modelParks = new Parks();
         $this->modelTarifas = new Tarifas();
+        $this->modelPuntuaciones = new Puntuaciones();
     }
 
     public function index(){
-        
-        $req = 'views/parks/tablero.php';
-        $this->design($req);
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        $result = $this->modelPuntuaciones->get_puntuaciones();
+        require_once 'views/parks/tablero.php';
+
+        require_once 'views/layout/footer.php';
     }
 
     public function info(){

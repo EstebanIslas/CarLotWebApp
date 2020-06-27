@@ -1,6 +1,7 @@
 <?php
 
 require_once 'models/users.php';
+require_once 'models/parks.php';
 
 class loginController{
     public function index(){
@@ -21,12 +22,20 @@ class loginController{
             var_dump($user_login);
             die();*/
             
+            
             if($user_login){
                 $_SESSION['usuario'] = $user_login;
 
                 $rol = $user_login->rol;
                
                 if($rol == "0"){
+
+                    $parksModel = new Parks();
+                    $estacionamiento = $parksModel->getParks();
+
+                    /*var_dump($estacionamiento);
+                    die();*/
+                    $_SESSION['estacionamiento'] = $estacionamiento;
 
                     $_SESSION['park'] = true;
                     $_SESSION['login'] = "complete";
@@ -58,6 +67,9 @@ class loginController{
 
         if (isset($_SESSION['park'])) {
             unset($_SESSION['park']);
+        }
+        if (isset($_SESSION['estacionamiento'])) {
+            unset($_SESSION['estacionamiento']);
         }
 
         //header("Location".base_url."login/index");

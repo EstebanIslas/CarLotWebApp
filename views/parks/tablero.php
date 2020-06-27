@@ -63,50 +63,17 @@
                                     <div class="card-header bg-light">
                                         <h6 class="font-weight-bold mb-0">Comentarios Recientes</h6>
                                         <div class="card-body">
-                                            <div class="d-flex border-bottom py-2">
-                                                <div class="d-flex mr-3">
-                                                    <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
-                                                <div class="align-self-center">
-                                                    <h6 class="d-inline-block font-weight-bold mb-0">Oscar</h6>
-                                                    <small class="d-block text-muted">El estacionamiento es confiable</small>
+                                            <?php while($res = $result->fetch_object()):?>
+                                                <div class="d-flex border-bottom py-2">
+                                                    <div class="d-flex mr-3">
+                                                        <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
+                                                    <div class="align-self-center">
+                                                        <h6 class="d-inline-block font-weight-bold mb-0"><?=$res->nombre;?> <?=$res->apellido?></h6>
+                                                        <small class="d-block text-muted"><b>Calificación: </b><?=$res->calificacion?> de 5</small>
+                                                        <small class="d-block text-muted"><?=$res->comment?></small>
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="d-flex border-bottom py-2">
-                                                <div class="d-flex mr-3">
-                                                    <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
-                                                <div class="align-self-center">
-                                                    <h6 class="d-inline-block font-weight-bold mb-0">Valentin</h6>
-                                                    <small class="d-block text-muted">Atiende muy bien</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex border-bottom py-2">
-                                                <div class="d-flex mr-3">
-                                                    <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
-                                                <div class="align-self-center">
-                                                    <h6 class="d-inline-block font-weight-bold mb-0">Ariel</h6>
-                                                    <small class="d-block text-muted">Súper Seguro</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex border-bottom py-2">
-                                                <div class="d-flex mr-3">
-                                                    <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
-                                                <div class="align-self-center">
-                                                    <h6 class="d-inline-block font-weight-bold mb-0">Natalia</h6>
-                                                    <small class="d-block text-muted">Es muy seguro</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex border-bottom py-2">
-                                                <div class="d-flex mr-3">
-                                                    <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
-                                                <div class="align-self-center">
-                                                    <h6 class="d-inline-block font-weight-bold mb-0">Daniela</h6>
-                                                    <small class="d-block text-muted">Barato y cercano al centro</small>
-                                                </div>
-                                            </div>
+                                            <?php endwhile;?>
 
                                             <button class="btn btn-primary w-100 mt-2">Ver Todos</button>
                                         </div>

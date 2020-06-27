@@ -63,12 +63,13 @@ class Tarifas{
 
     #Metodo Save
     public function save(){
+        $id_park = $_SESSION['estacionamiento']->id;
         $sql = "INSERT INTO tarifas VALUES (
             NULL,
             '{$this->getTipo_car()}',
             '{$this->getDescripcion()}',
             '{$this->getTarifa()}',
-            18);";
+            '$id_park');";
         $save = $this->db->query($sql);
 
         $result = false;
@@ -81,7 +82,8 @@ class Tarifas{
 
     public function get_tarifas()
     {
-        $result = $this->db->query('SELECT * FROM tarifas where id_park = 18');
-        return $result;
+        $id_park = $_SESSION['estacionamiento']->id;
+        $sql = $this->db->query("SELECT * FROM tarifas where id_park = '$id_park'");
+        return $sql;
     }
 }
