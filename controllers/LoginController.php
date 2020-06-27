@@ -49,4 +49,19 @@ class loginController{
            
         }
     }
+
+    public function logout()
+    {
+        if (isset($_SESSION['usuario'])) {
+            unset($_SESSION['usuario']);
+        }
+
+        if (isset($_SESSION['park'])) {
+            unset($_SESSION['park']);
+        }
+
+        //header("Location".base_url."login/index");
+        echo "<script>location.href='".base_url."login/index';</script>";
+
+    }
 }

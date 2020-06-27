@@ -28,11 +28,16 @@
                 </div>
                 <div id="menu">
                     <br><br>
-                    <a href="<?=base_url?>parks/index" class="d-block ml-2 text-light p-2"><i class="icon ion-md-apps mr-2 lead"></i>Tablero</a>
-                    <!--a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-person mr-2 lead"></i>Usuario</a-->
-                    <a href="<?=base_url?>parks/info" class="d-block ml-2 text-light p-2"><i class="icon ion-md-car mr-2 lead"></i>Mi Estacionamiento</a>
-                    <a href="<?=base_url?>reservas/index" class="d-block ml-2 text-light p-2"><i class="icon ion-md-notifications mr-2 lead"></i>Reservaciones</a>
-                    <a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
+                    <?php if(isset($_SESSION['usuario'])):?>
+                        <a href="<?=base_url?>parks/index" class="d-block ml-2 text-light p-2"><i class="icon ion-md-apps mr-2 lead"></i>Tablero</a>
+                        <!--a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-person mr-2 lead"></i>Usuario</a-->
+                        <a href="<?=base_url?>parks/info" class="d-block ml-2 text-light p-2"><i class="icon ion-md-car mr-2 lead"></i>Mi Estacionamiento</a>
+                        <a href="<?=base_url?>reservas/index" class="d-block ml-2 text-light p-2"><i class="icon ion-md-notifications mr-2 lead"></i>Reservaciones</a>
+                        <a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
+                    <?php elseif(!isset($_SESSION['usuario'])): 
+                        echo "<script>location.href='".base_url."login/index';</script>";
+                    ?>
+                    <?php endif;?>
                 </div>
             </div>
 
@@ -53,12 +58,12 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Esteban Islas
+                                    <?=$_SESSION['usuario']->correo?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Mi Perfil</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?=base_url?>login/index">Cerrar Sesión</a>
+                                    <a class="dropdown-item" href="<?=base_url?>login/logout">Cerrar Sesión</a>
                                 </div>
                             </li>
                         </ul>
