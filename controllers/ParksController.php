@@ -1,13 +1,17 @@
 <?php
 
 require_once 'models/parks.php';
+require_once 'models/tarifas.php';
+
 
 class parksController{
 
     protected $modelParks;
+    protected $modelTarifas;
 
     public function __construct(){
         $this->modelParks = new Parks();
+        $this->modelTarifas = new Tarifas();
     }
 
     public function index(){
@@ -17,8 +21,12 @@ class parksController{
     }
 
     public function info(){
-        $req = 'views/parks/infoperfil.php';
-        $this->design($req);
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        $result = $this->modelTarifas->get_tarifas();
+        require_once 'views/parks/infoperfil.php';
+
+        require_once 'views/layout/footer.php';
     }
 
     public function registro(){

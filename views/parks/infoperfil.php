@@ -132,27 +132,16 @@
         <div class="card rounded-0 mt-3">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-4 d-flex stat my-3">
-                        <div class="mx-auto">
-                            <h6 class="text-mutted">Tarifa <b id="colortext">Nombre</b></h6>
-                            <h3 class="font-weight-bold">$45.00</h3>
-                            <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/registro">Editar</a>
-                        </div>
+                    <?php while($res = $result->fetch_object()):?>
+                        <div class="col-lg-4 d-flex stat my-3">
+                            <div class="mx-auto">
+                                <h6 class="text-mutted">Tarifa <b id="colortext"><?=$res->tipo_car;?></b></h6>
+                                <h3 class="font-weight-bold">$<?=$res->tarifa;?></h3>
+                                <h6 class="font-weight-light"><?=$res->descripcion;?></h3>
+                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/registro">Editar</a>
+                            </div>
                     </div>
-                    <div class="col-lg-4 d-flex stat my-3">
-                        <div class="mx-auto">
-                            <h6 class="text-mutted">Tarifa <b id="colortext">Nombre</b></h6>
-                            <h3 class="font-weight-bold">$45.00</h3>
-                            <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/registro">Editar</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 d-flex stat my-3">
-                        <div class="mx-auto">
-                            <h6 class="text-mutted">Tarifa <b id="colortext">Nombre</b></h6>
-                            <h3 class="font-weight-bold">$45.00</h3>
-                            <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/registro">Editar</a>
-                        </div>
-                    </div>
+                    <?php endwhile;?>
                 </div>
             </div>
         </div>

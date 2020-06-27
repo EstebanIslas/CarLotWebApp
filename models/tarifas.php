@@ -68,7 +68,7 @@ class Tarifas{
             '{$this->getTipo_car()}',
             '{$this->getDescripcion()}',
             '{$this->getTarifa()}',
-            1);";
+            18);";
         $save = $this->db->query($sql);
 
         $result = false;
@@ -76,6 +76,12 @@ class Tarifas{
         if ($save) {
             $result = true;
         }
+        return $result;
+    }
+
+    public function get_tarifas()
+    {
+        $result = $this->db->query('SELECT * FROM tarifas where id_park = 18');
         return $result;
     }
 }
