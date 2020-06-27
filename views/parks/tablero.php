@@ -63,7 +63,7 @@
                                     <div class="card-header bg-light">
                                         <h6 class="font-weight-bold mb-0">Comentarios Recientes</h6>
                                         <div class="card-body">
-                                            <?php while($res = $result->fetch_object()):?>
+                                            <?php while($res = $get_puntuaciones->fetch_object()):?>
                                                 <div class="d-flex border-bottom py-2">
                                                     <div class="d-flex mr-3">
                                                         <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>

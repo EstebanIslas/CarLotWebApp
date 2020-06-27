@@ -21,12 +21,12 @@
             <div class="col-md-1"></div>
 
             <div class="col-md-6">
-                <h3 id="colortext">Estacionamiento <b style="color:#1a1a1a">Hidalgo</b>.</h3>
-                <p>Dirección: Calle #Número Col Colonia</p>
-                <p>Total de cajones</p>
-                <p>Horarios: Dia_Inicio - Dia_Fin De Hora_apertura a hora_cierre</p>
-                <p>Descripcion</p>
-                <p>Tarifa general</p>
+                <h3 id="colortext">Estacionamiento <b style="color:#1a1a1a"><?=$_SESSION['estacionamiento']->nombre_park;?></b>.</h3>
+                <p>Dirección: <?=$_SESSION['estacionamiento']->calle;?> #<?=$_SESSION['estacionamiento']->numero_ext;?> Col <?=$_SESSION['estacionamiento']->colonia;?></p>
+                <p>Número de Cajones: <?=$_SESSION['estacionamiento']->stock;?></p>
+                <p>Horarios: De <?=$_SESSION['estacionamiento']->dia_ini;?> - <?=$_SESSION['estacionamiento']->dia_fin;?> Desde <?=$_SESSION['estacionamiento']->hora_apertura;?> a <?=$_SESSION['estacionamiento']->hora_cierre;?></p>
+                <p>Descripción: <br><?=$_SESSION['estacionamiento']->descripcion;?></p>
+                <p>Tarifa mas común: $<?=$_SESSION['estacionamiento']->tarifa;?></p>
                 <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/actualizar">Actualizar Información</a>
             </div>
         </div>
@@ -132,7 +132,7 @@
         <div class="card rounded-0 mt-3">
             <div class="card-body">
                 <div class="row">
-                    <?php while($res = $result->fetch_object()):?>
+                    <?php while($res = $get_tarifas->fetch_object()):?>
                         <div class="col-lg-4 d-flex stat my-3">
                             <div class="mx-auto">
                                 <h6 class="text-mutted">Tarifa <b id="colortext"><?=$res->tipo_car;?></b></h6>

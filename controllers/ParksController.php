@@ -19,7 +19,7 @@ class parksController{
     public function index(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
-        $result = $this->modelPuntuaciones->get_puntuaciones();
+        $get_puntuaciones = $this->modelPuntuaciones->get_puntuaciones();
         require_once 'views/parks/tablero.php';
 
         require_once 'views/layout/footer.php';
@@ -28,7 +28,8 @@ class parksController{
     public function info(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
-        $result = $this->modelTarifas->get_tarifas();
+        $get_tarifas = $this->modelTarifas->get_tarifas();
+        $getparks = $this->modelParks->getParks();
         require_once 'views/parks/infoperfil.php';
 
         require_once 'views/layout/footer.php';

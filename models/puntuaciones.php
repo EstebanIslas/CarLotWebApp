@@ -61,8 +61,9 @@ class Puntuaciones{
 
     public function get_puntuaciones()
     {
+        $id_park = $_SESSION['estacionamiento']->id;
         $result = $this->db->query("SELECT persons.nombre, persons.apellido, puntuaciones.comment, puntuaciones.calificacion FROM puntuaciones 
-        INNER JOIN persons ON puntuaciones.id_person = persons.id WHERE id_park = 18 ORDER BY puntuaciones.id DESC LIMIT 4;");
+        INNER JOIN persons ON puntuaciones.id_person = persons.id WHERE id_park = '$id_park' ORDER BY puntuaciones.id DESC LIMIT 4;");
         return $result;
     }
 }
