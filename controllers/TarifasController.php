@@ -23,8 +23,11 @@ class tarifasController{
     }
 
     public function registro(){
-        $req = 'views/tarifas/registro.php';
-        $this->design($req);
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        require_once 'views/tarifas/registro.php';
+
+        require_once 'views/layout/footer.php';
     }
 
     public function save(){
@@ -44,7 +47,14 @@ class tarifasController{
                 $this->modelTarifas->setDescripcion($descripcion);
                 $this->modelTarifas->setTarifa($tarifa);
 
-                $save = $this->modelTarifas->save();
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $this->modelTarifas->setId($id);
+                    $save = $this->modelTarifas->update();
+                }else{
+                    $save = $this->modelTarifas->save();
+                }
+                
                 
                 if ($save) {
                     $_SESSION['register'] = "complete";
@@ -63,6 +73,48 @@ class tarifasController{
         header("Location:".base_url.'tarifas/registro');
         ob_end_flush();#Error del header al redireccionar
         #importa el footer
+        require_once 'views/layout/footer.php';
+    }
+
+
+    public function drop(){
+        
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $this->modelTarifas->setId($id); #settear
+
+            $delete = $this->modelTarifas->delete();
+
+            if ($delete) {
+                $_SESSION['deletes'] = 'complete';
+            }else {
+                $_SESSION['deletes'] = 'failed';
+            }
+        }else {
+            $_SESSION['deletes'] = 'failed';
+        }
+
+        header("Location:".base_url.'parks/info');
+        ob_end_flush();#Error del header al redireccionar
+    }
+
+    public function update(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $edit = true;
+
+            $this->modelTarifas->setId($id); #settear
+
+            $update = $this->modelTarifas->get_one_tarifas();
+
+            require_once 'views/tarifas/registro.php';
+        }
+
         require_once 'views/layout/footer.php';
     }
 }

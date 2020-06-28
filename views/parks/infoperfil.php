@@ -112,6 +112,19 @@
 
 <section class="bg-grey py-3">
     <div class="container">
+        <!--Validación de consulta en save()-->
+        <?php if (isset($_SESSION['deletes']) && $_SESSION['deletes'] == 'complete'): ?>
+            <div class="container alert alert-success" role="alert">Tarifa eliminada con éxito!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif (isset($_SESSION['deletes']) && $_SESSION['deletes'] == 'failed'): ?>
+            <div class="container alert alert-danger" role="alert">Error al eliminar la tarifa!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php endif;?>
+        <?php Utils::deleteSession('deletes') #Borrar sesión de save?>
+
+
         <div class="row">
             <div class="col-lg-9">
                 <p class="lead text-muted font-weight-bold" id="colortext">Tarifas</p>
@@ -123,13 +136,14 @@
         <div class="card rounded-0 mt-3">
             <div class="card-body">
                 <div class="row">
-                    <?php while($res = $get_tarifas->fetch_object()):?>
+                    <?php while($tar = $get_tarifas->fetch_object()):?>
                         <div class="col-lg-4 d-flex stat my-3">
                             <div class="mx-auto">
-                                <h6 class="text-mutted">Tarifa <b id="colortext"><?=$res->tipo_car;?></b></h6>
-                                <h3 class="font-weight-bold">$<?=$res->tarifa;?></h3>
-                                <h6 class="font-weight-light"><?=$res->descripcion;?></h3>
-                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/registro">Editar</a>
+                                <h6 class="text-mutted">Tarifa <b id="colortext"><?=$tar->tipo_car;?></b></h6>
+                                <h3 class="font-weight-bold">$<?=$tar->tarifa;?></h3>
+                                <h6 class="font-weight-light"><?=$tar->descripcion;?></h3>
+                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/update&id=<?=$tar->id?>">Administrar</a>
+                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>tarifas/drop&id=<?=$tar->id?>">Eliminar</a>
                             </div>
                     </div>
                     <?php endwhile;?>

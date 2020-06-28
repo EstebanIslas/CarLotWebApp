@@ -86,4 +86,42 @@ class Tarifas{
         $sql = $this->db->query("SELECT * FROM tarifas where id_park = '$id_park'");
         return $sql;
     }
+
+    public function get_one_tarifas()
+    {
+        $id_park = $_SESSION['estacionamiento']->id;
+        $sql = $this->db->query("SELECT * FROM tarifas where id_park = '$id_park' AND id = '{$this->getId()}'");
+        return $sql->fetch_object();
+    }
+
+    public function delete()
+    {
+        $sql = "DELETE FROM tarifas WHERE id= '{$this->id}'";
+        $delete = $this->db->query($sql);
+
+        $result = false;
+
+        if ($delete) {
+            $result = true;
+        }
+        return $result;
+
+    }
+
+    public function update()
+    {
+        $id_park = $_SESSION['estacionamiento']->id;
+        $sql = "UPDATE tarifas SET 
+            tipo_car = '{$this->getTipo_car()}',
+            descripcion = '{$this->getDescripcion()}',
+            tarifa = '{$this->getTarifa()}' WHERE id= {$this->getId()};";
+        $save = $this->db->query($sql);
+
+        $result = false;
+
+        if ($save) {
+            $result = true;
+        }
+        return $result;
+    }
 }
