@@ -27,7 +27,7 @@
                 <p>Horarios: De <?=$_SESSION['estacionamiento']->dia_ini;?> - <?=$_SESSION['estacionamiento']->dia_fin;?> Desde <?=$_SESSION['estacionamiento']->hora_apertura;?> a <?=$_SESSION['estacionamiento']->hora_cierre;?></p>
                 <p>Descripción: <br><?=$_SESSION['estacionamiento']->descripcion;?></p>
                 <p>Tarifa mas común: $<?=$_SESSION['estacionamiento']->tarifa;?></p>
-                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/actualizar">Actualizar Información</a>
+                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/update&id=<?=$_SESSION['estacionamiento']->id?>">Actualizar Información</a>
             </div>
         </div>
     </div>

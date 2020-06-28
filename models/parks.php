@@ -256,4 +256,40 @@ class Parks{
 
         return $result;
     }
+
+    public function get_one_parks()
+    {
+        $sql = $this->db->query("SELECT * FROM parks WHERE id = '{$this->getId()}'");
+        return $sql->fetch_object();
+    }
+
+
+    public function update()
+    {
+        $id_park = $_SESSION['estacionamiento']->id;
+        $sql = "UPDATE parks SET 
+            nombre_park = '{$this->getNombre_park()}',
+            calle = '{$this->getCalle()}',
+            colonia = '{$this->getColonia()}',
+            numero_ext = '{$this->getNumero_ext()}',
+            stock = '{$this->getStock()}',
+            dia_ini = '{$this->getDia_ini()}',
+            dia_fin = '{$this->getDia_fin()}',
+            hora_apertura = '{$this->getHora_apertura()}',
+            hora_cierre = '{$this->getHora_cierre()}',
+            descripcion = '{$this->getDescripcion()}',
+            tarifa = '{$this->getTarifa()}',
+            longitud = '{$this->getLongitud()}',
+            latitud = '{$this->getLatitud()}'
+            WHERE id= {$this->getId()};";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+
+        if ($save) {
+            $result = true;
+        }
+        return $result;
+    }
 }
