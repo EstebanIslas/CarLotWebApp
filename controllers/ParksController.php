@@ -3,6 +3,7 @@
 require_once 'models/parks.php';
 require_once 'models/tarifas.php';
 require_once 'models/puntuaciones.php';
+require_once 'models/servicios.php';
 
 
 class parksController{
@@ -14,6 +15,7 @@ class parksController{
         $this->modelParks = new Parks();
         $this->modelTarifas = new Tarifas();
         $this->modelPuntuaciones = new Puntuaciones();
+        $this->modelServicios = new Servicios();
     }
 
     public function index(){
@@ -28,6 +30,7 @@ class parksController{
     public function info(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
+        $get_servicios = $this->modelServicios->get_servicios();
         $get_tarifas = $this->modelTarifas->get_tarifas();
         $getparks = $this->modelParks->getParks();
         require_once 'views/parks/infoperfil.php';
@@ -46,11 +49,6 @@ class parksController{
         $this->design($req);
     }
 
-    public function servicios()
-    {
-        $req = 'views/servicios/registro.php';
-        $this->design($req);
-    }
 
     private function design($requerir){
         require_once 'views/layout/header.php';
