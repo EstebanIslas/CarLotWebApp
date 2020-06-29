@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="member-container">
-                    <br><br><img src="<?=base_url?>assets/images/park_lot.jpg" class="img-fluid" alt="member 1">
+                    <br><br><img src="<?=$_SESSION['estacionamiento']->image?>" class="img-fluid" alt="member 1">
                 </div>
             </div>
 
