@@ -46,4 +46,20 @@ class Persons{
     public function getTelefono(){
         return $this->telefono;
     }
+
+    public function getAutomovilistas()
+    {
+        $id_person = $_SESSION['usuario']->id_person;
+
+        $sql = "SELECT * FROM persons WHERE id = '$id_person'";
+        $result = $this->db->query($sql);
+
+        if ($result && $result->num_rows == 1) {
+            $automovilista = $result->fetch_object();
+        }else{
+            $automovilista = null;
+        }
+
+        return $automovilista;
+    }
 }

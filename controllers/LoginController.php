@@ -2,6 +2,7 @@
 
 require_once 'models/users.php';
 require_once 'models/parks.php';
+require_once 'models/persons.php';
 
 class loginController{
     public function index(){
@@ -41,9 +42,16 @@ class loginController{
                     $_SESSION['login'] = "complete";
                     $_SESSION['user'] = 'failed';
                     echo "<script>location.href='".base_url."parks/index';</script>";
-                }else {
-                    $_SESSION['user'] = 'complete';
-                    echo "<script>location.href='".base_url."login/index';</script>";
+                }
+
+                elseif ($rol == '1') {
+
+                    $personsModel = new Persons();
+                    $automovilista = $personsModel->getAutomovilistas();
+
+                    $_SESSION['automovilista'] = $automovilista;
+                    $_SESSION['conduct'] = true;
+                    echo "<script>location.href='".base_url."persons/index';</script>";
                 }
             }else{
 
