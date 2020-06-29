@@ -13,6 +13,7 @@ class reservasController{
     public function index(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
+        $stock_available = $this->modelReservas->stock_available();
         $get_inputs = $this->modelReservas->get_info_input();
         $get_outputs = $this->modelReservas->get_info_output();
         require_once 'views/reservas/consultas.php';

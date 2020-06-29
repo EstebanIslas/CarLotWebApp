@@ -81,12 +81,12 @@ class Reservas{
 
     public function get_info_input(){
 
-        $id_park = $_SESSION['estacionamiento']->id;
+        $this->setId_park($_SESSION['estacionamiento']->id);
         $sql = $this->db->query("SELECT inputs.id, persons.nombre, persons.apellido, cars.matricula, inputs.estado,
             TIMESTAMPDIFF(HOUR, entrada, NOW()) AS horas
             FROM inputs INNER JOIN cars ON inputs.id_car = cars.id 
             INNER JOIN persons ON cars.id_person = persons.id
-            WHERE id_park = '$id_park'
+            WHERE id_park = '{$this->getId_park()}'
             ORDER BY inputs.entrada DESC;");
 
         return $sql;
@@ -101,7 +101,7 @@ class Reservas{
             ON inputs.id_car = cars.id 
             INNER JOIN persons
             ON cars.id_person = persons.id
-            WHERE id_park = '$id_park' ORDER BY inputs.entrada DESC;");
+            WHERE id_park = '{$this->getId_park()}' ORDER BY inputs.entrada DESC;");
 
         return $sql;
     }
@@ -123,6 +123,14 @@ class Reservas{
             $result = true;
         }
         return $result;
+    }
+
+    public function stock_available()
+    {
+        $this->setId_park($_SESSION['estacionamiento']->id);
+        $sql = $this->db->query("SELECT  (parks.stock - COUNT(inputs.estado)) AS lugares_disponibles FROM inputs
+            INNER JOIN parks ON inputs.id_park = parks.id WHERE id_park = '{$this->getId_park()}' AND estado = 1;");
+        return $sql;
     }
     
 }

@@ -2,14 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9">
-                <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Reservas</h1>
+                <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Entradas, Salidas y Reservas</h1>
                 <p class="lead text-muted">Administra las reservas en tu negocio</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-grey py-3 mb-5">
+<section class="bg-grey py-3 mb-0">
+    <?php while($stock = $stock_available->fetch_object()):?>
+        <h3 style="color: #1a1a1a;" class="font-weight-bold mb-0 ml-3">Cajones Disponibles</h3>
+        <p class="lead font-weight-bold ml-3">
+            <b id="colortext"><?=$stock->lugares_disponibles?></b>
+        </p>
+    <?php endwhile;?>
     <div class="container">
         <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Cajones el día de hoy</p>
         
