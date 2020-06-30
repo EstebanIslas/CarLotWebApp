@@ -224,6 +224,12 @@ class Parks{
         return $estacionamiento;
     }
 
+    public function getAll()
+    {
+        $sql = $this->db->query("SELECT * FROM parks ORDER BY colonia");
+        return $sql;
+    }
+
     #Save User
     public function save(){
         $sql = "Call registroParks(

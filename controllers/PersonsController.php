@@ -2,16 +2,19 @@
 
 require_once 'models/persons.php';
 require_once 'models/cars.php';
+require_once 'models/parks.php';
 
 class personsController{
 
     protected $modelPersons;
     protected $modelCars;
+    protected $modelParks;
 
     public function __construct()
     {
         $this->modelPersons = new Persons();
         $this->modelCars = new Cars();
+        $this->modelParks = new Parks();
     }
 
     public function index(){
@@ -35,6 +38,7 @@ class personsController{
     public function verparks(){
         require_once 'views/layout/header.php';
 
+        $getall = $this->modelParks->getAll();
         require_once 'views/parks/vertodos.php';
 
         require_once 'views/layout/footer.php';
