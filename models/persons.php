@@ -62,4 +62,18 @@ class Persons{
 
         return $automovilista;
     }
+
+    public function getParksfromUser()
+    {
+        $id_person = $_SESSION['automovilista']->id;
+
+        $sql = "SELECT parks.id, parks.nombre_park,  parks.calle , parks.numero_ext, parks.colonia, parks.image, inputs.entrada from inputs 
+                INNER JOIN parks ON inputs.id_park = parks.id
+                INNER JOIN cars ON inputs.id_car = cars.id
+                INNER JOIN persons ON cars.id_person = persons.id
+                WHERE persons.id = '$id_person' GROUP BY parks.nombre_park ORDER BY inputs.entrada ASC limit 3;";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+
 }

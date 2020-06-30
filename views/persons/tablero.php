@@ -16,32 +16,16 @@
             <div class="card-body">
                 <h3 class="card-title mt-3 text-center">Estacionamientos Recientes</h3>
                 <div class="row">
-                    <div class="col-lg-4 d-flex stat my-3">
-                        <div class="mx-auto">
-                            <img src="<?=base_url?>assets/images/park_lot.jpg" class="card-img-top" alt="...">
-                            <h5 class="card-title mt-3">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <?php while($parks = $getParksfromUser->fetch_object()):?>
+                        <div class="col-lg-4 d-flex stat my-3">
+                            <div class="mx-auto">
+                                <img src="<?=$parks->image?>" class="card-img-top" alt="..." style = "height: 12rem">
+                                <h5 class="card-title mt-3 d-inline-block text-truncate"><?=$parks->nombre_park?></h5>
+                                <p class="card-text">Calle: <?=$parks->calle?> #<?=$parks->numero_ext?>, Col. <?=$parks->colonia?></p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 d-flex stat my-3">
-                        <div class="mx-auto">
-                            <img src="<?=base_url?>assets/images/park_lot.jpg" class="card-img-top" alt="...">
-                            <h5 class="card-title mt-3">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 d-flex stat my-3">
-                        <div class="mx-auto">
-                            <img src="<?=base_url?>assets/images/park_lot.jpg" class="card-img-top" alt="...">
-                            <h5 class="card-title mt-3">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+                    <?php endwhile;?>
                 </div>
             </div>
         </div>      
