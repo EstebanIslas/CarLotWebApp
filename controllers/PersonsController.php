@@ -43,4 +43,13 @@ class personsController{
 
         require_once 'views/layout/footer.php';
     }
+
+    public function info(){
+        require_once 'views/layout/header.php';
+
+        $get_person = $this->modelPersons->get_person();
+        require_once 'views/persons/info.php';
+
+        require_once 'views/layout/footer.php';
+    }
 }

@@ -76,4 +76,13 @@ class Persons{
         return $result;
     }
 
+    public function get_person()
+    {
+        $id_person = $_SESSION['usuario']->id_person;
+
+        $sql = $this->db->query("SELECT users.correo, users.image, persons.nombre, persons.apellido, persons.telefono FROM users
+                INNER JOIN persons ON users.id_person = persons.id
+                WHERE id_person = '$id_person'");
+        return $sql;
+    }
 }

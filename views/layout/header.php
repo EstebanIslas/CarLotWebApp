@@ -33,7 +33,7 @@
                         <!--a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-person mr-2 lead"></i>Usuario</a-->
                         <a href="<?=base_url?>parks/info" class="d-block ml-2 text-light p-2"><i class="icon ion-md-car mr-2 lead"></i>Mi Estacionamiento</a>
                         <a href="<?=base_url?>reservas/index" class="d-block ml-2 text-light p-2"><i class="icon ion-md-notifications mr-2 lead"></i>Reservaciones</a>
-                        <a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
+                        <a href="<?=base_url?>persons/info" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
                     
                     <?php elseif(isset($_SESSION['usuario']) && isset($_SESSION['automovilista'])): ?>
                         <a href="<?=base_url?>persons/index" class="d-block ml-2 text-light p-2"><i class="icon ion-md-apps mr-2 lead"></i>Tablero</a>
@@ -41,7 +41,7 @@
                         <a href="<?=base_url?>persons/cars" class="d-block ml-2 text-light p-2"><i class="icon ion-md-car mr-2 lead"></i>Mis Automoviles</a>
                         <a href="<?=base_url?>persons/verparks" class="d-block ml-2 text-light p-2"><i class="icon ion-md-car mr-2 lead"></i>Ver Estacionamientos</a>
                         <a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-notifications mr-2 lead"></i>Reservaciones</a>
-                        <a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
+                        <a href="<?=base_url?>persons/info" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
                     
                     <?php endif;?>
                 </div>
