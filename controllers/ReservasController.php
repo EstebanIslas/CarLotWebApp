@@ -1,22 +1,34 @@
 <?php
 
-require_once 'models/reservas.php';
+require_once 'models/inputs.php';
+require_once 'models/tarifas.php';
 
 class reservasController{
 
-    protected $modelReservas;
+    protected $modelInputs;
+    protected $modelTarifas;
 
     public function __construct(){
-        $this->modelReservas = new Reservas();
+        $this->modelInputs = new Inputs();
+        $this->modelTarifas = new Tarifas();
     }
 
     public function index(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
-        $stock_available = $this->modelReservas->stock_available();
-        $get_inputs = $this->modelReservas->get_info_input();
-        $get_outputs = $this->modelReservas->get_info_output();
+        $stock_available = $this->modelInputs->stock_available();
+        $get_inputs = $this->modelInputs->get_info_input();
+        $get_outputs = $this->modelInputs->get_info_output();
         require_once 'views/reservas/consultas.php';
+
+        require_once 'views/layout/footer.php';
+    }
+
+    public function addinput(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        $get_tarifas = $this->modelTarifas->get_tarifas();
+        require_once 'views/reservas/inputsregistro.php';
 
         require_once 'views/layout/footer.php';
     }
@@ -27,9 +39,9 @@ class reservasController{
 
             $edit = true;
 
-            $this->modelReservas->setId($id); #settear
+            $this->modelInputs->setId($id); #settear
 
-            $update = $this->modelReservas->update();
+            $update = $this->modelInputs->update();
 
             if ($update) {
                 $_SESSION['updated_input'] = 'complete';
@@ -39,6 +51,42 @@ class reservasController{
 
         }else{
             $_SESSION['updated_input'] = 'failed';
+        }
+        header("Location:".base_url.'reservas/index');
+        ob_end_flush();#Error del header al redireccionar
+    }
+
+    public function save_in()
+    {
+        #validacion de existencia
+        if (isset($_POST)) {
+            $id_car = isset($_POST['id_car']) ? $_POST['id_car'] : false;
+            $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
+            $tarifa_cobrada = isset($_POST['tarifa_cobrada']) ? $_POST['tarifa_cobrada'] : false;
+
+            if ($id_car && $descripcion && $tarifa_cobrada) {
+                
+                #Validación basica
+                $this->modelInputs->setId_car($id_car);
+                $this->modelInputs->setDescripcion($descripcion);
+                $this->modelInputs->setTarifa_cobrada($tarifa_cobrada);
+
+                $save = $this->modelInputs->save();
+
+                
+                if ($save) {
+                    $_SESSION['register'] = "complete";
+                    #echo 'Registro Completado';
+                }else {
+                    #echo 'Registro Fallido';
+                    $_SESSION['register'] = "failed";
+                }
+            }else {
+                $_SESSION['register'] = "failed";
+            }
+
+        }else {
+            $_SESSION['register'] = "failed";
         }
         header("Location:".base_url.'reservas/index');
         ob_end_flush();#Error del header al redireccionar

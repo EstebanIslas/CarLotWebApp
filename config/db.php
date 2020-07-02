@@ -16,15 +16,17 @@
 
     /*
     Local Credenciales
-    'localhost',
+'localhost',
+'root', 
     'root', 
-    '', 
-    'carlot_db'
+'root', 
+'', 
+'carlot_db'
 
     Base Remota credenciales
-    'bxzw1ws3jcdwi8jelbij-mysql.services.clever-cloud.com',
-    'uhme9vzbna2ir11i',
-    'n6RrgP8zdvfvLi8nWJV2',
-    'bxzw1ws3jcdwi8jelbij'
+'bxzw1ws3jcdwi8jelbij-mysql.services.clever-cloud.com',
+'uhme9vzbna2ir11i',
+'n6RrgP8zdvfvLi8nWJV2',
+'bxzw1ws3jcdwi8jelbij'
     */
 ?>

@@ -11,13 +11,21 @@
 
 <section class="bg-grey py-3 mb-0">
     <?php while($stock = $stock_available->fetch_object()):?>
-        <h3 style="color: #1a1a1a;" class="font-weight-bold mb-0 ml-3">Cajones Disponibles</h3>
-        <p class="lead font-weight-bold ml-3">
-            <b id="colortext"><?=$stock->lugares_disponibles?></b>
-        </p>
+        <div class="row">
+            <div class="col-lg-9">
+                <h3 style="color: #1a1a1a;" class="font-weight-bold mb-0 ml-3">Cajones Disponibles</h3>
+                <p class="lead font-weight-bold ml-3">
+                    <b id="colortext"><?=$stock->lugares_disponibles?></b>
+                </p>
+            </div>
     <?php endwhile;?>
+            <div class="col-lg-3 d-flex">
+                <a class="btn btn-primary mt-2" style="height:40px;" href="<?=base_url?>reservas/addinput">Insertar entrada de automóvil</a>
+            </div>
+        </div>
     <div class="container">
         <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Cajones el día de hoy</p>
+        
         
         <!--Validación de consulta en save()-->
         <?php if (isset($_SESSION['updated_input']) && $_SESSION['updated_input'] == 'complete'): ?>
@@ -50,7 +58,7 @@
                             <td><?=$inp->matricula?></td>
                             <td><?=$inp->horas?> horas</td>
                             <td>En curso</td>
-                            <td>$15.5</td>
+                            <td>$<?=$inp->tarifa_cobrada?></td>
                             <td>
                             <a class="btn btn-success mt-1" href="<?=base_url?>reservas/save_input&id=<?=$inp->id?>">Finalizar entrada</a>
                             </td>
@@ -75,6 +83,8 @@
                 <th scope="col">Entrada</th>
                 <th scope="col">Salida</th>
                 <th scope="col">Tiempo</th>
+                <th scope="col">Cobro por hora</th>
+                <th scope="col">Total a pagar</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,7 +95,14 @@
                             <td><?=$inp->matricula?></td>
                             <td><?=$inp->entrada?></td>
                             <td><?=$inp->salida?></td>
-                            <td><?=$inp->tiempo?></td>
+                            <td><?=$inp->tiempo?> horas</td>
+                            <td><?=$inp->tarifa_cobrada?></td>
+                            <?php 
+                                $time = (int)$inp->tiempo;
+                                $costo = (int)$inp->tarifa_cobrada;
+                                $total = $time * $costo;
+                            ?>
+                            <td>$<?=$total?></td>
                         </tr>
                     <?php endif;?>
                 <?php endwhile;?>

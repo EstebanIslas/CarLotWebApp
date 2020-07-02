@@ -14,4 +14,11 @@ class Utils{
 
         return $name;
     }
+
+    public static function showCars(){
+        require_once 'models/cars.php';
+        $modelCars = new Cars();
+        $result = $modelCars->get_person_cars();
+        return $result;
+    }
 }

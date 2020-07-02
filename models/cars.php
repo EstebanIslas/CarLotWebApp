@@ -133,4 +133,11 @@ class Cars{
         }
         return $result;
     }
+
+    public function get_person_cars()
+    {
+        $sql = $this->db->query("SELECT persons.nombre, persons.apellido, cars.id AS id_car, cars.matricula FROM cars
+            INNER JOIN persons ON cars.id_person = persons.id;");
+        return $sql;
+    }
 }
