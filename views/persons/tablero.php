@@ -22,7 +22,7 @@
                                 <img src="<?=$parks->image?>" class="card-img-top" alt="..." style = "height: 12rem">
                                 <h5 class="card-title mt-3 d-inline-block text-truncate"><?=$parks->nombre_park?></h5>
                                 <p class="card-text">Calle: <?=$parks->calle?> #<?=$parks->numero_ext?>, Col. <?=$parks->colonia?></p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <a href="<?=base_url?>parks/get_one_park&id=<?=$parks->id?>" class="btn btn-primary">Ver Estacionamiento</a>
                             </div>
                         </div>
                     <?php endwhile;?>

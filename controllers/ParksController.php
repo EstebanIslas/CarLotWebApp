@@ -18,6 +18,7 @@ class parksController{
         $this->modelServicios = new Servicios();
     }
 
+    #Funciones de Actions
     public function index(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
@@ -58,6 +59,17 @@ class parksController{
         require_once 'views/layout/footer.php';
     }
 
+    
+    public function onepark(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+
+        require_once 'views/parks/verpark.php';
+
+        require_once 'views/layout/footer.php';
+    }
+
+    #FUNCIONES PARA RECIBIR AL MODEL
     public function save()
     {
         #Si existen valores por POST
@@ -202,6 +214,25 @@ class parksController{
             $update = $this->modelParks->get_one_parks();
 
             require_once 'views/parks/actualizar.php';
+        }
+
+        require_once 'views/layout/footer.php';
+    }
+
+    public function get_one_park(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $edit = true;
+
+            $this->modelParks->setId($id); #settear
+
+            $update = $this->modelParks->get_one_parks();
+
+            require_once 'views/parks/verpark.php';
         }
 
         require_once 'views/layout/footer.php';

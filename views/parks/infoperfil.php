@@ -9,28 +9,46 @@
     </div>
 </section>
 
-<section class="bg-grey py-3">
-    <div class="container mb-5">
+<section class="bg-mix py-3">
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="member-container">
-                    <br><br><img src="<?=$_SESSION['estacionamiento']->image?>" class="img-fluid" alt="member 1">
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <img src="<?=$_SESSION['estacionamiento']->image?>" class="avatar" style="height: 12rem; width: 20rem">
+                </div></hr><br>
+
+
+                <ul class="list-group ml-3"  style="width: 20rem">
+                    <li class="list-group-item font-weight-bold text-center">Actividad <i class="fa fa-dashboard fa-1x"></i></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Comentarios:
+                        <span class="badge badge-warning badge-pill">14</span></li>
+                        
+                    <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Calificación
+                        <span class="badge badge-warning badge-pill">4 de 5</span></li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Reservas:
+                        <span class="badge badge-warning badge-pill">10</span></li>
+                </ul> 
+            </div>
+
+            <div class ="col-lg-8">
+                <div class="tab-pane active">
+                    <h3 id="colortext">Estacionamiento <b style="color:#1a1a1a"><?=$_SESSION['estacionamiento']->nombre_park;?></b>.</h3>
+                    <p class="card-text mb-0">Calle <?=$_SESSION['estacionamiento']->calle;?> #<?=$_SESSION['estacionamiento']->numero_ext;?>, Colonia <?=$_SESSION['estacionamiento']->colonia;?></p>
+                    <p class="card-text">Tarifa más común: <b class="text-success font-weight-bold">$<?=$_SESSION['estacionamiento']->tarifa;?></b></p>
+                    <p class="card-text">Descripcion<br><?=$_SESSION['estacionamiento']->descripcion;?></p>
+                    <p class="card-text">Horarios
+                        <br>De: <?=$_SESSION['estacionamiento']->hora_apertura;?> a <?=$_SESSION['estacionamiento']->hora_cierre;?>
+                        <br>Los días: <?=$_SESSION['estacionamiento']->dia_ini;?> - <?=$_SESSION['estacionamiento']->dia_fin;?>
+                    </p>
+                    <p class="card-text mb-3">Número total de espacios: <b id="colortext"><?=$_SESSION['estacionamiento']->stock;?></b></p>
+                    <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/update&id=<?=$_SESSION['estacionamiento']->id?>">Actualizar Información</a>
                 </div>
             </div>
-
-            <div class="col-md-1"></div>
-
-            <div class="col-md-6">
-                <h3 id="colortext">Estacionamiento <b style="color:#1a1a1a"><?=$_SESSION['estacionamiento']->nombre_park;?></b>.</h3>
-                <p>Dirección: <?=$_SESSION['estacionamiento']->calle;?> #<?=$_SESSION['estacionamiento']->numero_ext;?> Col <?=$_SESSION['estacionamiento']->colonia;?></p>
-                <p>Número de Cajones: <?=$_SESSION['estacionamiento']->stock;?></p>
-                <p>Horarios: De <?=$_SESSION['estacionamiento']->dia_ini;?> - <?=$_SESSION['estacionamiento']->dia_fin;?> Desde <?=$_SESSION['estacionamiento']->hora_apertura;?> a <?=$_SESSION['estacionamiento']->hora_cierre;?></p>
-                <p>Descripción: <br><?=$_SESSION['estacionamiento']->descripcion;?></p>
-                <p>Tarifa mas común: $<?=$_SESSION['estacionamiento']->tarifa;?></p>
-                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/update&id=<?=$_SESSION['estacionamiento']->id?>">Actualizar Información</a>
-            </div>
-        </div>
+        </div><br><br>
     </div>
+
 </section>
 
 <section class="bg-grey">
