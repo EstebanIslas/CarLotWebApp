@@ -20,23 +20,23 @@
                                 <div class="row">
                                     <div class="col-lg-4 d-flex stat my-3">
                                         <div class="mx-auto">
-                                            <h6 class="text-mutted">Ingresos Mensuales</h6>
-                                            <h3 class="font-weight-bold">$1,500</h3>
-                                            <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle mr-2 lead"></i>50%</h6>
+                                            <h6 class="text-mutted">Ingresos por reservas</h6>
+                                            <h3 class="font-weight-bold">$350</h3>
+                                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Abril</h6>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 d-flex stat my-3">
                                         <div class="mx-auto">
-                                            <h6 class="text-mutted">Ingresos Mensuales</h6>
-                                            <h3 class="font-weight-bold">$1,500</h3>
-                                            <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle mr-2 lead"></i>50%</h6>
+                                            <h6 class="text-mutted">Ingresos por reservas</h6>
+                                            <h3 class="font-weight-bold">$400</h3>
+                                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Mayo</h6>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 d-flex my-3">
                                         <div class="mx-auto">
-                                            <h6 class="text-mutted">Ingresos Mensuales</h6>
-                                            <h3 class="font-weight-bold">$1,500</h3>
-                                            <h6 class="text-success"><i class="icon ion-md-arrow-dropup-circle mr-2 lead"></i>50%</h6>
+                                            <h6 class="text-mutted">Ingresos por reservas</h6>
+                                            <h3 class="font-weight-bold">$325</h3>
+                                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Junio</h6>
                                         </div>
                                     </div>
                                 </div>
