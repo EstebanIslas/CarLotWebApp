@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="tarifa">Costo:</label>
                 <input type="number" class="form-control" name="tarifa"
-                pattern="[0-9,.]{1,3}" value= "<?=isset($update) && is_object($update) ? $update->tarifa : '';?>">
+                pattern="[0-9]{1,3}" step="any" value= "<?=isset($update) && is_object($update) ? $update->tarifa : '';?>">
             </div>
             <input type="submit" class="btn btn-primary" value="Registrar">
             </form>
