@@ -105,6 +105,10 @@
             <div class="container alert alert-danger" role="alert">Error al registrar!
                 <button type="button" class="close" data-dismiss="alert">&times;</button>  
             </div>
+        <?php elseif(isset($_SESSION['register_user']) && $_SESSION['register_user'] == 'failed_pass'):?>
+            <div class="container alert alert-danger" role="alert">Error al registrar verifica tu contraseña!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>  
+            </div>
         <?php endif;?>
 
         <?php Utils::deleteSession('register_user')?>

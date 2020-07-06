@@ -68,24 +68,30 @@ class personsController{
             #Users
             $correo = isset($_POST['correo']) ? $_POST['correo'] : false;
             $password = isset($_POST['password']) ? $_POST['password'] : false;
+            $conf_password = isset($_POST['conf_password']) ? $_POST['conf_password'] : false;
 
-            if ($nombre && $apellido && $telefono && $correo && $password) {
+            if ($nombre && $apellido && $telefono && $correo && $password && $conf_password) {
                 
-                #Setear
-                $this->modelPersons->setNombre($nombre);
-                $this->modelPersons->setApellido($apellido);
-                $this->modelPersons->setTelefono($telefono);
-                $this->modelPersons->setCorreo($correo);
-                $this->modelPersons->setPassword($password);
+                if($password == $conf_password){
+                    #Setear
+                    $this->modelPersons->setNombre($nombre);
+                    $this->modelPersons->setApellido($apellido);
+                    $this->modelPersons->setTelefono($telefono);
+                    $this->modelPersons->setCorreo($correo);
+                    $this->modelPersons->setPassword($conf_password);
 
-                $save = $this->modelPersons->save();
+                    $save = $this->modelPersons->save();
 
-                if ($save) {
-                    $_SESSION['register_user'] = "complete";
-                    #echo 'Registro Completado';
+                    if ($save) {
+                        $_SESSION['register_user'] = "complete";
+                        #echo 'Registro Completado';
+                    }else {
+                        #echo 'Registro Fallido';
+                        $_SESSION['register_user'] = "failed";
+                    }
                 }else {
-                    #echo 'Registro Fallido';
-                    $_SESSION['register_user'] = "failed";
+                    $_SESSION['register_user'] = "failed_pass";
+                    echo "<script>location.href='".base_url."persons/registro';</script>";
                 }
                 
             }else { #Settear end

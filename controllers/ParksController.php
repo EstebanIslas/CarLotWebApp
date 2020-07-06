@@ -93,37 +93,43 @@ class parksController{
             $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
             $tarifa= isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
 
+            $conf_password = isset($_POST['conf_password']) ? $_POST['conf_password'] : false;
+
             #Validar True
             if ($nombre && $apellido && $telefono && $correo && $password && $nombre_park && $calle 
             && $colonia && $numero_ext && $stock && $dia_ini && $dia_fin && $hora_apertura && $hora_cierre
-            && $descripcion && $tarifa) {
+            && $descripcion && $tarifa && $conf_password) {
 
-                
+                if($password == $conf_password){              
+                    $this->modelParks->setNombre($nombre);
+                    $this->modelParks->setApellido($apellido);
+                    $this->modelParks->setTelefono($telefono);
+                    $this->modelParks->setCorreo($correo);
+                    $this->modelParks->setPassword($conf_password);
+                    $this->modelParks->setNombre_park($nombre_park);
+                    $this->modelParks->setCalle($calle);
+                    $this->modelParks->setColonia($colonia);
+                    $this->modelParks->setNumero_ext($numero_ext);
+                    $this->modelParks->setStock($stock);
+                    $this->modelParks->setDia_ini($dia_ini);
+                    $this->modelParks->setDia_fin($dia_fin);
+                    $this->modelParks->setHora_apertura($hora_apertura);
+                    $this->modelParks->setHora_cierre($hora_cierre);
+                    $this->modelParks->setDescripcion($descripcion);
+                    $this->modelParks->setTarifa($tarifa);
 
-                $this->modelParks->setNombre($nombre);
-                $this->modelParks->setApellido($apellido);
-                $this->modelParks->setTelefono($telefono);
-                $this->modelParks->setCorreo($correo);
-                $this->modelParks->setPassword($password);
-                $this->modelParks->setNombre_park($nombre_park);
-                $this->modelParks->setCalle($calle);
-                $this->modelParks->setColonia($colonia);
-                $this->modelParks->setNumero_ext($numero_ext);
-                $this->modelParks->setStock($stock);
-                $this->modelParks->setDia_ini($dia_ini);
-                $this->modelParks->setDia_fin($dia_fin);
-                $this->modelParks->setHora_apertura($hora_apertura);
-                $this->modelParks->setHora_cierre($hora_cierre);
-                $this->modelParks->setDescripcion($descripcion);
-                $this->modelParks->setTarifa($tarifa);
+                    $save = $this->modelParks->save();
 
-                $save = $this->modelParks->save();
+                    if ($save) {
+                        $_SESSION['register_park'] = "complete";
+                    }else{
+                        $_SESSION['register_park'] = "failed";
+                    }
 
-                if ($save) {
-                    $_SESSION['register_park'] = "complete";
-                }else{
-                    $_SESSION['register_park'] = "failed";
+                }else {
+                    $_SESSION['register_user'] = "failed_pass";
                 }
+
             }else {
                 $_SESSION['register_park'] = "failed";
             }

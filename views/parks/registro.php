@@ -159,6 +159,9 @@
                         <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-2">Contraseña:</small>
                         <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
 
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-2">Confirmar Contraseña:</small>
+                        <input type="password" name="conf_password" class="form-control" placeholder="Contraseña" required>
+
                         <input type="submit" class="btn btn-light topmargin-sm btn-block" value="Ingresar">
                         
                     </form>
