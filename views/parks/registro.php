@@ -75,7 +75,7 @@
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body w-100" style="width: 26rem">
                 <div class="">
-                    <form class="form-signin" action="<?=base_url?>parks/save" method="post">
+                    <form class="form-signin" action="<?=base_url?>parks/save" method="POST">
                         <h4 class="form-signing-heading text-center">Registra tu estacionamiento</h4>
 
                         <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-5">Nombre de Estacionamiento:</small>

@@ -94,7 +94,7 @@ class parksController{
             $tarifa= isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
 
             #Validar True
-            if ($nombre && $apellido && $telefono && $correo && $password && $rol && $nombre_park && $calle 
+            if ($nombre && $apellido && $telefono && $correo && $password && $nombre_park && $calle 
             && $colonia && $numero_ext && $stock && $dia_ini && $dia_fin && $hora_apertura && $hora_cierre
             && $descripcion && $tarifa) {
 
