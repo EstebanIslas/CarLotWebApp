@@ -60,88 +60,19 @@
 
     <section class="login ">
 
-    <?php if (isset($_SESSION['register_park']) && $_SESSION['register_park'] == 'complete'): ?>
-        <div class="container alert alert-success" role="alert">Tarifa registrada con éxito!
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
-    <?php elseif (isset($_SESSION['register_park']) && $_SESSION['register_park'] == 'failed'): ?>
-        <div class="container alert alert-danger" role="alert">Error al registrar, verifica tu información!
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
-    <?php endif;?>
-    <?php Utils::deleteSession('register_park') #Borrar sesión de save?>
-
         <div class="card rounded-0 mt-5" style="width: 34rem; margin: auto auto">
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body w-100" style="width: 26rem">
                 <div class="">
-                    <form class="form-signin" action="<?=base_url?>parks/save" method="POST">
-                        <h4 class="form-signing-heading text-center">Registra tu estacionamiento</h4>
+                    <form class="form-signin" action="<?=base_url?>persons/save" method="POST">
+                        <h4 class="form-signing-heading text-center">Regístrate</h4>
+                        <h6 class="form-signing-heading text-center">Encuentra un estacionamiento</h6>
 
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-5">Nombre de Estacionamiento:</small>
-                        <input type="text" name="nombre_park" class="form-control mb-3" placeholder="Nombre de Estacionamiento" required>
-
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1">Dirección:</small>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" name="calle" class="form-control mb-3" placeholder="Calle" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" name="numero_ext" class="form-control mb-3" placeholder="Número" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" name="colonia" class="form-control mb-3" placeholder="Colonia" required>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Número de Cajones:</small>
-                        <input type="number" name="stock" class="form-control" placeholder="Cajones">
-                        
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-3">Días hábiles de trabajo:</small>
+                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-3">Nombre:</small>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="dia_ini" class="form-control mb-3" placeholder="Día de apertura" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="dia_fin" class="form-control mb-3" placeholder="Día de cierre" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-2">Horarios hábiles de trabajo:</small>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="time" name="hora_apertura" class="form-control mb-3" placeholder="Hora de apertura" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="time" name="hora_cierre" class="form-control mb-3" placeholder="Hora de cierre" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Tarifa General:</small>
-                        <input type="number" name="tarifa" class="form-control" placeholder="Tarifa" required>
-
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-1">Descripcion:</small>
-                        <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" required>
-
-                        <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-3">Nombre de dueño:</small>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="nombre" class="form-control mb-3" placeholder="Nombre del dueño" required>
+                                    <input type="text" name="nombre" class="form-control mb-3" placeholder="Nombre de automovílista" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -167,8 +98,8 @@
                         <a href="<?=base_url?>login/index" style="color:#f47c04"><small><b>Inicia Sesión</b></small></a>
                     </div>
                     <div class="text-center">
-                        <p><small>¿Necesitas encontrar estacionamientos cerca?</small></p>
-                        <a href="<?=base_url?>persons/registro" style="color:#f47c04"><small><b>Registrate como automovilista</b></small></a>
+                        <p><small>¿Listo para administrar tu estacionamiento?</small></p>
+                        <a href="<?=base_url?>parks/registro" style="color:#f47c04"><small><b>Registra tu estacionamiento</b></small></a>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,10 @@ class Persons{
     private $nombre;
     private $apellido;
     private $telefono;
+    #Users
+    private $correo;
+    private $password;
+    private $rol;
 
 
     #Constructor y DB
@@ -47,6 +51,28 @@ class Persons{
         return $this->telefono;
     }
 
+    #USERS 
+    public function setCorreo($correo){
+        $this->correo = $correo;
+    }
+    
+    public function getCorreo(){
+        return $this->correo;
+    }
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    
+    public function getPassword(){
+        return $this->password;
+    }
+    function getRol(){
+        return $this-> rol;
+    }
+    function setRol($rol){
+        $this->rol = $rol;
+    }
+
     public function getAutomovilistas()
     {
         $id_person = $_SESSION['usuario']->id_person;
@@ -84,5 +110,27 @@ class Persons{
                 INNER JOIN persons ON users.id_person = persons.id
                 WHERE id_person = '$id_person'");
         return $sql;
+    }
+
+    #Metodo Registro
+    public function save(){
+
+        $sql = "Call registroUsuarios(
+            0,
+            '{$this->getNombre()}',
+            '{$this->getApellido()}',
+            '{$this->getTelefono()}',
+            '{$this->getCorreo()}',
+            '{$this->getPassword()}',
+            1)";
+
+        $save = $this->db->query($sql);
+
+        $result = false;
+
+        if ($save) {
+            $result = true;
+        }
+        return $result;
     }
 }

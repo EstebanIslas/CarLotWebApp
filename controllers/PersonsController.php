@@ -52,4 +52,52 @@ class personsController{
 
         require_once 'views/layout/footer.php';
     }
+
+    public function registro(){
+        require_once 'views/persons/registro.php';
+    }
+
+    public function save()
+    {
+        #Validación de existencia post
+        if (isset($_POST)) {
+
+            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
+            $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : false;
+            $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : false;
+            #Users
+            $correo = isset($_POST['correo']) ? $_POST['correo'] : false;
+            $password = isset($_POST['password']) ? $_POST['password'] : false;
+
+            if ($nombre && $apellido && $telefono && $correo && $password) {
+                
+                #Setear
+                $this->modelPersons->setNombre($nombre);
+                $this->modelPersons->setApellido($apellido);
+                $this->modelPersons->setTelefono($telefono);
+                $this->modelPersons->setCorreo($correo);
+                $this->modelPersons->setPassword($password);
+
+                $save = $this->modelPersons->save();
+
+                if ($save) {
+                    $_SESSION['register_user'] = "complete";
+                    #echo 'Registro Completado';
+                }else {
+                    #echo 'Registro Fallido';
+                    $_SESSION['register_user'] = "failed";
+                }
+                
+            }else { #Settear end
+                $_SESSION['register_user'] = "failed";
+            }
+        
+        
+        }else {#isset end
+            $_SESSION['register_user'] = "failed";
+        }
+
+        header("Location:".base_url."login/index");
+        ob_end_flush();#Error del header al redireccionar
+    }
 }

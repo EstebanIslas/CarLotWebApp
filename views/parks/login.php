@@ -97,6 +97,18 @@
 
         <?php Utils::deleteSession('login')?>
 
+        <?php if (isset($_SESSION['register_user']) && $_SESSION['register_user'] == 'complete'):?>
+            <div class="container alert alert-success" role="alert">Usuario Registrado con éxito!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif(isset($_SESSION['register_user']) && $_SESSION['register_user'] == 'failed'):?>
+            <div class="container alert alert-danger" role="alert">Error al registrar!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>  
+            </div>
+        <?php endif;?>
+
+        <?php Utils::deleteSession('register_user')?>
+
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body" style="width: 26rem">
                 <div class="">
@@ -114,7 +126,11 @@
                     </form>
                     <div class="text-center">
                         <p><small>¿Listo para administrar tu estacionamiento?</small></p>
-                        <a href="<?=base_url?>parks/registro" style="color:#f47c04"><small><b>Registrate</b></small></a>
+                        <a href="<?=base_url?>parks/registro" style="color:#f47c04"><small><b>Registra tu estacionamiento</b></small></a>
+                    </div>
+                    <div class="text-center">
+                        <p><small>¿Necesitas encontrar estacionamientos cerca?</small></p>
+                        <a href="<?=base_url?>persons/registro" style="color:#f47c04"><small><b>Registrate como automovilista</b></small></a>
                     </div>
                 </div>
             </div>
