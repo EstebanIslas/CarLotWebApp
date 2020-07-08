@@ -79,6 +79,12 @@ class loginController{
         if (isset($_SESSION['estacionamiento'])) {
             unset($_SESSION['estacionamiento']);
         }
+        if (isset($_SESSION['reservas'])) {
+            unset($_SESSION['reservas']);
+        }
+        if (isset($_SESSION['automovilista'])) {
+            unset($_SESSION['automovilista']);
+        }
 
         //header("Location".base_url."login/index");
         echo "<script>location.href='".base_url."login/index';</script>";
