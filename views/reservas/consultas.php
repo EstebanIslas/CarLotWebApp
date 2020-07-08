@@ -113,46 +113,44 @@
 
 <section class="py-3">
     <div class="container">
-        <p class="lead text-muted font-weight-bold" id="colortext">Peticiones de lugares</p>
+        
+        <!--Validación de consulta en save()-->
+        <?php if (isset($_SESSION['res_status']) && $_SESSION['res_status'] == 'complete'): ?>
+            <div class="container alert alert-success" role="alert">Reserva actualizada!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif (isset($_SESSION['res_status']) && $_SESSION['res_status'] == 'failed'): ?>
+            <div class="container alert alert-danger" role="alert">Error al actualizar el entrada!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php endif;?>
+        <?php Utils::deleteSession('res_status') #Borrar sesión de save?>
+
+        <p class="lead text-muted font-weight-bold text-center" id="colortext">Peticiones de lugares</p>
         <div class="row">
-            <div class="col-lg-10 d-flex">
+            <div class="col-lg-10 d-flex" style="margin:auto auto;">
                 <table class="table">
                 <thead class="bg-primary" style="color: #FFFFFF">
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Automovil</th>
-                    <th scope="col">Aceptar Solicitud</th>
+                    <tr class="text-center">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Hora de arrivo</th>
+                        <th scope="col">Aceptar Solicitud</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                    <button type="button" class="btn btn-success mr-3">Aceptar</button>
-                    <button type="button" class="btn btn-danger">Rechazar</button>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                        <button type="button" class="btn btn-success mr-3">Aceptar</button>
-                        <button type="button" class="btn btn-danger">Rechazar</button>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                        <button type="button" class="btn btn-success mr-3">Aceptar</button>
-                        <button type="button" class="btn btn-danger">Rechazar</button>
-                    </td>
-                    </tr>
+                    <?php while($status = $get_status->fetch_object()):?>
+                        <tr class="text-center">
+                            <th scope="row"><?=$status->nombre?></th>
+                            <td><?=$status->apellido?></td>
+                            <td><?=$status->hra_arrivo?></td>
+                            <td class="text-center">
+                            <a class="btn btn-success mr-3" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Aceptada">Aceptar Solicitud</a>
+                            <a class="btn btn-danger mr-3" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Rechazada">Rechazar Solicitud</a>
+                            </td>
+                            </tr>
+                        <tr>
+                    <?php endwhile;?>
                 </tbody>
                 </table>
             </div>

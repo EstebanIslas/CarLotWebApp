@@ -96,4 +96,39 @@ class Reservas{
     
     }
 
+    public function get_cars_reservas()
+    {
+        $this->setId_park($_SESSION['estacionamiento']->id);
+
+        $sql = $this->db->query("SELECT reservas.id, persons.nombre, persons.apellido, cars.matricula, cars.id AS id_car FROM reservas
+            INNER JOIN persons ON reservas.id_person = persons.id
+            INNER JOIN cars ON persons.id = cars.id_person
+            INNER JOIN parks ON reservas.id_park = parks.id
+            WHERE reservas.estado = 'Aceptada' AND id_park = '{$this->getId_park()}';");
+        return $sql;
+    }
+
+    public function get_reservas_curso()
+    {
+        $this->setId_park($_SESSION['estacionamiento']->id);
+        $sql = $this->db->query("SELECT reservas.id, persons.nombre, persons.apellido, reservas.hra_arrivo, parks.nombre_park FROM reservas
+            INNER JOIN persons ON reservas.id_person = persons.id
+            INNER JOIN parks ON reservas.id_park = parks.id
+            WHERE reservas.estado = 'En curso' AND id_park = '{$this->getId_park()}';");
+        return $sql;
+    }
+
+    public function reserva_on()
+    {
+        $estado = $this->getEstado();
+        $sql = "UPDATE reservas SET estado = '$estado'
+                WHERE id = '{$this->getId()}';";
+        
+        $save = $this->db->query($sql);
+        $result = false;
+
+        if ($save) {$result = true;}
+        
+        return $result;
+    }
 }

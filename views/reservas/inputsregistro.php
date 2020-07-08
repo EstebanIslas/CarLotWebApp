@@ -25,12 +25,12 @@
             <form action="<?=base_url?>reservas/save_in" method="POST">
             <div class="form-group">
                 <label for="id_car">Matrícula:</label>
-                <?php $cars = Utils::showCars();?>
-                <small id="" class="form-text text-muted">Se muestran todos los automóviles registrados en la aplicación y los nombre de los usuarios</small>
+                <!--?php $cars = Utils::showCars();?-->
+                <small id="" class="form-text text-muted">Se muestran todos los automóviles de los usuarios a los que se acepto la solicitud de reserva</small>
                 <select name="id_car" class="form-control">
-                    <?php while($car = $cars->fetch_object()):?>
-                        <option value="<?=$car->id_car?>">
-                            <?=$car->nombre?> <?=$car->apellido?>, Matrícula: <?=$car->matricula?>
+                    <?php while($cars = $get_reservas->fetch_object()):?>
+                        <option value="<?=$cars->id_car?>">
+                            <?=$cars->nombre?> <?=$cars->apellido?>, Matrícula: <?=$cars->matricula?>
                         </option>
                     <?php endwhile;?>
                 </select>

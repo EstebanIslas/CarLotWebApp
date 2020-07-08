@@ -22,6 +22,7 @@ class reservasController{
         $stock_available = $this->modelInputs->stock_available();
         $get_inputs = $this->modelInputs->get_info_input();
         $get_outputs = $this->modelInputs->get_info_output();
+        $get_status = $this->modelReservas->get_reservas_curso();
         require_once 'views/reservas/consultas.php';
 
         require_once 'views/layout/footer.php';
@@ -31,6 +32,7 @@ class reservasController{
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
         $get_tarifas = $this->modelTarifas->get_tarifas();
+        $get_reservas = $this->modelReservas->get_cars_reservas();
         require_once 'views/reservas/inputsregistro.php';
 
         require_once 'views/layout/footer.php';
@@ -129,6 +131,31 @@ class reservasController{
         }
 
         header("Location:".base_url.'persons/reservas');
+        ob_end_flush();#Error del header al redireccionar
+    }
+
+    public function update_on(){
+        if (isset($_GET['id']) && isset($_GET['estado'])) {
+            $id = $_GET['id'];
+            $estado = $_GET['estado'];
+
+            $edit = true;
+
+            $this->modelReservas->setId($id); #settear
+            $this->modelReservas->setEstado($estado); #settear
+
+            $update = $this->modelReservas->reserva_on();
+
+            if ($update) {
+                $_SESSION['res_status'] = 'complete';
+            }else{
+                $_SESSION['res_status'] = 'failed';
+            }
+
+        }else{
+            $_SESSION['res_status'] = 'failed';
+        }
+        header("Location:".base_url.'reservas/index');
         ob_end_flush();#Error del header al redireccionar
     }
 }
