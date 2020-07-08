@@ -128,7 +128,7 @@ class reservasController{
             $_SESSION['register'] = "failed";
         }
 
-        header("Location:".base_url.'persons/verparks');
+        header("Location:".base_url.'persons/reservas');
         ob_end_flush();#Error del header al redireccionar
     }
 }

@@ -3,18 +3,21 @@
 require_once 'models/persons.php';
 require_once 'models/cars.php';
 require_once 'models/parks.php';
+require_once 'models/reservas.php';
 
 class personsController{
 
     protected $modelPersons;
     protected $modelCars;
     protected $modelParks;
+    protected $modelReservas;
 
     public function __construct()
     {
         $this->modelPersons = new Persons();
         $this->modelCars = new Cars();
         $this->modelParks = new Parks();
+        $this->modelReservas = new Reservas();
     }
 
     public function index(){
@@ -55,6 +58,15 @@ class personsController{
 
     public function registro(){
         require_once 'views/persons/registro.php';
+    }
+
+    public function reservas(){
+        require_once 'views/layout/header.php';
+
+        $current = $this->modelReservas->get_current();
+        require_once 'views/reservas/reservauser.php';
+
+        require_once 'views/layout/footer.php';
     }
 
     public function save()
