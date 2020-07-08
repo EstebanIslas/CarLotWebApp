@@ -74,28 +74,30 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST">
+        <form action="<?=base_url?>reservas/insertar_reserva" method="POST">
+            
             <div class="form-group">
-                <label for="tipo_car">Hora de arrivo:</label>
-                <input type="text" class="form-control" name="marca"
-                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}">
-                <small id="" class="form-text text-muted">Ingresa la hora</small>
+                <label for="tipo_car" id="colortext" class="font-weight-bold"><?=isset($update) && is_object($update) ? $update->nombre_park : '';?></label>
+                <input type="hidden" class="form-control mb-0" name="id_park"
+                value= "<?=isset($update) && is_object($update) ? $update->id : '';?>">
+                <small id="" class="form-text text-muted">Se enviará una peticion de aceptación a este estacionamiento</small>
             </div>
             <div class="form-group">
-                <label for="tipo_car">Descripcion:</label>
-                <input type="text" class="form-control" name="color"
-                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}">
+                <label for="hra_arrivo">Hora de arrivo:</label>
+                <input type="time" class="form-control" name="hra_arrivo" placeholder="Hora de apertura" required>
+                <small id="" class="form-text text-muted">Ingresa la hora de arrivo al estacionamiento</small>
             </div>
-            <div class="form-group">
+            <!--div class="form-group">
                 <label for="tipo_car">Automovil:</label>
                 <input type="text" class="form-control" name="matricula">
-            </div>
-        </form>
+            </div-->
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Reservar ahora</button>
+        <input type="submit" class="btn btn-primary" value="Reservar ahora">
       </div>
+      </form>
     </div>
   </div>
 </div>

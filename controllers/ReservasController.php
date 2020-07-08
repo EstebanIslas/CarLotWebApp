@@ -2,15 +2,18 @@
 
 require_once 'models/inputs.php';
 require_once 'models/tarifas.php';
+require_once 'models/reservas.php';
 
 class reservasController{
 
     protected $modelInputs;
     protected $modelTarifas;
+    protected $modelReservas;
 
     public function __construct(){
         $this->modelInputs = new Inputs();
         $this->modelTarifas = new Tarifas();
+        $this->modelReservas = new Reservas();
     }
 
     public function index(){
@@ -89,6 +92,43 @@ class reservasController{
             $_SESSION['register'] = "failed";
         }
         header("Location:".base_url.'reservas/index');
+        ob_end_flush();#Error del header al redireccionar
+    }
+
+    #Funciones action Reservas
+
+    public function insertar_reserva()
+    {
+        if (isset($_POST)) {
+            
+            $hra_arrivo = isset($_POST['hra_arrivo']) ? $_POST['hra_arrivo'] : false;
+            $id_park = isset($_POST['id_park']) ? $_POST['id_park'] : false;
+
+            if ($hra_arrivo && $id_park) {
+                
+                #Settear
+                $this->modelReservas->setHra_arrivo($hra_arrivo);
+                $this->modelReservas->setId_park($id_park);
+
+                $save = $this->modelReservas->save();
+
+                if ($save) {
+                    $_SESSION['register'] = "complete";
+                    #echo 'Registro Completado';
+                }else {
+                    #echo 'Registro Fallido';
+                    $_SESSION['register'] = "failed";
+                }
+
+            }else {
+                $_SESSION['register'] = "failed";
+            }
+
+        }else {
+            $_SESSION['register'] = "failed";
+        }
+
+        header("Location:".base_url.'persons/verparks');
         ob_end_flush();#Error del header al redireccionar
     }
 }
