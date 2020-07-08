@@ -150,4 +150,15 @@ class Inputs{
         }
         return $result;
     }
+
+    public function input_user()
+    {
+        $id_person = $_SESSION['automovilista']->id;
+        $sql = $this->db->query("SELECT inputs.id, cars.matricula, parks.nombre_park, inputs.entrada, inputs.tarifa_cobrada, TIMESTAMPDIFF(HOUR, entrada, NOW()) AS horas FROM inputs 
+            INNER JOIN cars ON inputs.id_car = cars.id 
+            INNER JOIN persons ON cars.id_person = persons.id
+            INNER JOIN parks ON inputs.id_park = parks.id
+            WHERE persons.id = '$id_person' AND estado = 1 ORDER BY inputs.entrada DESC LIMIT 1;");
+        return $sql;
+    }
 }

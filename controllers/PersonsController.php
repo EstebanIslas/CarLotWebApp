@@ -4,6 +4,7 @@ require_once 'models/persons.php';
 require_once 'models/cars.php';
 require_once 'models/parks.php';
 require_once 'models/reservas.php';
+require_once 'models/inputs.php';
 
 class personsController{
 
@@ -11,6 +12,7 @@ class personsController{
     protected $modelCars;
     protected $modelParks;
     protected $modelReservas;
+    protected $modelInputs;
 
     public function __construct()
     {
@@ -18,6 +20,7 @@ class personsController{
         $this->modelCars = new Cars();
         $this->modelParks = new Parks();
         $this->modelReservas = new Reservas();
+        $this->modelInputs = new Inputs();
     }
 
     public function index(){
@@ -64,6 +67,7 @@ class personsController{
         require_once 'views/layout/header.php';
 
         $current = $this->modelReservas->get_current();
+        $input_user = $this->modelInputs->input_user();
         require_once 'views/reservas/reservauser.php';
 
         require_once 'views/layout/footer.php';
