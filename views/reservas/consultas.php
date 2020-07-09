@@ -78,7 +78,7 @@
                 <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Historial de entradas y salidas</p>
                 </div>
                 <div class="col-lg-3 d-flex mb-4">
-                    <a class="btn btn-primary mt-2" style="height:40px;" href="">Generar Reporte por Día</a>
+                    <a class="btn btn-primary mt-2" style="height:40px;" target="_blank" href="<?=base_url?>reportes/index">Generar Reporte por Día</a>
                 </div>
         </div>
 
