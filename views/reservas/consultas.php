@@ -73,7 +73,14 @@
 
 <section class="bg-grey py-3 mb-5">
     <div class="container">
-        <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Historial de entradas y salidas</p>
+        <div class="row">
+                <div class="col-lg-9">
+                <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Historial de entradas y salidas</p>
+                </div>
+                <div class="col-lg-3 d-flex mb-4">
+                    <a class="btn btn-primary mt-2" style="height:40px;" href="">Generar Reporte por Día</a>
+                </div>
+        </div>
 
         <table class="table">
             <thead class="bg-primary" style="color: #FFFFFF">

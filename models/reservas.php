@@ -81,7 +81,7 @@ class Reservas{
         $this->setId_person($_SESSION['automovilista']->id);
 
         $sql = $this->db->query("SELECT parks.nombre_park, reservas.estado, reservas.hra_arrivo, reservas.entrada
-            FROM reservas INNER JOIN parks ON reservas.id_person = parks.id 
+            FROM reservas INNER JOIN parks ON reservas.id_park = parks.id 
             WHERE reservas.id_person = '{$this->getId_person()}' AND reservas.estado = 'En curso' ORDER BY reservas.id DESC LIMIT 1");
         
         $filas = $sql->num_rows;
@@ -104,7 +104,7 @@ class Reservas{
             INNER JOIN persons ON reservas.id_person = persons.id
             INNER JOIN cars ON persons.id = cars.id_person
             INNER JOIN parks ON reservas.id_park = parks.id
-            WHERE reservas.estado = 'Aceptada' AND id_park = '{$this->getId_park()}';");
+            WHERE reservas.estado = 'Aceptada' AND id_park = '{$this->getId_park()}' GROUP BY cars.matricula;");
         return $sql;
     }
 
