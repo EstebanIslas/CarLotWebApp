@@ -159,6 +159,14 @@ class Inputs{
             INNER JOIN persons ON cars.id_person = persons.id
             INNER JOIN parks ON inputs.id_park = parks.id
             WHERE persons.id = '$id_person' AND estado = 1 ORDER BY inputs.entrada DESC LIMIT 1;");
+        
+
+        if (!empty($sql) && $sql->num_rows > 0) {
+            $_SESSION['entradas_user'] = "existe";
+        }else {
+            $_SESSION['entradas_user'] = "no_existe";
+        }
+        
         return $sql;
     }
 }

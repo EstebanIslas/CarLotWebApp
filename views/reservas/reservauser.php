@@ -48,27 +48,33 @@
     <div class="container mb-5">
         <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Entrada Actual</p>
 
-        <table class="table">
-            <thead class="bg-primary" style="color: #FFFFFF">
-                <tr>
-                <th scope="col">Nombre de estacionamiento</th>
-                <th scope="col">Placa de Automovil</th>
-                <th scope="col">Entrada</th>
-                <th scope="col">Tiempo</th>
-                <th scope="col">Cobro por hora</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($input = $input_user->fetch_object()):?>
+        <?php if (isset($_SESSION['entradas_user']) && $_SESSION['entradas_user'] == 'existe'): ?>
+            <table class="table">
+                <thead class="bg-primary" style="color: #FFFFFF">
                     <tr>
-                        <th scope="row"><?=$input->nombre_park?></th>
-                        <td><?=$input->matricula?></td>
-                        <td><?=$input->entrada?></td>
-                        <td><?=$input->horas?></td>
-                        <td><?=$input->tarifa_cobrada?></td>
+                    <th scope="col">Nombre de estacionamiento</th>
+                    <th scope="col">Placa de Automovil</th>
+                    <th scope="col">Entrada</th>
+                    <th scope="col">Tiempo</th>
+                    <th scope="col">Cobro por hora</th>
                     </tr>
-                <?php endwhile;?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php while($input = $input_user->fetch_object()):?>
+                        <tr>
+                            <th scope="row"><?=$input->nombre_park?></th>
+                            <td><?=$input->matricula?></td>
+                            <td><?=$input->entrada?></td>
+                            <td><?=$input->horas?></td>
+                            <td><?=$input->tarifa_cobrada?></td>
+                        </tr>
+                    <?php endwhile;?>
+                </tbody>
+            </table>
+            <?php elseif (isset($_SESSION['entradas_user']) && $_SESSION['entradas_user'] == 'no_existe'): ?>
+                <div class="alert alert-warning" role="alert">
+                    No has entrado a algún estacionamiento
+                </div>
+            <?php endif;?>
     </div>
 </section>
