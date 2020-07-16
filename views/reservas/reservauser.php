@@ -29,20 +29,55 @@
                 <?php if (isset($_SESSION['reservas']) && $_SESSION['reservas'] == 'existe'): ?>
                     <?php while($res = $current->fetch_object()):?>
                         <h5 class="card-title font-weight-bold" id="colortext"><?=$res->nombre_park;?></h5>
-                        <p class="card-text mt-3 mb-0">Solicitud: <b><?=$res->estado;?></b></p>
+                        <p class="card-text mt-3">Solicitud: <b><?=$res->estado;?></b></p>
+                        <?php if($res->estado == "Aceptada"):?>
+                            <small id="" class="form-text text-muted mt-2 mb-2">Puedes cancelar o proceder a pagar tu reserva</small>
+                            <a href="<?=base_url?>reservas/update_on&id=<?=$res->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar reserva</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalCenter">
+                            Pagar mi reserva
+                            </button>
+                        <?php endif;?>
                         <p class="card-text mt-1 mb-4">Hora de arrivo a estacionamiento: <b><?=$res->hra_arrivo;?></b></p>
                         <small id="" class="form-text text-muted mb-0">La reserva se realizó en la fecha: <?=$res->entrada;?></small>
                     <?php endwhile;?>
                 <?php elseif (isset($_SESSION['reservas']) && $_SESSION['reservas'] == 'no_existe'): ?>
                     <h5 class="card-title font-weight-bold" id="colortext">No Existen Reservas recientes</h5>
 
-                    <small id="" class="form-text text-muted mb-2">Reserva ahora</small>
+                    <small id="" class="form-text text-muted">Reserva ahora</small>
                     <a href="<?=base_url?>persons/verparks" class="btn btn-primary">Ver Estacionamientos</a>
+
+                    <small id="" class="form-text text-muted mt-4 mb-0">Si realizaste una reserva y al recargar la página no aparece, es por que el estacionamiento rechazo tu solicitud</small>
                 <?php endif;?>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Reservar Cajón</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form action="" method="POST">
+            <div class="modal-body">
+                
+               
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Pagar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
 
 <section class="bg-grey py-3 mb-5">
     <div class="container mb-5">

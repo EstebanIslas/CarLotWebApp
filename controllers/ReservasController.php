@@ -169,7 +169,12 @@ class reservasController{
         }else{
             $_SESSION['res_status'] = 'failed';
         }
-        header("Location:".base_url.'reservas/index');
+
+        if (isset($_SESSION['estacionamiento'])) {
+            header("Location:".base_url.'reservas/index');
+        }elseif(isset($_SESSION['automovilista'])){
+            header("Location:".base_url.'persons/reservas');
+        }
         ob_end_flush();#Error del header al redireccionar
     }
 }

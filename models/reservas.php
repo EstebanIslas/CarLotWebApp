@@ -80,9 +80,11 @@ class Reservas{
     {
         $this->setId_person($_SESSION['automovilista']->id);
 
-        $sql = $this->db->query("SELECT parks.nombre_park, reservas.estado, reservas.hra_arrivo, reservas.entrada
-            FROM reservas INNER JOIN parks ON reservas.id_park = parks.id 
-            WHERE reservas.id_person = '{$this->getId_person()}' AND reservas.estado = 'En curso' ORDER BY reservas.id DESC LIMIT 1");
+        $sql = $this->db->query(
+            "SELECT reservas.id, parks.nombre_park, reservas.estado, reservas.hra_arrivo, reservas.entrada FROM reservas 
+                INNER JOIN parks ON reservas.id_park = parks.id 
+            WHERE reservas.id_person = '{$this->getId_person()}' AND (reservas.estado = 'En curso' OR reservas.estado = 'Aceptada')
+            ORDER BY reservas.id DESC LIMIT 1");
         
         $filas = $sql->num_rows;
         $num = (integer)$filas;
