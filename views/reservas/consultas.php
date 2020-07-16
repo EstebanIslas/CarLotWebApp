@@ -9,19 +9,116 @@
     </div>
 </section>
 
+<section class="bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 my-3">
+                <div class="card rounded-0">
+                    <div class="card-header bg-light text-center">
+                        <!--Validación de consulta en save()-->
+                        <?php if (isset($_SESSION['res_status']) && $_SESSION['res_status'] == 'complete'): ?>
+                            <div class="container alert alert-success" role="alert">Reserva actualizada!
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            </div>
+                        <?php elseif (isset($_SESSION['res_status']) && $_SESSION['res_status'] == 'failed'): ?>
+                            <div class="container alert alert-danger" role="alert">Error al actualizar el entrada!
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            </div>
+                        <?php endif;?>
+                        <?php Utils::deleteSession('res_status') #Borrar sesión de save?>
+
+
+                        <h6 id="colortext" class="font-weight-bold mb-0">Solicitudes de Reserva</h6>
+                        <small class="form-text text-muted mb-0">En esta sección se muestran las peticiones de usuarios</small>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table">
+                        <thead class="bg-primary" style="color: #FFFFFF">
+                            <tr class="text-center">
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Hora de arrivo</th>
+                                <th scope="col">Aceptar Solicitud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($status = $get_status->fetch_object()):?>
+                                <tr class="text-center">
+                                
+                                    <?php if($status->estado == "En curso"):?>
+                                        <th scope="row"><?=$status->nombre?></th>
+                                        <td><?=$status->apellido?></td>
+                                        <td><?=$status->hra_arrivo?></td>
+                                        <td class="text-center">
+                                            <a class="btn btn-success mb-1" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Aceptada">Aceptar Solicitud</a><br>
+                                            <a class="btn btn-danger" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Rechazada">Rechazar Solicitud</a>
+                                        </td>
+                                    <?php endif;?>
+                                <tr>
+                            <?php endwhile;?>
+                        </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 my-3">
+                <div class="card rounded-0">
+                    <div class="card-header bg-light text-center">
+                        <h6 id="colortext" class="font-weight-bold mb-0">Reservas Pagadas</h6>
+                        <small class="form-text text-muted mb-0">En esta sección debes agregar a un cajon los usuarios que pagaron su reserva</small>
+                    </div>
+                    <div class="card-body ">
+                    <table class="table">
+                        <thead class="bg-primary" style="color: #FFFFFF">
+                            <tr class="text-center">
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Hora de arrivo</th>
+                                <th scope="col">Insertar Entrada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($status = $get_success->fetch_object()):?>
+                                <tr class="text-center">
+                                
+                                    <?php if($status->estado == "Pagada"):?>
+                                        <th scope="row"><?=$status->nombre?></th>
+                                        <td><?=$status->apellido?></td>
+                                        <td><?=$status->hra_arrivo?></td>
+                                        <td class="text-center">
+                                            <a class="btn btn-success h-100" href="<?=base_url?>reservas/addinput&id=<?=$status->id?>">Asignar cajón</a>
+                                        </td>
+                                    <?php endif;?>
+                                <tr>
+                            <?php endwhile;?>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="bg-grey py-3 mb-0">
     <?php while($stock = $stock_available->fetch_object()):?>
         <div class="row">
             <div class="col-lg-9">
-                <h3 style="color: #1a1a1a;" class="font-weight-bold mb-0 ml-3">Cajones Disponibles</h3>
+                <h3 style="color: #1a1a1a;" class="font-weight-bold mb-2 ml-3">Cajones Disponibles</h3>
                 <p class="lead font-weight-bold ml-3">
-                    <b id="colortext"><?=$stock->lugares_disponibles?></b>
+                    <?php if($stock->lugares_disponibles == Null):?>
+                        <b id="colortext"><?=$_SESSION['estacionamiento']->stock?></b>
+                    <?php else:?>
+                        <b id="colortext"><?=$stock->lugares_disponibles?></b>
+                    <?php endif;?>
                 </p>
             </div>
     <?php endwhile;?>
-            <div class="col-lg-3 d-flex">
-                <a class="btn btn-primary mt-2" style="height:40px;" href="<?=base_url?>reservas/addinput">Insertar entrada de automóvil</a>
-            </div>
+            <!--div class="col-lg-3 d-flex">
+                <a class="btn btn-primary mt-2" style="height:40px;" href="<!?=base_url?>reservas/addinput">Insertar entrada de automóvil</a>
+            </div-->
         </div>
     <div class="container">
         <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Cajones el día de hoy</p>
@@ -38,6 +135,17 @@
             </div>
         <?php endif;?>
         <?php Utils::deleteSession('updated_input') #Borrar sesión de save?>
+
+        <?php if (isset($_SESSION['save_in']) && $_SESSION['save_in'] == 'complete'): ?>
+            <div class="container alert alert-success" role="alert">Ingreso de entrada exitoso!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif (isset($_SESSION['save_in']) && $_SESSION['save_in'] == 'failed'): ?>
+            <div class="container alert alert-danger" role="alert">Error al ingresar entrada!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php endif;?>
+        <?php Utils::deleteSession('save_in') #Borrar sesión de save?>
 
         <table class="table">
             <thead class="bg-primary" style="color: #FFFFFF">
@@ -115,52 +223,5 @@
                 <?php endwhile;?>
             </tbody>
         </table>
-    </div>
-</section>
-
-<section class="py-3">
-    <div class="container">
-        
-        <!--Validación de consulta en save()-->
-        <?php if (isset($_SESSION['res_status']) && $_SESSION['res_status'] == 'complete'): ?>
-            <div class="container alert alert-success" role="alert">Reserva actualizada!
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-        <?php elseif (isset($_SESSION['res_status']) && $_SESSION['res_status'] == 'failed'): ?>
-            <div class="container alert alert-danger" role="alert">Error al actualizar el entrada!
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-        <?php endif;?>
-        <?php Utils::deleteSession('res_status') #Borrar sesión de save?>
-
-        <p class="lead text-muted font-weight-bold text-center" id="colortext">Peticiones de lugares</p>
-        <div class="row">
-            <div class="col-lg-10 d-flex" style="margin:auto auto;">
-                <table class="table">
-                <thead class="bg-primary" style="color: #FFFFFF">
-                    <tr class="text-center">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">Hora de arrivo</th>
-                        <th scope="col">Aceptar Solicitud</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while($status = $get_status->fetch_object()):?>
-                        <tr class="text-center">
-                            <th scope="row"><?=$status->nombre?></th>
-                            <td><?=$status->apellido?></td>
-                            <td><?=$status->hra_arrivo?></td>
-                            <td class="text-center">
-                            <a class="btn btn-success mr-3" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Aceptada">Aceptar Solicitud</a>
-                            <a class="btn btn-danger mr-3" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Rechazada">Rechazar Solicitud</a>
-                            </td>
-                            </tr>
-                        <tr>
-                    <?php endwhile;?>
-                </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </section>

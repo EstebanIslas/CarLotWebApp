@@ -28,13 +28,22 @@
                 <!--?php $cars = Utils::showCars();?-->
                 <small id="" class="form-text text-muted">Se muestran todos los automóviles de los usuarios a los que se acepto la solicitud de reserva</small>
                 <select name="id_car" class="form-control">
-                    <?php while($cars = $get_reservas->fetch_object()):?>
+                    <?php while($cars = $get_cars->fetch_object()):?>
                         <option value="<?=$cars->id_car?>">
                             <?=$cars->nombre?> <?=$cars->apellido?>, Matrícula: <?=$cars->matricula?>
                         </option>
                     <?php endwhile;?>
                 </select>
             </div>
+
+
+            <div class="form-group">
+                <?php while($res = $get_reservas->fetch_object()):?>
+                    <input type="hidden" class="form-control" name="id_reserva" value= "<?=$res->id_reserva?>">
+                <?php endwhile;?>
+            </div>
+            
+
             <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
                 <input type="text" class="form-control" name="descripcion"

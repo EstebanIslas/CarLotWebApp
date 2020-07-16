@@ -100,21 +100,28 @@ class Reservas{
     {
         $this->setId_park($_SESSION['estacionamiento']->id);
 
-        $sql = $this->db->query("SELECT reservas.id, persons.nombre, persons.apellido, cars.matricula, cars.id AS id_car FROM reservas
+        $id_reserva = $this->getId();
+
+        /*$sql = $this->db->query("SELECT reservas.id, persons.nombre, persons.apellido, cars.matricula, cars.id AS id_car FROM reservas
             INNER JOIN persons ON reservas.id_person = persons.id
             INNER JOIN cars ON persons.id = cars.id_person
             INNER JOIN parks ON reservas.id_park = parks.id
-            WHERE reservas.estado = 'Aceptada' AND id_park = '{$this->getId_park()}' GROUP BY cars.matricula;");
+            WHERE reservas.estado = 'Aceptada' AND id_park = '{$this->getId_park()}' GROUP BY cars.matricula;");*/
+        $sql = $this->db->query(
+            "SELECT reservas.id AS id_reserva, cars.id AS id_car, persons.nombre, persons.apellido, cars.matricula FROM reservas
+                INNER JOIN persons ON reservas.id_person = persons.id
+                INNER JOIN cars ON persons.id = cars.id_person
+            WHERE reservas.estado = 'Pagada' AND reservas.id = '$id_reserva' AND reservas.id_park = '{$this->getId_park()}';");
         return $sql;
     }
 
     public function get_reservas_curso()
     {
         $this->setId_park($_SESSION['estacionamiento']->id);
-        $sql = $this->db->query("SELECT reservas.id, persons.nombre, persons.apellido, reservas.hra_arrivo, parks.nombre_park FROM reservas
+        $sql = $this->db->query("SELECT reservas.id, reservas.estado, persons.id AS id_person, persons.nombre, persons.apellido, reservas.hra_arrivo, parks.nombre_park FROM reservas
             INNER JOIN persons ON reservas.id_person = persons.id
             INNER JOIN parks ON reservas.id_park = parks.id
-            WHERE reservas.estado = 'En curso' AND id_park = '{$this->getId_park()}';");
+            WHERE reservas.id_park = '{$this->getId_park()}';");
         return $sql;
     }
 
@@ -122,6 +129,19 @@ class Reservas{
     {
         $estado = $this->getEstado();
         $sql = "UPDATE reservas SET estado = '$estado'
+                WHERE id = '{$this->getId()}';";
+        
+        $save = $this->db->query($sql);
+        $result = false;
+
+        if ($save) {$result = true;}
+        
+        return $result;
+    }
+
+    public function reservas_end()
+    {
+        $sql = "UPDATE reservas SET estado = 'Terminada'
                 WHERE id = '{$this->getId()}';";
         
         $save = $this->db->query($sql);

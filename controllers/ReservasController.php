@@ -23,6 +23,7 @@ class reservasController{
         $get_inputs = $this->modelInputs->get_info_input();
         $get_outputs = $this->modelInputs->get_info_output();
         $get_status = $this->modelReservas->get_reservas_curso();
+        $get_success = $this->modelReservas->get_reservas_curso();
         require_once 'views/reservas/consultas.php';
 
         require_once 'views/layout/footer.php';
@@ -31,10 +32,17 @@ class reservasController{
     public function addinput(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
-        $get_tarifas = $this->modelTarifas->get_tarifas();
-        $get_reservas = $this->modelReservas->get_cars_reservas();
-        require_once 'views/reservas/inputsregistro.php';
+        if(isset($_GET['id'])){ #Recibe el id de reserva
 
+            $id_reserva = $_GET['id'];
+            
+            $this->modelReservas->setId($id_reserva);
+
+            $get_tarifas = $this->modelTarifas->get_tarifas();
+            $get_cars = $this->modelReservas->get_cars_reservas();
+            $get_reservas = $this->modelReservas->get_cars_reservas();
+            require_once 'views/reservas/inputsregistro.php';
+        }
         require_once 'views/layout/footer.php';
     }
 
@@ -64,34 +72,40 @@ class reservasController{
     public function save_in()
     {
         #validacion de existencia
+        /*var_dump($_POST);
+        die();*/
+
         if (isset($_POST)) {
             $id_car = isset($_POST['id_car']) ? $_POST['id_car'] : false;
             $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : false;
             $tarifa_cobrada = isset($_POST['tarifa_cobrada']) ? $_POST['tarifa_cobrada'] : false;
+            $id_reserva = isset($_POST['id_reserva']) ? $_POST['id_reserva'] : false;
 
-            if ($id_car && $descripcion && $tarifa_cobrada) {
+            if ($id_car && $descripcion && $tarifa_cobrada && $id_reserva) {
                 
                 #Validación basica
                 $this->modelInputs->setId_car($id_car);
                 $this->modelInputs->setDescripcion($descripcion);
                 $this->modelInputs->setTarifa_cobrada($tarifa_cobrada);
-
+                
+                $this->modelReservas->setId($id_reserva);
+                $up_res = $this->modelReservas->reservas_end();
                 $save = $this->modelInputs->save();
 
                 
-                if ($save) {
-                    $_SESSION['register'] = "complete";
+                if ($save && $up_res) {
+                    $_SESSION['save_in'] = "complete";
                     #echo 'Registro Completado';
                 }else {
                     #echo 'Registro Fallido';
-                    $_SESSION['register'] = "failed";
+                    $_SESSION['save_in'] = "failed";
                 }
             }else {
-                $_SESSION['register'] = "failed";
+                $_SESSION['save_in'] = "failed";
             }
 
         }else {
-            $_SESSION['register'] = "failed";
+            $_SESSION['save_in'] = "failed";
         }
         header("Location:".base_url.'reservas/index');
         ob_end_flush();#Error del header al redireccionar
