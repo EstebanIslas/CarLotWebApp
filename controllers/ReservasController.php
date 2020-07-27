@@ -177,4 +177,61 @@ class reservasController{
         }
         ob_end_flush();#Error del header al redireccionar
     }
+
+
+    #PAGOS CON STRIPE
+    public function payform(){
+        #echo "Pagando con Stripe";
+
+        require_once 'vendor/autoload.php';
+
+        \Stripe\Stripe::setApiKey("sk_test_51H5a9GAPPPWWUe8hYr5j2W82fpwg0EjCxDMkoO95q81RCEVEO51Hkz1OG44eiPWHz7exQmypnTOgtQpxufo5Lw5K00J2Drj7fL");
+
+        $token = $_POST['stripeToken'];
+        $nombre_park = $_POST['nombre_park'];
+
+        #Especificar los valores de este pago
+        $charge = \Stripe\Charge::create([
+            "amount" => 1000,
+            "currency" => 'mxn',
+            "description" => "Pago de reserva al estacionamiento $nombre_park",
+            "source" => $token
+        ]);
+
+        if($charge){
+            if (isset($_POST['id_reserva'])) {
+                $id_reserva = $_POST['id_reserva'];
+
+                if ($id_reserva) {
+                    
+                    #Setter
+                    $this->modelReservas->setId($id_reserva);
+
+                    $save = $this->modelReservas->reservas_pay();
+
+                    if ($save) {
+                        $_SESSION['update_reserva'] = "complete";
+                        #echo 'Registro Completado';
+                    }else {
+                        #echo 'Registro Fallido';
+                        $_SESSION['update_reserva'] = "failed";
+                    }
+                }else { #end true
+                    #echo 'Registro Fallido';
+                    $_SESSION['update_reserva'] = "failed";
+                }
+                
+            }else { #end isset
+                #echo 'Registro Fallido';
+                $_SESSION['update_reserva'] = "failed";
+            }
+
+            header("Location:".base_url.'persons/reservas');
+            ob_end_flush();#Error del header al redireccionar
+
+        }else { #End charge
+            #echo 'Registro Fallido';
+            $_SESSION['update_reserva'] = "failed";
+        }
+    }
 }

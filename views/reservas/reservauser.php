@@ -23,6 +23,17 @@
         <?php endif;?>
         <?php Utils::deleteSession('register') #Borrar sesión de save?>
 
+        <?php if (isset($_SESSION['update_reserva']) && $_SESSION['update_reserva'] == 'complete'): ?>
+            <div class="container alert alert-success" role="alert">Has pagado tu reserva, el estacionamiento activará tu entrada cuando ingreses!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php elseif (isset($_SESSION['update_reserva']) && $_SESSION['update_reserva'] == 'failed'): ?>
+            <div class="container alert alert-danger" role="alert">Error al realizar la transacción!
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        <?php endif;?>
+        <?php Utils::deleteSession('update_reserva') #Borrar sesión de save?>
+
         <div class="card mb-3 rounded-0 text-center" style="width: 50rem; margin:auto auto;">
             <div class="card-header text-center">Reserva actual</div>
             <div class="card-body text-dark">
@@ -64,17 +75,105 @@
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form action="" method="POST">
+        
+        <form action="<?=base_url?>reservas/payform" method="post" id="payment-form">
             <div class="modal-body">
                 
-               
+                        <label for="card-element">
+                        Tarjeta de crédito o débito 
+                        </label>
+                        <?php while($pago = $pay->fetch_object()):?>
+                            <input type="hidden" class="form-control" name="id_reserva" value="<?=$pago->id?>"> <br>
+                            <input type="hidden" class="form-control" name="nombre_park" value="<?=$pago->nombre_park?>"> <br>
+                        <?php endwhile;?>
+                        <div id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
+                        </div>
 
+                        <!-- Used to display form errors. -->
+                        <div id="card-errors" role="alert"></div>            
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Pagar</button>
+                <input type="submit" class="btn btn-primary" value="Pagar reserva">
             </div>
         </form>
+        <!--PAGOS CON STRIPE-->
+        <script>
+        
+            // Create a Stripe client.
+            var stripe = Stripe('pk_test_51H5a9GAPPPWWUe8heWXiCje0vghXIiZWC9aE6XmY1zxYbFFTlfyZgCmqQRmXOVQhs04wlh3lfcHjvXxjOfivNY63001VBJd6Ng');
+
+            // Create an instance of Elements.
+            var elements = stripe.elements();
+
+            // Custom styling can be passed to options when creating an Element.
+            // (Note that this demo uses a wider set of styles than the guide below.)
+            var style = {
+            base: {
+                color: '#32325d',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                color: '#aab7c4'
+                }
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+            }
+            };
+
+            // Create an instance of the card Element.
+            var card = elements.create('card', {style: style});
+
+            // Add an instance of the card Element into the `card-element` <div>.
+            card.mount('#card-element');
+
+            // Handle real-time validation errors from the card Element.
+            card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+            });
+
+            // Handle form submission.
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                // Inform the user if there was an error.
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+                } else {
+                // Send the token to your server.
+                stripeTokenHandler(result.token);
+                }
+            });
+            });
+
+            // Submit the form with the token ID.
+            function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            // Submit the form
+            form.submit();
+            }
+
+        </script>
+        <!--PAGOS CON STRIPE-->
     </div>
   </div>
 </div>
@@ -107,7 +206,7 @@
                 </tbody>
             </table>
             <?php elseif (isset($_SESSION['entradas_user']) && $_SESSION['entradas_user'] == 'no_existe'): ?>
-                <div class="alert alert-warning" role="alert">
+                <div class="alert alert-success" role="alert">
                     No has entrado a algún estacionamiento
                 </div>
             <?php endif;?>

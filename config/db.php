@@ -4,10 +4,10 @@
         public static function connect()
         {
             $db = new mysqli(
-                'localhost',
-                'root', 
-                '', 
-                'carlot_db');
+                'bxzw1ws3jcdwi8jelbij-mysql.services.clever-cloud.com',
+                'uhme9vzbna2ir11i',
+                'n6RrgP8zdvfvLi8nWJV2',
+                'bxzw1ws3jcdwi8jelbij');
             $db->query("SET NAMES 'utf-8'");
 
             return $db;

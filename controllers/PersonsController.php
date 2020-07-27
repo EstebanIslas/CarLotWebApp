@@ -67,6 +67,7 @@ class personsController{
         require_once 'views/layout/header.php';
 
         $current = $this->modelReservas->get_current();
+        $pay = $this->modelReservas->get_current();
         $input_user = $this->modelInputs->input_user();
         require_once 'views/reservas/reservauser.php';
 

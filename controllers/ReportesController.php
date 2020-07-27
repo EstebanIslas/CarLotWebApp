@@ -32,7 +32,7 @@ class reportesController{
         $pdf->AddPage();
 
         #Diseño
-        $pdf->Image('http://localhost/CarLotWebApp/assets/images/car_lot.png', 40, 5, 25 );
+        $pdf->Image(base_url.'assets/images/car_lot.png', 40, 5, 25 );
         $pdf->SetFont('Arial','B',15);
         $pdf->Cell(30);
         $pdf->Cell(120,10, 'Historial de Salidas Hoy',0,0,'C');

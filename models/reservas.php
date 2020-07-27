@@ -153,4 +153,17 @@ class Reservas{
         
         return $result;
     }
+
+    public function reservas_pay()
+    {
+        $sql = "UPDATE reservas SET estado = 'Pagada'
+                WHERE id = '{$this->getId()}';";
+        
+        $save = $this->db->query($sql);
+        $result = false;
+
+        if ($save) {$result = true;}
+        
+        return $result;
+    }
 }
