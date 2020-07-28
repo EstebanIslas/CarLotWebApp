@@ -32,7 +32,6 @@ class parksController{
     public function info(){
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
-        $get_servicios = $this->modelServicios->get_servicios();
         $get_tarifas = $this->modelTarifas->get_tarifas();
         $getparks = $this->modelParks->getParks();
         $comments = $this->modelPuntuaciones->get_total_comments();

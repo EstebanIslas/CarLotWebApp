@@ -61,7 +61,7 @@ class serviciosController{
             $_SESSION['register'] = 'failed';
         }
 
-        header("Location:".base_url.'servicios/registro');
+        header("Location:".base_url.'servicios/parks');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -83,7 +83,7 @@ class serviciosController{
             $_SESSION['delete'] = 'failed';
         }
 
-        header("Location:".base_url.'parks/info');
+        header("Location:".base_url.'servicios/parks');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -197,10 +197,40 @@ class serviciosController{
         }
 
         if (isset($_SESSION['estacionamiento'])) {
-            header("Location:".base_url.'reservas/index');
+            header("Location:".base_url.'servicios/parks');
         }elseif(isset($_SESSION['automovilista'])){
             header("Location:".base_url.'servicios/user');
         }
         ob_end_flush();#Error del header al redireccionar
+    }
+
+    public function parks(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+
+        $get_servicios = $this->modelServicios->get_servicios();
+        $servicios_status = $this->modelServicios->get_servicios_status();
+        $servicios_success = $this->modelServicios->get_servicios_status();
+        require_once 'views/servicios/servicespark.php';
+
+        require_once 'views/layout/footer.php';
+    }
+
+    public function get_one(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $this->modelServicios->setId($id);
+
+            $info = $this->modelServicios->get_info();
+            $servicio = $this->modelServicios->get_servicio_by_id();
+            require_once 'views/servicios/consulta.php';
+            
+        }
+
+        require_once 'views/layout/footer.php';
     }
 }

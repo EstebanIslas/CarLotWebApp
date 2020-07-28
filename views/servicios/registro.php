@@ -1,16 +1,4 @@
 
-<!--Validación de consulta en save()-->
-<?php if (isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
-    <div class="container alert alert-success" role="alert">Servicio registrado con éxito!
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>
-<?php elseif (isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>
-    <div class="container alert alert-danger" role="alert">Error al registrar, verifica tu información!
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>
-<?php endif;?>
-<?php Utils::deleteSession('register') #Borrar sesión de save?>
-
 <section class="py-3">
     <div class="container">
         <div class="row">

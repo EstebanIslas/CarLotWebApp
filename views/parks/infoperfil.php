@@ -104,48 +104,7 @@
     </div>
 </section>
 
-<section class="py-3">
-    <div class="container">
-        <!--Validación de consulta en save()-->
-        <?php if (isset($_SESSION['delete']) && $_SESSION['delete'] == 'complete'): ?>
-            <div class="container alert alert-success" role="alert">Servicio eliminado con éxito!
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-        <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'failed'): ?>
-            <div class="container alert alert-danger" role="alert">Error al eliminar el servicio!
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-            </div>
-        <?php endif;?>
-        <?php Utils::deleteSession('delete') #Borrar sesión de save?>
 
-        <div class="row mb-3">
-            <div class="col-lg-9">
-                <p class="lead text-muted font-weight-bold" id="colortext">Servicios de mi Estacionamiento</p>
-            </div>
-            <div class="col-lg-3 d-flex">
-                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>servicios/registro">Crear Nuevo Servicio</a>
-            </div>
-        </div>
-        <div class="card rounded-0">
-            <div class="card-body">
-                <div class="row">
-                    <?php while($res = $get_servicios->fetch_object()):?>
-                        <div class="col-lg-3 d-flex stat my-3">
-                            <div class="mx-auto">
-                                <h3 class="font-weight-bold"><?=$res->nombre?></h3>
-                                <h6 class="text-mutted">$<?=$res->costo?></h6>
-                                <h6 class="text-mutted"><?=$res->descripcion?></h6>
-                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>servicios/update&id=<?=$res->id?>">Administrar</a>
-                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>servicios/drop&id=<?=$res->id?>">Eliminar</a>
-                            </div>
-                        </div>
-                    <?php endwhile;?>
-                        
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="bg-grey py-3">
     <div class="container">
@@ -174,10 +133,10 @@
             <div class="card-body">
                 <div class="row">
                     <?php while($tar = $get_tarifas->fetch_object()):?>
-                        <div class="col-lg-4 d-flex stat my-3">
-                            <div class="mx-auto">
-                                <h6 class="text-mutted">Tarifa <b id="colortext"><?=$tar->tipo_car;?></b></h6>
-                                <h3 class="font-weight-bold">$<?=$tar->tarifa;?></h3>
+                        <div class="col-lg-4 d-flex stat my-3 text-center">
+                            <div class="mx-auto text-center">
+                                <h4 class="text-mutted">Tarifa <b id="colortext"><?=$tar->tipo_car;?></b></h4>
+                                <h5 class="font-weight-bold">$<?=$tar->tarifa;?></h5>
                                 <h6 class="font-weight-light"><?=$tar->descripcion;?></h3>
                                 <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/update&id=<?=$tar->id?>">Administrar</a>
                                 <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>tarifas/drop&id=<?=$tar->id?>">Eliminar</a>

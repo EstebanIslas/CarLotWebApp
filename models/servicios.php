@@ -270,4 +270,27 @@ class Servicios{
         
         return $result;
     }
+
+    public function get_servicios_status()
+    {
+        $this->setId_park($_SESSION['estacionamiento']->id);
+        $sql = $this->db->query(
+            "SELECT servicios_detalle.id, cars.matricula, servicios_detalle.hora_arrivo, servicios.nombre, servicios_detalle.estado, parks.id AS id_park FROM servicios_detalle
+                INNER JOIN cars ON servicios_detalle.id_car = cars.id
+                INNER JOIN servicios ON servicios_detalle.id_servicio = servicios.id
+                INNER JOIN parks ON servicios.id_park = parks.id WHERE parks.id = '{$this->getId_park()}';");
+        return $sql;
+    }
+
+    public function get_info()
+    {
+        $id = $this->getId();
+        $sql = $this->db->query(
+            "SELECT cars.matricula, persons.nombre, persons.apellido, servicios_detalle.hora_arrivo, servicios_detalle.estado, servicios.costo FROM servicios_detalle
+                INNER JOIN cars ON servicios_detalle.id_car = cars.id
+                INNER JOIN servicios ON servicios_detalle.id_servicio = servicios.id
+                INNER JOIN persons ON cars.id_person = persons.id
+             WHERE servicios.id = '$id';");
+        return $sql;
+    }
 }
