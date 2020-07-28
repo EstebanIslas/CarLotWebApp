@@ -51,7 +51,7 @@ class Parks{
     }
     function setNombre_park($nombre_park)
     {
-        $this->nombre_park = $nombre_park;
+        $this->nombre_park = $this->db->real_escape_string($nombre_park);
     }
     function getCalle()
     {
@@ -59,7 +59,7 @@ class Parks{
     }
     function setCalle($calle)
     {
-        $this->calle = $calle;
+        $this->calle = $this->db->real_escape_string($calle);
     }
     function getColonia()
     {
@@ -67,7 +67,7 @@ class Parks{
     }
     function setColonia($colonia)
     {
-        $this->colonia = $colonia;
+        $this->colonia = $this->db->real_escape_string($colonia);
     }
     function getNumero_ext()
     {
@@ -75,7 +75,7 @@ class Parks{
     }
     function setNumero_ext($numero_ext)
     {
-        $this->numero_ext = $numero_ext;
+        $this->numero_ext = $this->db->real_escape_string($numero_ext);
     }
     function getStock()
     {
@@ -83,7 +83,7 @@ class Parks{
     }
     function setStock($stock)
     {
-        $this->stock = $stock;
+        $this->stock = $this->db->real_escape_string($stock);
     }
     function getDia_ini()
     {
@@ -91,7 +91,7 @@ class Parks{
     }
     function setDia_ini($dia_ini)
     {
-        $this->dia_ini = $dia_ini;
+        $this->dia_ini = $this->db->real_escape_string($dia_ini);
     }
     function getDia_fin()
     {
@@ -99,7 +99,7 @@ class Parks{
     }
     function setDia_fin($dia_fin)
     {
-        $this->dia_fin = $dia_fin;
+        $this->dia_fin = $this->db->real_escape_string($dia_fin);
     }
     function getHora_apertura()
     {
@@ -107,7 +107,7 @@ class Parks{
     }
     function setHora_apertura($hora_apertura)
     {
-        $this->hora_apertura = $hora_apertura;
+        $this->hora_apertura = $this->db->real_escape_string($hora_apertura);
     }
     function getHora_cierre()
     {
@@ -115,7 +115,7 @@ class Parks{
     }
     function setHora_cierre($hora_cierre)
     {
-        $this->hora_cierre = $hora_cierre;
+        $this->hora_cierre = $this->db->real_escape_string($hora_cierre);
     }
     function getDescripcion()
     {
@@ -123,7 +123,7 @@ class Parks{
     }
     function setDescripcion($descripcion)
     {
-        $this->descripcion = $descripcion;
+        $this->descripcion = $this->db->real_escape_string($descripcion);
     }
     function getId_person()
     {
@@ -139,7 +139,7 @@ class Parks{
     }
     function setLongitud($longitud)
     {
-        $this->longitud = $longitud;
+        $this->longitud = $this->db->real_escape_string($longitud);
     }
     function getLatitud()
     {
@@ -147,7 +147,7 @@ class Parks{
     }
     function setLatitud($latitud)
     {
-        $this->latitud = $latitud;
+        $this->latitud = $this->db->real_escape_string($latitud);
     }
     function getImage()
     {
@@ -155,7 +155,7 @@ class Parks{
     }
     function setImage($image)
     {
-        $this->image = $image;
+        $this->image = $this->db->real_escape_string($image);
     }
     function getTarifa()
     {
@@ -163,19 +163,19 @@ class Parks{
     }
     function setTarifa($tarifa)
     {
-        $this->tarifa = $tarifa;
+        $this->tarifa = $this->db->real_escape_string($tarifa);
     }
 
     #SETTERS Y GETTERS USER
     public function setCorreo($correo){
-        $this->correo = $correo;
+        $this->correo = $this->db->real_escape_string($correo);
     }
     
     public function getCorreo(){
         return $this->correo;
     }
     public function setPassword($password){
-        $this->password = $password;
+        $this->password = $this->db->real_escape_string($password);
     }
     
     public function getPassword(){
@@ -185,7 +185,7 @@ class Parks{
     #SETTERS Y GETTERS PERSONS
 
     public function setNombre($nombre){
-        $this->nombre = $nombre;
+        $this->nombre = $this->db->real_escape_string($nombre);
     }
 
     public function getNombre(){
@@ -193,7 +193,7 @@ class Parks{
     }
 
     public function setApellido($apellido){
-        $this->apellido = $apellido;
+        $this->apellido = $this->db->real_escape_string($apellido);
     }
 
     public function getApellido(){
@@ -201,7 +201,7 @@ class Parks{
     }
 
     public function setTelefono($telefono){
-        $this->telefono = $telefono;
+        $this->telefono = $this->db->real_escape_string($telefono);
     }
 
     public function getTelefono(){

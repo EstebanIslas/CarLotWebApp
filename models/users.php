@@ -23,14 +23,14 @@ class Users{
         return $this->id;
     }
     public function setCorreo($correo){
-        $this->correo = $correo;
+        $this->correo = $this->db->real_escape_string($correo);
     }
     
     public function getCorreo(){
         return $this->correo;
     }
     public function setPassword($password){
-        $this->password = $password;
+        $this->password = $this->db->real_escape_string($password);
     }
     
     public function getPassword(){
@@ -42,7 +42,7 @@ class Users{
     }
     function setImage($image)
     {
-        $this->image = $image;
+        $this->image = $this->db->real_escape_string($image);
     }
     function getRol(){
         return $this-> rol;

@@ -43,19 +43,19 @@ class Inputs{
         return $this->estado;}
 
     function setEstado($estado){
-        $this->estado = $estado;}
+        $this->estado = $this->db->real_escape_string($estado);}
     
     function getTarifa_cobrada(){
         return $this->tarifa_cobrada;}
 
     function setTarifa_cobrada($tarifa_cobrada){
-        $this->tarifa_cobrada = $tarifa_cobrada;}
+        $this->tarifa_cobrada = $this->db->real_escape_string($tarifa_cobrada);}
     
     function getDescripcion(){
         return $this->descripcion;}
 
     function setDescripcion($descripcion){
-        $this->descripcion = $descripcion;}
+        $this->descripcion = $this->db->real_escape_string($descripcion);}
     
     function getId_park(){
         return $this->id_park;}

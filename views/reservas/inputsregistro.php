@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
                 <input type="text" class="form-control" name="descripcion"
-                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ,.'-]{5,65}" value= "<?=isset($update) && is_object($update) ? $update->descripcion : '';?>">
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ,.'-]{5,65}" value= "<?=isset($update) && is_object($update) ? $update->descripcion : '';?>" required>
                 
             </div>
 

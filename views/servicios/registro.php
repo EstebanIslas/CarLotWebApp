@@ -27,19 +27,19 @@
             <div class="form-group">
                 <label for="tipo_car">Nombre del servicio:</label>
                 <input type="text" class="form-control" name="nombre"
-                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}" value= "<?=isset($update) && is_object($update) ? $update->nombre : '';?>">
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}" value= "<?=isset($update) && is_object($update) ? $update->nombre : '';?>" required>
                 <small id="" class="form-text text-muted">Ingresa el nombre del servicio con el que cuenta tu estacionamiento</small>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
                 <input type="text" class="form-control" name="descripcion"
-                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ,.'-]{5,65}" value= "<?=isset($update) && is_object($update) ? $update->descripcion : '';?>">
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ,.'-]{5,65}" value= "<?=isset($update) && is_object($update) ? $update->descripcion : '';?>" required>
                 
             </div>
             <div class="form-group">
                 <label for="tarifa">Costo:</label>
                 <input type="number" class="form-control" name="costo"
-                pattern="[0-9,.]{1,3}" value= "<?=isset($update) && is_object($update) ? $update->costo : '';?>">
+                pattern="[0-9,.]{1,3}" value= "<?=isset($update) && is_object($update) ? $update->costo : '';?>" required>
             </div>
             <input type="submit" class="btn btn-primary" value="Guardar">
             </form>

@@ -25,25 +25,25 @@
                 <label for="tipo_car">Marca:</label>
                 <input type="text" class="form-control" name="marca"
                 pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}"
-                value= "<?=isset($update) && is_object($update) ? $update->marca : ''; ?>">
+                value= "<?=isset($update) && is_object($update) ? $update->marca : ''; ?>" required>
                 <small id="" class="form-text text-muted">Ingresa la marca de tu automóvil</small>
             </div>
             <div class="form-group">
                 <label for="tipo_car">Color:</label>
                 <input type="text" class="form-control" name="color"
-                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{5,30}"
-                value= "<?=isset($update) && is_object($update) ? $update->color : ''; ?>">
+                pattern="[a-zA-ZáéíóúÁÉÍÓÚ ]{4,30}"
+                value= "<?=isset($update) && is_object($update) ? $update->color : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="tipo_car">Matricula:</label>
                 <input type="text" class="form-control" name="matricula"
-                value= "<?=isset($update) && is_object($update) ? $update->matricula : ''; ?>">
+                value= "<?=isset($update) && is_object($update) ? $update->matricula : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
                 <input type="text" class="form-control" name="descripcion"
                 pattern="[a-zA-ZáéíóúÁÉÍÓÚ ,.'-]{5,150}"
-                value= "<?=isset($update) && is_object($update) ? $update->descripcion : ''; ?>">
+                value= "<?=isset($update) && is_object($update) ? $update->descripcion : ''; ?>" required>
                 
             </div>
             
