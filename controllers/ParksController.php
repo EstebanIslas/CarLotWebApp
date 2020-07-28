@@ -239,12 +239,14 @@ class parksController{
             $edit = true;
 
             $this->modelParks->setId($id); #settear
+            $this->modelServicios->setId_park($id);
 
             $update = $this->modelParks->get_one_parks();
             $commits = $this->modelParks->get_total_comments();
             $puntuation = $this->modelParks->get_calificacion();
             $reserv = $this->modelParks->get_total_reservas();
 
+            $services = $this->modelServicios->get_servicios_user();
             require_once 'views/parks/verpark.php';
         }
 

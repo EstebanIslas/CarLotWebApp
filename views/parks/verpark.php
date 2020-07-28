@@ -101,3 +101,29 @@
     </div>
   </div>
 </div>
+
+<section class="py-3 bg-grey">
+    <div class="container">
+        <div class="mb-2 text-center">
+            <p class="lead text-muted text-center font-weight-bold" id="colortext">Servicios que ofrece este estacionamiento</p>
+        </div>
+        <div class="card rounded-0">
+            <div class="card-body">
+                <div class="row">
+                    <?php while($ser = $services->fetch_object()):?>
+                        <div class="col-lg-4 d-flex stat my-3 text-center">
+                            <div class="mx-auto text-center">
+                                <h3 class="font-weight-bold"><?=$ser->nombre?></h3>
+                                <h6 class="text-mutted">Costo: <b class="text-success font-weight-bold">$<?=$ser->costo?></b></h6>
+                                <h6 class="text-mutted"><?=$ser->descripcion?></h6>
+                                
+                                <a href="<?=base_url?>servicios/solicitud&id=<?=$ser->id?>" class="btn btn-primary">Solicitar Servicio</a>
+                            </div>
+                        </div>
+                    <?php endwhile;?>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

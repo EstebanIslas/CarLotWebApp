@@ -1,13 +1,16 @@
 <?php
 
 require_once 'models/servicios.php';
+require_once 'models/cars.php';
 
 class serviciosController{
 
     protected $modelServicios;
+    protected $modelCars;
 
     public function __construct(){
         $this->modelServicios = new Servicios();
+        $this->modelCars = new Cars();
     }
 
     
@@ -101,5 +104,103 @@ class serviciosController{
         }
 
         require_once 'views/layout/footer.php';
+    }
+
+    public function user(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        
+        $services = $this->modelServicios->get_current();
+        $detalles = $this->modelServicios->get_detalle_servicios();
+        require_once 'views/servicios/servicesuser.php';
+
+        require_once 'views/layout/footer.php';
+    }
+
+    public function solicitud(){
+        require_once 'views/layout/header.php';
+        #Renderizar la vista para que se muestre principal
+        
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            $this->modelServicios->setId($id);
+
+            $service = $this->modelServicios->get_servicio_by_id();
+           
+            $cars = $this->modelCars->get_cars();
+
+            require_once 'views/servicios/solicitud.php';
+            
+        }
+
+        require_once 'views/layout/footer.php';
+    }
+    public function registrosolic(){
+        
+        if (isset($_POST)) {
+            
+            $hora_arrivo = isset($_POST['hora_arrivo']) ? $_POST['hora_arrivo']:false;
+            $descricion = isset($_POST['descripcion']) ? $_POST['descripcion']:false;
+            $id_servicio = isset($_POST['id_servicio']) ? $_POST['id_servicio']:false;
+            $id_car = isset($_POST['id_car']) ? $_POST['id_car']:false;
+
+            if ($hora_arrivo && $descricion && $id_servicio && $id_car) {
+            
+                #Settear
+                $this->modelServicios->setHora_arrivo($hora_arrivo);
+                $this->modelServicios->setDescripcion($descricion);
+                $this->modelServicios->setId_servicio($id_servicio);
+                $this->modelServicios->setId_car($id_car);
+
+                
+                $save = $this->modelServicios->save_detalle();                
+
+                if ($save) {
+                    $_SESSION['register'] = 'complete';
+                }else {
+                    $_SESSION['register'] = 'failed';
+                }
+            
+            }else {
+                $_SESSION['register'] = 'failed';
+            }
+        
+        }else {
+            $_SESSION['register'] = 'failed';
+        }
+
+        header("Location:".base_url.'servicios/user');
+        ob_end_flush();#Error del header al redireccionar
+    }
+
+    public function update_on(){
+        if (isset($_GET['id']) && isset($_GET['estado'])) {
+            $id = $_GET['id'];
+            $estado = $_GET['estado'];
+
+            $edit = true;
+
+            $this->modelServicios->setId($id); #settear
+            $this->modelServicios->setEstado($estado); #settear
+
+            $update = $this->modelServicios->service_on();
+
+            if ($update) {
+                $_SESSION['res_status'] = 'complete';
+            }else{
+                $_SESSION['res_status'] = 'failed';
+            }
+
+        }else{
+            $_SESSION['res_status'] = 'failed';
+        }
+
+        if (isset($_SESSION['estacionamiento'])) {
+            header("Location:".base_url.'reservas/index');
+        }elseif(isset($_SESSION['automovilista'])){
+            header("Location:".base_url.'servicios/user');
+        }
+        ob_end_flush();#Error del header al redireccionar
     }
 }

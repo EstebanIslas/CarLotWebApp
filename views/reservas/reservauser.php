@@ -48,6 +48,9 @@
                             <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalCenter">
                             Pagar mi reserva
                             </button>
+                        <?php elseif($res->estado == "En curso"):?>
+                            <small id="" class="form-text text-muted mt-2 mb-2">Puedes cancelar tu reserva o esperar a que el estacionamiento la acepte para poder pagar</small>
+                            <a href="<?=base_url?>reservas/update_on&id=<?=$res->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar reserva</a>
                         <?php endif;?>
                         <p class="card-text mt-1 mb-4">Hora de arrivo a estacionamiento: <b><?=$res->hra_arrivo;?></b></p>
                         <small id="" class="form-text text-muted mb-0">La reserva se realizó en la fecha: <?=$res->entrada;?></small>

@@ -75,7 +75,8 @@
                         <!--a href="" class="d-block ml-2 text-light p-2"><i class="icon ion-md-person mr-2 lead"></i>Usuario</a-->
                         <a href="<?=base_url?>persons/cars" class="d-block ml-2 text-light p-2"><i class="icon ion-md-car mr-2 lead"></i>Mis Automoviles</a>
                         <a href="<?=base_url?>persons/verparks" class="d-block ml-2 text-light p-2"><i class="icon ion-md-filing mr-2 lead"></i>Ver Estacionamientos</a>
-                        <a href="<?=base_url?>persons/reservas" class="d-block ml-2 text-light p-2"><i class="icon ion-md-notifications mr-2 lead"></i>Reservaciones</a>
+                        <a href="<?=base_url?>persons/reservas" class="d-block ml-2 text-light p-2"><i class="icon icon ion-md-time mr-2 lead"></i>Reservaciones</a>
+                        <a href="<?=base_url?>servicios/user" class="d-block ml-2 text-light p-2"><i class="icon ion-md-notifications mr-2 lead"></i>Servicios Solicitados</a>
                         <a href="<?=base_url?>persons/info" class="d-block ml-2 text-light p-2"><i class="icon ion-md-settings mr-2 lead"></i>Configuración</a>
                     
                     <?php endif;?>
@@ -107,7 +108,7 @@
                                     <?php endif;?>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Mi Perfil</a>
+                                    <a class="dropdown-item" href="<?=base_url?>persons/info">Mi Perfil</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?=base_url?>login/logout">Cerrar Sesión</a>
                                 </div>
