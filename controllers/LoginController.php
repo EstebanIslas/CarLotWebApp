@@ -69,22 +69,21 @@ class loginController{
 
     public function logout()
     {
-        if (isset($_SESSION['usuario'])) {
-            unset($_SESSION['usuario']);
-        }
+        if (isset($_SESSION['usuario'])) { unset($_SESSION['usuario']); }
 
-        if (isset($_SESSION['park'])) {
-            unset($_SESSION['park']);
-        }
-        if (isset($_SESSION['estacionamiento'])) {
-            unset($_SESSION['estacionamiento']);
-        }
-        if (isset($_SESSION['reservas'])) {
-            unset($_SESSION['reservas']);
-        }
-        if (isset($_SESSION['automovilista'])) {
-            unset($_SESSION['automovilista']);
-        }
+        if (isset($_SESSION['park'])) { unset($_SESSION['park']);}
+
+        if (isset($_SESSION['estacionamiento'])) { unset($_SESSION['estacionamiento']);}
+        
+        if (isset($_SESSION['reservas'])) { unset($_SESSION['reservas']);}
+
+        if (isset($_SESSION['automovilista'])) { unset($_SESSION['automovilista']); }
+
+        if (isset($_SESSION['tot_comments'])) { unset($_SESSION['tot_comments']); }
+
+        if (isset($_SESSION['calificacion'])) { unset($_SESSION['calificacion']); }
+
+        if (isset($_SESSION['tot_reservas'])) { unset($_SESSION['tot_reservas']); }
 
         //header("Location".base_url."login/index");
         echo "<script>location.href='".base_url."login/index';</script>";

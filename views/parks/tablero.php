@@ -75,11 +75,42 @@
                                                 </div>
                                             <?php endwhile;?>
 
-                                            <button class="btn btn-primary w-100 mt-2">Ver Todos</button>
+                                            <button type="button" class="btn btn-primary w-100 mt-2" data-toggle="modal" data-target="#exampleModalCenter">Ver Todos</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Comentarios Recientes</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <?php while($all = $get_all_puntuaciones->fetch_object()):?>
+                                <div class="d-flex border-bottom py-2">
+                                    <div class="d-flex mr-3">
+                                        <h2 class="align-self-center mb-0" style="color: #f47c04;"><i class="icon ion-md-contacts mr-2 lead"></i></h2></div>
+                                    <div class="align-self-center">
+                                        <h6 class="d-inline-block font-weight-bold mb-0"><?=$all->nombre;?> <?=$all->apellido?></h6>
+                                        <small class="d-block text-muted"><b>Calificación: </b><?=$all->calificacion?> de 5</small>
+                                        <small class="d-block text-muted"><?=$all->comment?></small>
+                                    </div>
+                                </div>
+                            <?php endwhile;?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <!--button type="button" class="btn btn-primary">Save changes</button-->
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </section>

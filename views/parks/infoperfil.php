@@ -22,13 +22,32 @@
                 <ul class="list-group ml-3"  style="width: 20rem">
                     <li class="list-group-item font-weight-bold text-center">Actividad <i class="fa fa-dashboard fa-1x"></i></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Comentarios:
-                        <span class="badge badge-warning badge-pill">14</span></li>
                         
+                        <?php if (isset($_SESSION['tot_comments']) && $_SESSION['tot_comments'] == 'existe'): ?>
+                            <?php while($com = $comments->fetch_object()):?>
+                                <span class="badge badge-warning badge-pill"><?=$var=(int)$com->total;?></span></li>
+                            <?php endwhile;?>
+                        <?php elseif (isset($_SESSION['tot_comments']) && $_SESSION['tot_comments'] == 'no_existe'): ?>
+                            <span class="badge badge-warning badge-pill">0</span></li>
+                        <?php endif;?>
+
                     <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Calificación
-                        <span class="badge badge-warning badge-pill">4 de 5</span></li>
+                        <?php if (isset($_SESSION['calificacion']) && $_SESSION['calificacion'] == 'existe'): ?>
+                            <?php while($cal = $calificacion->fetch_object()):?>
+                                <span class="badge badge-warning badge-pill"><?=$var=(int)$cal->calificacion;?> de 5</span></li>
+                            <?php endwhile;?>
+                        <?php elseif (isset($_SESSION['calificacion']) && $_SESSION['calificacion'] == 'no_existe'): ?>
+                            <span class="badge badge-warning badge-pill">0</span></li>
+                        <?php endif;?>
 
                     <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Reservas:
-                        <span class="badge badge-warning badge-pill">10</span></li>
+                        <?php if (isset($_SESSION['tot_reservas']) && $_SESSION['tot_reservas'] == 'existe'): ?>
+                            <?php while($rese = $reservas->fetch_object()):?>
+                                <span class="badge badge-warning badge-pill"><?=$var=(int)$rese->total;?></span></li>
+                            <?php endwhile;?>
+                        <?php elseif (isset($_SESSION['tot_reservas']) && $_SESSION['tot_reservas'] == 'no_existe'): ?>
+                            <span class="badge badge-warning badge-pill">0</span></li>
+                        <?php endif;?>
                 </ul> 
             </div>
 

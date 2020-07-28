@@ -22,13 +22,13 @@
                 <ul class="list-group ml-3"  style="width: 20rem">
                     <li class="list-group-item font-weight-bold text-center">Actividad <i class="fa fa-dashboard fa-1x"></i></li>
                     <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Comentarios:
-                        <span class="badge badge-warning badge-pill">14</span></li>
+                        <span class="badge badge-warning badge-pill"><?=isset($commits) && is_object($commits) ? $commits->total : '0'; ?></span></li>
                         
                     <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Calificación
-                        <span class="badge badge-warning badge-pill">4 de 5</span></li>
+                        <span class="badge badge-warning badge-pill"><?=isset($puntuation) && is_object($puntuation) ? $res = (int)$puntuation->calificacion : '0'; ?> de 5</span></li>
 
                     <li class="list-group-item d-flex justify-content-between align-items-center font-weigth-bold">Reservas:
-                        <span class="badge badge-warning badge-pill">10</span></li>
+                        <span class="badge badge-warning badge-pill"><?=isset($reserv) && is_object($reserv) ? $reserv->total : '0'; ?></span></li>
                 </ul> 
             </div>
 

@@ -298,4 +298,22 @@ class Parks{
         }
         return $result;
     }
+
+    public function get_total_comments()
+    {
+        $sql = $this->db->query("SELECT COUNT(calificacion) AS total FROM puntuaciones WHERE id_park = '{$this->getId()}';");
+        return $sql->fetch_object();
+    }
+
+    public function get_calificacion()
+    {
+        $sql = $this->db->query("SELECT AVG(calificacion) as calificacion FROM puntuaciones WHERE id_park = '{$this->getId()}' GROUP BY id_park;");
+        return $sql->fetch_object();
+    }
+
+    public function get_total_reservas()
+    {
+        $sql = $this->db->query("SELECT COUNT(id) AS total FROM reservas WHERE id_park = '{$this->getId()}';");
+        return $sql->fetch_object();
+    }
 }

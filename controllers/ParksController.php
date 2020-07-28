@@ -23,6 +23,7 @@ class parksController{
         require_once 'views/layout/header.php';
         #Renderizar la vista para que se muestre principal
         $get_puntuaciones = $this->modelPuntuaciones->get_puntuaciones();
+        $get_all_puntuaciones = $this->modelPuntuaciones->get_all_puntuaciones();
         require_once 'views/parks/tablero.php';
 
         require_once 'views/layout/footer.php';
@@ -34,6 +35,9 @@ class parksController{
         $get_servicios = $this->modelServicios->get_servicios();
         $get_tarifas = $this->modelTarifas->get_tarifas();
         $getparks = $this->modelParks->getParks();
+        $comments = $this->modelPuntuaciones->get_total_comments();
+        $calificacion = $this->modelPuntuaciones->get_calificacion();
+        $reservas = $this->modelPuntuaciones->get_total_reservas();
         require_once 'views/parks/infoperfil.php';
 
         require_once 'views/layout/footer.php';
@@ -237,6 +241,9 @@ class parksController{
             $this->modelParks->setId($id); #settear
 
             $update = $this->modelParks->get_one_parks();
+            $commits = $this->modelParks->get_total_comments();
+            $puntuation = $this->modelParks->get_calificacion();
+            $reserv = $this->modelParks->get_total_reservas();
 
             require_once 'views/parks/verpark.php';
         }
