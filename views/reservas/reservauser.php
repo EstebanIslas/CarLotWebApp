@@ -5,6 +5,9 @@
                 <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Mis Reservas</h1>
                 <p class="lead text-muted">Consulta tus reservas realizadas</p>
             </div>
+            <div class="col-lg-3 d-flex mt-1">    
+                <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>reportes/reservas_user">Consultar Mis Reservas Pagadas</a>
+            </div>
         </div>
     </div>
 </section>
@@ -184,6 +187,7 @@
 <section class="bg-grey py-3 mb-5">
     <div class="container mb-5">
         <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Entrada Actual</p>
+        <p class="form-text text-muted mt-3 mb-3 text-center">En esta sección se muestra tu ticket electrónico de entrada, al total se le ha restado el cargo de reserva que pagaste $10.00 MNX</p>
 
         <?php if (isset($_SESSION['entradas_user']) && $_SESSION['entradas_user'] == 'existe'): ?>
             <table class="table">
@@ -194,6 +198,7 @@
                     <th scope="col">Entrada</th>
                     <th scope="col">Tiempo</th>
                     <th scope="col">Cobro por hora</th>
+                    <th scope="col">Total a Pagar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -202,8 +207,15 @@
                             <th scope="row"><?=$input->nombre_park?></th>
                             <td><?=$input->matricula?></td>
                             <td><?=$input->entrada?></td>
-                            <td><?=$input->horas?></td>
+                            <?php $tiempo = (int)$input->horas;?>
+                            <td><?=$tiempo += 1;?></td>
                             <td><?=$input->tarifa_cobrada?></td>
+                            <?php 
+                                $tarifa = (int)$input->tarifa_cobrada;
+                                $total = $tiempo * $tarifa;
+                                $total -=10;
+                            ?>
+                            <td><?=$total?></td>
                         </tr>
                     <?php endwhile;?>
                 </tbody>

@@ -11,6 +11,16 @@
 
 <section class="bg-grey">
     <div class="container">
+
+        <div class="row">
+            <div class="col-lg-9 mt-4">
+                <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Conoce los ingresos que recibiste por reservas</p>
+            </div>
+            <div class="col-lg-3 d-flex mt-3">    
+                <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>reportes/reservas">Consultar Ganancias Por Reservas</a>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-lg-6 my-3">
                 <div class="card rounded-0">
@@ -152,9 +162,10 @@
                 <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Placa de Automovil</th>
-                <th scope="col">Tiempo</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Tiempo</th>
                 <th scope="col">Tarifa</th>
+                <th scope="col">Monto a Pagar</th>
                 <th scope="col">Terminar</th>
                 </tr>
             </thead>
@@ -164,9 +175,16 @@
                         <tr>
                             <th scope="row"><?=$inp->nombre?> <?=$inp->apellido?></th>
                             <td><?=$inp->matricula?></td>
-                            <td><?=$inp->horas?> horas</td>
+                            <?php $time = (int) $inp->horas; ?>
                             <td>En curso</td>
+                            <td><?=$time +=1;?> horas</td>
                             <td>$<?=$inp->tarifa_cobrada?></td>
+                            <?php
+                                $tarifa = (int)$inp->tarifa_cobrada;
+                                $total = $time * $tarifa;
+                                $total -= 10;
+                            ?>
+                            <td>$<?=$total?></td>
                             <td>
                             <a class="btn btn-success mt-1" href="<?=base_url?>reservas/save_input&id=<?=$inp->id?>">Finalizar entrada</a>
                             </td>
@@ -186,9 +204,11 @@
                 <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Historial de entradas y salidas</p>
                 </div>
                 <div class="col-lg-3 d-flex mb-4">
-                    <a class="btn btn-primary mt-2" style="height:40px;" target="_blank" href="<?=base_url?>reportes/index">Generar Reporte por Día</a>
+                    <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>reportes/index">Consultar Ganancias Por Entradas</a>
                 </div>
         </div>
+        
+        <p class="form-text text-muted mb-3 text-center">En esta sección se muestra el historial de entradas y salidas restando el costo por la reserva realizada $10.00 MNX</p>
 
         <table class="table">
             <thead class="bg-primary" style="color: #FFFFFF">
@@ -210,12 +230,15 @@
                             <td><?=$inp->matricula?></td>
                             <td><?=$inp->entrada?></td>
                             <td><?=$inp->salida?></td>
-                            <td><?=$inp->tiempo?> horas</td>
+                            <?php $tiempo = (int)$inp->tiempo;?>
+                            <td><?=$tiempo += 1;?> horas</td>
                             <td><?=$inp->tarifa_cobrada?></td>
                             <?php 
                                 $time = (int)$inp->tiempo;
+                                $time += 1;
                                 $costo = (int)$inp->tarifa_cobrada;
                                 $total = $time * $costo;
+                                $total -= 10;
                             ?>
                             <td>$<?=$total?></td>
                         </tr>

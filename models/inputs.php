@@ -100,7 +100,7 @@ class Inputs{
             ON inputs.id_car = cars.id 
             INNER JOIN persons
             ON cars.id_person = persons.id
-            WHERE id_park = '$id_park' ORDER BY inputs.entrada DESC;");
+            WHERE id_park = '$id_park' ORDER BY inputs.entrada DESC LIMIT 10;");
             #WHERE id_park = '{$this->getId_park()}' ORDER BY inputs.entrada DESC;
         return $sql;
     }

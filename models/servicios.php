@@ -205,7 +205,7 @@ class Servicios{
         $filas = $sql->num_rows;
         $num = (integer)$filas;
         
-        if ($num == 1) {
+        if ($num > 0) {
             $_SESSION['services_rows'] = "existe";
         }elseif($num == 0) {
             $_SESSION['services_rows'] = "no_existe";
