@@ -7,6 +7,3 @@ function controller_autoload($classname){
 }
 
 spl_autoload_register('controller_autoload');
-
-
-//
