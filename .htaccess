@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     #activar rewrite
     RewriteEngine on
-    ErrorDocument 404 http://localhost/CarLotWebApp/error/index
+    ErrorDocument 404 http://64.225.42.41/CarLotWebApp/error/index
 
     #Restringir las rutas para no poder acceder a directorios y ficheros que no existen
     RewriteCond %{SCRIPT_FILENAME} !-d
