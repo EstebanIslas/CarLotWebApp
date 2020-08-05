@@ -13,7 +13,7 @@ require_once 'helpers/utils.php'; #Librerias de apoyo
 function showError()
 {
     #Redireccionar al controlador de errores
-    $error = new errorController();
+    $error = new ErrorController();
     $error->index();
 }
 

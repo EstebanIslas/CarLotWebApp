@@ -48,7 +48,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <!--a class="dropdown-item" href="<?=base_url?>parks/index">Iniciar Sesión</a>
                                 <div class="dropdown-divider"></div-->
-                                <a class="dropdown-item" href="<?=base_url?>parks/registro">Registrarse</a>
+                                <a class="dropdown-item" href="<?=base_url?>Parks/registro">Registrarse</a>
                             </div>
                         </li>
                     </ul>
@@ -116,7 +116,7 @@
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body" style="width: 26rem">
                 <div class="">
-                    <form class="form-signin" action="<?=base_url?>login/log" method="post">
+                    <form class="form-signin" action="<?=base_url?>Login/log" method="post">
                         <h4 class="form-signing-heading text-center">Ingresa a Car~Lot</h4>
 
                         <small id="" class="form-text text-muted ml-2 mb-1 mt-5">Correo electrónico:</small>
@@ -130,11 +130,11 @@
                     </form>
                     <div class="text-center">
                         <p><small>¿Listo para administrar tu estacionamiento?</small></p>
-                        <a href="<?=base_url?>parks/registro" style="color:#f47c04"><small><b>Registra tu estacionamiento</b></small></a>
+                        <a href="<?=base_url?>Parks/registro" style="color:#f47c04"><small><b>Registra tu estacionamiento</b></small></a>
                     </div>
                     <div class="text-center">
                         <p><small>¿Necesitas encontrar estacionamientos cerca?</small></p>
-                        <a href="<?=base_url?>persons/registro" style="color:#f47c04"><small><b>Registrate como automovilista</b></small></a>
+                        <a href="<?=base_url?>Persons/registro" style="color:#f47c04"><small><b>Registrate como automovilista</b></small></a>
                     </div>
                 </div>
             </div>

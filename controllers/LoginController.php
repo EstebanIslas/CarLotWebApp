@@ -41,7 +41,7 @@ class loginController{
                     $_SESSION['park'] = true;
                     $_SESSION['login'] = "complete";
                     $_SESSION['user'] = 'failed';
-                    echo "<script>location.href='".base_url."parks/index';</script>";
+                    echo "<script>location.href='".base_url."Parks/index';</script>";
                 }
 
                 elseif ($rol == '1') {
@@ -51,17 +51,17 @@ class loginController{
 
                     $_SESSION['automovilista'] = $automovilista;
                     $_SESSION['conduct'] = true;
-                    echo "<script>location.href='".base_url."persons/index';</script>";
+                    echo "<script>location.href='".base_url."Persons/index';</script>";
                 }
             }else{
 
                 // redireccion al login con alerta
                 #Crear una sesión
                 $_SESSION['login'] = failed;
-                echo "<script>location.href='".base_url."login/index';</script>";
+                echo "<script>location.href='".base_url."Login/index';</script>";
             }
             #Consulta a la base de datos
-            header("Location".base_url."parks/index"); 
+            header("Location".base_url."Parks/index"); 
 
            
         }
@@ -86,7 +86,7 @@ class loginController{
         if (isset($_SESSION['tot_reservas'])) { unset($_SESSION['tot_reservas']); }
 
         //header("Location".base_url."login/index");
-        echo "<script>location.href='".base_url."login/index';</script>";
+        echo "<script>location.href='".base_url."Login/index';</script>";
 
     }
 }
