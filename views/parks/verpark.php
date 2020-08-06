@@ -50,9 +50,15 @@
                     <p class="card-text mb-3">Número total de espacios: <b id="colortext"><?=isset($update) && is_object($update) ? $update->stock : ''; ?></b></p>
                     <!--a class="btn btn-primary w-100 mt-2" href="">Realizar Reserva</a-->
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary w-100 mt-2" data-toggle="modal" data-target="#staticBackdrop">
-                    Realizar Reserva
-                    </button>
+                    <?php if (isset($_SESSION['cars_existencia']) && $_SESSION['cars_existencia'] == 'existe'): ?>
+                        <button type="button" class="btn btn-primary w-100 mt-2" data-toggle="modal" data-target="#staticBackdrop">
+                        Realizar Reserva
+                        </button>
+                    <?php elseif (isset($_SESSION['cars_existencia']) && $_SESSION['cars_existencia'] == 'no_existe'): ?>
+                        <div class="alert alert-danger" role="alert">
+                            Necesitas al menos un automóvil registrado para poder reservar!
+                        </div>
+                    <?php endif;?>
                 </div>
             </div>
         </div>

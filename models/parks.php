@@ -286,7 +286,8 @@ class Parks{
             descripcion = '{$this->getDescripcion()}',
             tarifa = '{$this->getTarifa()}',
             longitud = '{$this->getLongitud()}',
-            latitud = '{$this->getLatitud()}'
+            latitud = '{$this->getLatitud()}',
+            image = '{$this->getImage()}'
             WHERE id= {$this->getId()};";
 
         $save = $this->db->query($sql);

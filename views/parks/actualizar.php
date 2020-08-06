@@ -108,8 +108,11 @@
             </div>
 
             <div class="form-group">
-                <label for="tarifa">Imagen:</label>
-                <input type="file" class="form-control" name="image" accept="image/*" placeholder = "Imagen">
+                <label for="image">Imagen:</label>
+                <!--input type="file" class="form-control" name="image" accept="image/*" placeholder = "Imagen"-->
+                <input type="text" class="form-control" name="image" placeholder = "Imagen Url"
+                value= "<?=isset($update) && is_object($update) ? $update->image : ''; ?>" required>
+                <small id="" class="form-text text-muted">Copia y pega la url de la imagen que deseas insertar</small>
             </div>
 
 

@@ -133,4 +133,23 @@ class Persons{
         }
         return $result;
     }
+    
+    public function get_user_cars()
+    {
+        $id_person = $_SESSION['automovilista']->id;
+
+        $sql = $this->db->query(
+            "SELECT * FROM cars WHERE id_person = '$id_person';");
+        
+        $filas = $sql->num_rows;
+        $num = (integer)$filas;
+        
+        if ($num == 1) {
+            $_SESSION['cars_existencia'] = "existe";
+        }elseif($num == 0) {
+            $_SESSION['cars_existencia'] = "no_existe";
+        }
+        return $sql;
+    
+    }
 }

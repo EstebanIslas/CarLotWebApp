@@ -4,18 +4,21 @@ require_once 'models/parks.php';
 require_once 'models/tarifas.php';
 require_once 'models/puntuaciones.php';
 require_once 'models/servicios.php';
+require_once 'models/persons.php';
 
 
 class parksController{
 
     protected $modelParks;
     protected $modelTarifas;
+    protected $modelPersons;
 
     public function __construct(){
         $this->modelParks = new Parks();
         $this->modelTarifas = new Tarifas();
         $this->modelPuntuaciones = new Puntuaciones();
         $this->modelServicios = new Servicios();
+        $this->modelPersons = new Persons();
     }
 
     #Funciones de Actions
@@ -164,11 +167,12 @@ class parksController{
             $tarifa= isset($_POST['tarifa']) ? $_POST['tarifa'] : false;
             $longitud= isset($_POST['longitud']) ? $_POST['longitud'] : false;
             $latitud= isset($_POST['latitud']) ? $_POST['latitud'] : false;
+            $image= isset($_POST['image']) ? $_POST['image'] : false;
 
             #Validar True
             if ($nombre_park && $calle && $colonia && $numero_ext 
             && $stock && $dia_ini && $dia_fin && $hora_apertura && $hora_cierre
-            && $descripcion && $tarifa) {
+            && $descripcion && $tarifa && $image) {
 
                 $this->modelParks->setNombre_park($nombre_park);
                 $this->modelParks->setCalle($calle);
@@ -183,6 +187,7 @@ class parksController{
                 $this->modelParks->setTarifa($tarifa);
                 $this->modelParks->setLongitud($longitud);
                 $this->modelParks->setLatitud($latitud);
+                $this->modelParks->setImage($image);
 
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
@@ -246,6 +251,8 @@ class parksController{
             $reserv = $this->modelParks->get_total_reservas();
 
             $services = $this->modelServicios->get_servicios_user();
+
+            $cars_exist = $this->modelPersons->get_user_cars();
             require_once 'views/parks/verpark.php';
         }
 
