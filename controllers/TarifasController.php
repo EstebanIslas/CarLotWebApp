@@ -70,7 +70,7 @@ class tarifasController{
         }else {
             $_SESSION['register'] = "failed";
         }
-        header("Location:".base_url.'tarifas/registro');
+        header("Location:".base_url.'Tarifas/registro');
         ob_end_flush();#Error del header al redireccionar
         #importa el footer
         require_once 'views/layout/footer.php';
@@ -95,7 +95,7 @@ class tarifasController{
             $_SESSION['deletes'] = 'failed';
         }
 
-        header("Location:".base_url.'parks/info');
+        header("Location:".base_url.'Parks/info');
         ob_end_flush();#Error del header al redireccionar
     }
 

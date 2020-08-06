@@ -108,7 +108,7 @@ class personsController{
                     }
                 }else {
                     $_SESSION['register_user'] = "failed_pass";
-                    echo "<script>location.href='".base_url."persons/registro';</script>";
+                    echo "<script>location.href='".base_url."Persons/registro';</script>";
                 }
                 
             }else { #Settear end
@@ -120,7 +120,7 @@ class personsController{
             $_SESSION['register_user'] = "failed";
         }
 
-        header("Location:".base_url."login/index");
+        header("Location:".base_url."Login/index");
         ob_end_flush();#Error del header al redireccionar
     }
 }

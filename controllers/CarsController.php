@@ -58,7 +58,7 @@ class carsController{
         }else {
             $_SESSION['register'] = "failed";
         }
-        header("Location:".base_url.'persons/cars');
+        header("Location:".base_url.'Persons/cars');
         ob_end_flush();#Error del header al redireccionar
         #importa el footer    
     }
@@ -81,7 +81,7 @@ class carsController{
             $_SESSION['delete'] = 'failed';
         }
 
-        header("Location:".base_url.'persons/cars');
+        header("Location:".base_url.'Persons/cars');
         ob_end_flush();#Error del header al redireccionar
     }
 

@@ -143,7 +143,7 @@ class parksController{
             $_SESSION['register_park'] = "failed";
         }
 
-        header("Location:".base_url.'login/index');
+        header("Location:".base_url.'Login/index');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -210,7 +210,7 @@ class parksController{
             $_SESSION['register_park'] = "failed";
         }
 
-        header("Location:".base_url.'login/index');
+        header("Location:".base_url.'Login/index');
         ob_end_flush();#Error del header al redireccionar
     }
 

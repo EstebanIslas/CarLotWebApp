@@ -61,7 +61,7 @@ class serviciosController{
             $_SESSION['register'] = 'failed';
         }
 
-        header("Location:".base_url.'servicios/parks');
+        header("Location:".base_url.'Servicios/parks');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -83,7 +83,7 @@ class serviciosController{
             $_SESSION['delete'] = 'failed';
         }
 
-        header("Location:".base_url.'servicios/parks');
+        header("Location:".base_url.'Servicios/parks');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -170,7 +170,7 @@ class serviciosController{
             $_SESSION['register'] = 'failed';
         }
 
-        header("Location:".base_url.'servicios/user');
+        header("Location:".base_url.'Servicios/user');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -197,9 +197,9 @@ class serviciosController{
         }
 
         if (isset($_SESSION['estacionamiento'])) {
-            header("Location:".base_url.'servicios/parks');
+            header("Location:".base_url.'Servicios/parks');
         }elseif(isset($_SESSION['automovilista'])){
-            header("Location:".base_url.'servicios/user');
+            header("Location:".base_url.'Servicios/user');
         }
         ob_end_flush();#Error del header al redireccionar
     }

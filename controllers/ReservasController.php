@@ -65,7 +65,7 @@ class reservasController{
         }else{
             $_SESSION['updated_input'] = 'failed';
         }
-        header("Location:".base_url.'reservas/index');
+        header("Location:".base_url.'Reservas/index');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -107,7 +107,7 @@ class reservasController{
         }else {
             $_SESSION['save_in'] = "failed";
         }
-        header("Location:".base_url.'reservas/index');
+        header("Location:".base_url.'Reservas/index');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -144,7 +144,7 @@ class reservasController{
             $_SESSION['register'] = "failed";
         }
 
-        header("Location:".base_url.'persons/reservas');
+        header("Location:".base_url.'Persons/reservas');
         ob_end_flush();#Error del header al redireccionar
     }
 
@@ -171,9 +171,9 @@ class reservasController{
         }
 
         if (isset($_SESSION['estacionamiento'])) {
-            header("Location:".base_url.'reservas/index');
+            header("Location:".base_url.'Reservas/index');
         }elseif(isset($_SESSION['automovilista'])){
-            header("Location:".base_url.'persons/reservas');
+            header("Location:".base_url.'Persons/reservas');
         }
         ob_end_flush();#Error del header al redireccionar
     }
@@ -226,7 +226,7 @@ class reservasController{
                 $_SESSION['update_reserva'] = "failed";
             }
 
-            header("Location:".base_url.'persons/reservas');
+            header("Location:".base_url.'Persons/reservas');
             ob_end_flush();#Error del header al redireccionar
 
         }else { #End charge
