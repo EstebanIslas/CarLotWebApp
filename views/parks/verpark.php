@@ -123,7 +123,13 @@
                                 <h6 class="text-mutted">Costo: <b class="text-success font-weight-bold">$<?=$ser->costo?></b></h6>
                                 <h6 class="text-mutted"><?=$ser->descripcion?></h6>
                                 
-                                <a href="<?=base_url?>servicios/solicitud&id=<?=$ser->id?>" class="btn btn-primary">Solicitar Servicio</a>
+                                <?php if (isset($_SESSION['cars_existencia']) && $_SESSION['cars_existencia'] == 'existe'): ?>
+                                    <a href="<?=base_url?>servicios/solicitud&id=<?=$ser->id?>" class="btn btn-primary">Solicitar Servicio</a>                                    
+                                <?php elseif (isset($_SESSION['cars_existencia']) && $_SESSION['cars_existencia'] == 'no_existe'): ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Necesitas al menos un automóvil registrado para poder reservar!
+                                    </div>
+                                <?php endif;?>
                             </div>
                         </div>
                     <?php endwhile;?>
