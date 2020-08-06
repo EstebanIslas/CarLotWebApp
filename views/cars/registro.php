@@ -5,12 +5,12 @@
                 <?php if(isset($edit) && isset($update) && is_object($update)):?>
                     <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Automóvil<b style="color: #f47c04 ;"><?=$update->marca?></b></h1>
                     <p class="lead text-muted">Actualiza la información de tu vehículo</p>
-                    <?php $url_action = base_url."cars/save&id=".$update->id;?>
+                    <?php $url_action = base_url."Cars/save&id=".$update->id;?>
                 
                 <?php else:?>
                     <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Añadir nuevo automóvil</h1>
                     <p class="lead text-muted">Añade un nuevo vehículo a tu colección</p>
-                    <?php $url_action = base_url."cars/save";?>
+                    <?php $url_action = base_url."Cars/save";?>
                 <?php endif;?>
             </div>
         </div>

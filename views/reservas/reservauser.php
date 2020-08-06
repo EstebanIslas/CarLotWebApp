@@ -6,7 +6,7 @@
                 <p class="lead text-muted">Consulta tus reservas realizadas</p>
             </div>
             <div class="col-lg-3 d-flex mt-1">    
-                <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>reportes/reservas_user">Consultar Mis Reservas Pagadas</a>
+                <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>Reportes/reservas_user">Consultar Mis Reservas Pagadas</a>
             </div>
         </div>
     </div>
@@ -46,14 +46,14 @@
                         <p class="card-text mt-3">Solicitud: <b><?=$res->estado;?></b></p>
                         <?php if($res->estado == "Aceptada"):?>
                             <small id="" class="form-text text-muted mt-2 mb-2">Puedes cancelar o proceder a pagar tu reserva</small>
-                            <a href="<?=base_url?>reservas/update_on&id=<?=$res->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar reserva</a>
+                            <a href="<?=base_url?>Reservas/update_on&id=<?=$res->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar reserva</a>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModalCenter">
                             Pagar mi reserva
                             </button>
                         <?php elseif($res->estado == "En curso"):?>
                             <small id="" class="form-text text-muted mt-2 mb-2">Puedes cancelar tu reserva o esperar a que el estacionamiento la acepte para poder pagar</small>
-                            <a href="<?=base_url?>reservas/update_on&id=<?=$res->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar reserva</a>
+                            <a href="<?=base_url?>Reservas/update_on&id=<?=$res->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar reserva</a>
                         <?php endif;?>
                         <p class="card-text mt-1 mb-4">Hora de arrivo a estacionamiento: <b><?=$res->hra_arrivo;?></b></p>
                         <small id="" class="form-text text-muted mb-0">La reserva se realizó en la fecha: <?=$res->entrada;?></small>
@@ -62,7 +62,7 @@
                     <h5 class="card-title font-weight-bold" id="colortext">No Existen Reservas recientes</h5>
 
                     <small id="" class="form-text text-muted">Reserva ahora</small>
-                    <a href="<?=base_url?>persons/verparks" class="btn btn-primary">Ver Estacionamientos</a>
+                    <a href="<?=base_url?>Persons/verparks" class="btn btn-primary">Ver Estacionamientos</a>
 
                     <small id="" class="form-text text-muted mt-4 mb-0">Si realizaste una reserva y al recargar la página no aparece, es por que el estacionamiento rechazo tu solicitud</small>
                 <?php endif;?>
@@ -82,7 +82,7 @@
             </button>
         </div>
         
-        <form action="<?=base_url?>reservas/payform" method="post" id="payment-form">
+        <form action="<?=base_url?>Reservas/payform" method="post" id="payment-form">
             <div class="modal-body">
                 
                         <label for="card-element">

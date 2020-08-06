@@ -17,7 +17,7 @@
                 <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Conoce los ingresos que recibiste por reservas</p>
             </div>
             <div class="col-lg-3 d-flex mt-3">    
-                <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>reportes/reservas">Consultar Ganancias Por Reservas</a>
+                <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>Reportes/reservas">Consultar Ganancias Por Reservas</a>
             </div>
         </div>
 
@@ -61,8 +61,8 @@
                                         <td><?=$status->apellido?></td>
                                         <td><?=$status->hra_arrivo?></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success mb-1" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Aceptada">Aceptar Solicitud</a><br>
-                                            <a class="btn btn-danger" href="<?=base_url?>reservas/update_on&id=<?=$status->id?>&estado=Rechazada">Rechazar Solicitud</a>
+                                            <a class="btn btn-success mb-1" href="<?=base_url?>Reservas/update_on&id=<?=$status->id?>&estado=Aceptada">Aceptar Solicitud</a><br>
+                                            <a class="btn btn-danger" href="<?=base_url?>Reservas/update_on&id=<?=$status->id?>&estado=Rechazada">Rechazar Solicitud</a>
                                         </td>
                                     <?php endif;?>
                                 <tr>
@@ -98,7 +98,7 @@
                                         <td><?=$status->apellido?></td>
                                         <td><?=$status->hra_arrivo?></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success h-100" href="<?=base_url?>reservas/addinput&id=<?=$status->id?>">Asignar cajón</a>
+                                            <a class="btn btn-success h-100" href="<?=base_url?>Reservas/addinput&id=<?=$status->id?>">Asignar cajón</a>
                                         </td>
                                     <?php endif;?>
                                 <tr>
@@ -186,7 +186,7 @@
                             ?>
                             <td>$<?=$total?></td>
                             <td>
-                            <a class="btn btn-success mt-1" href="<?=base_url?>reservas/save_input&id=<?=$inp->id?>">Finalizar entrada</a>
+                            <a class="btn btn-success mt-1" href="<?=base_url?>Reservas/save_input&id=<?=$inp->id?>">Finalizar entrada</a>
                             </td>
                         </tr>
                     <?php endif;?>
@@ -204,7 +204,7 @@
                 <p class="lead text-muted font-weight-bold" style="color: #1a1a1a">Historial de entradas y salidas</p>
                 </div>
                 <div class="col-lg-3 d-flex mb-4">
-                    <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>reportes/index">Consultar Ganancias Por Entradas</a>
+                    <a class="btn btn-primary w-100 align-self-center" target="_blank" href="<?=base_url?>Reportes/index">Consultar Ganancias Por Entradas</a>
                 </div>
         </div>
         

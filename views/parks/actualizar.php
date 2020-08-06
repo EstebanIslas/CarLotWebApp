@@ -11,7 +11,7 @@
 </section>
 
 <?php if(isset($edit) && isset($update) && is_object($update)):?>
-    <?php $url_action = base_url."parks/save_up&id=".$update->id;?>    
+    <?php $url_action = base_url."Parks/save_up&id=".$update->id;?>    
 <?php endif;?>
 
 <div class="container">

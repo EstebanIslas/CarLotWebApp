@@ -41,7 +41,7 @@
                 <p class="lead text-muted font-weight-bold" id="colortext">Mis Automóviles</p>
             </div>
             <div class="col-lg-3 d-flex">
-                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>cars/registro">Añadir nuevo auto</a>
+                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>Cars/registro">Añadir nuevo auto</a>
             </div>
         </div>
         <div class="card rounded-0 mt-3">
@@ -53,8 +53,8 @@
                                 <h6 class="text-mutted"><?=$cars->marca?> <b id="colortext"><?=$cars->color?></b></h6>
                                 <h3 class="font-weight-bold"><?=$cars->matricula?></h3>
                                 <h6 class="font-weight-light"><?=$cars->descripcion?></h3>
-                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>cars/update&id=<?=$cars->id?>">Administrar</a>
-                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>cars/drop&id=<?=$cars->id?>">Eliminar</a>
+                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>Cars/update&id=<?=$cars->id?>">Administrar</a>
+                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>Cars/drop&id=<?=$cars->id?>">Eliminar</a>
                             </div>
                         </div>
                     <?php endwhile;?>

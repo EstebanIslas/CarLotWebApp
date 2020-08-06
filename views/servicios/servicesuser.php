@@ -45,7 +45,7 @@
                         
                         <?php if($serv->estado == "En curso"):?>
                             <small id="" class="form-text text-muted mb-1 mt-0">Puedes cancelar tu solicitud mientras esté "En Curso"</small>
-                            <a href="<?=base_url?>servicios/update_on&id=<?=$serv->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar servicio</a>
+                            <a href="<?=base_url?>Servicios/update_on&id=<?=$serv->id?>&estado=Rechazada" class="btn btn-danger mb-2">Cancelar servicio</a>
                         <?php endif;?>
                         <p class="card-text mt-1 mb-4">Hora de arrivo a estacionamiento: <?=$serv->hora_arrivo;?></b></p>
                     <?php endwhile;?>
@@ -53,7 +53,7 @@
                     <h5 class="card-title font-weight-bold" id="colortext">No Existen Servicios Solicitados recientes</h5>
 
                     <small id="" class="form-text text-muted">Solicita ahora</small>
-                    <a href="<?=base_url?>persons/verparks" class="btn btn-primary">Ver Estacionamientos</a>
+                    <a href="<?=base_url?>Persons/verparks" class="btn btn-primary">Ver Estacionamientos</a>
 
                     <small id="" class="form-text text-muted mt-4 mb-0">Si requeriste un servicio y al recargar la página no aparece, es por que el estacionamiento rechazo tu solicitud</small>
                 <?php endif;?>

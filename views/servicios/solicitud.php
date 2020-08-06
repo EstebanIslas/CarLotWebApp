@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class ="col-lg-9">
-            <form action="<?=base_url?>servicios/registrosolic" method="POST">
+            <form action="<?=base_url?>Servicios/registrosolic" method="POST">
                 <div class="form-group">
                     <label for="hora_arrivo">Hora de Llegada:</label>
                     <input type="time" class="form-control" name="hora_arrivo" required>

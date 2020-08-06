@@ -16,12 +16,12 @@
                 <?php if(isset($edit) && isset($update) && is_object($update)):?>
                     <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Tarifas de <b style="color: #f47c04 ;"><?=$update->tipo_car?></b></h1>
                     <p class="lead text-muted">Crea una tarifa para tu estacionamiento</p>
-                    <?php $url_action = base_url."tarifas/save&id=".$update->id;?>
+                    <?php $url_action = base_url."Tarifas/save&id=".$update->id;?>
                 
                 <?php else:?>
                     <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Tarifas de mi estacionamiento</h1>
                     <p class="lead text-muted">Crea una tarifa para tu estacionamiento</p>
-                    <?php $url_action = base_url."tarifas/save";?>
+                    <?php $url_action = base_url."Tarifas/save";?>
                 <?php endif;?>
             </div>
         </div>

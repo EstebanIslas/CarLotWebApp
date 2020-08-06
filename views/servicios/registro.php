@@ -8,12 +8,12 @@
                 
                     <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Servicio <b style="color: #f47c04 ;"><?=$update->nombre?></b></h1>
                     <p class="lead text-muted">Edita la información de este servicio</p>
-                    <?php $url_action = base_url."servicios/save&id=".$update->id;?>
+                    <?php $url_action = base_url."Servicios/save&id=".$update->id;?>
 
                 <?php else:?>
                     <h1 style="color: #1a1a1a;" class="font-weight-bold mb-0">Servicios en mi estacionamiento</h1>
                     <p class="lead text-muted">Crea un servicio para tu estacionamiento</p>
-                    <?php $url_action = base_url."servicios/save";?>
+                    <?php $url_action = base_url."Servicios/save";?>
                 <?php endif;?>
             </div>
         </div>

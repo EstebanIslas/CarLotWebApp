@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
         <div class ="col-lg-9">
-            <form action="<?=base_url?>reservas/save_in" method="POST">
+            <form action="<?=base_url?>Reservas/save_in" method="POST">
             <div class="form-group">
                 <label for="id_car">Matrícula:</label>
                 <!--?php $cars = Utils::showCars();?-->

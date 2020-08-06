@@ -23,7 +23,7 @@
                                 <h5 class="card-title mt-3"><?=$park->nombre_park?></h5>
                                 <p class="card-text mb-0">Calle <?=$park->calle?> #<?=$park->numero_ext?>, Colonia <?=$park->colonia?></p>
                                 <p class="card-text">Tarifa más común: <b class="text-success font-weight-bold">$<?=$park->tarifa?></b></p>
-                                <a href="<?=base_url?>parks/get_one_park&id=<?=$park->id?>" class="btn btn-primary">Ver estacionamiento</a>
+                                <a href="<?=base_url?>Parks/get_one_park&id=<?=$park->id?>" class="btn btn-primary">Ver estacionamiento</a>
                             </div>
                         </div>
                     <?php endwhile;?>

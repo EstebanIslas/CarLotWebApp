@@ -80,7 +80,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?=base_url?>reservas/insertar_reserva" method="POST">
+        <form action="<?=base_url?>Reservas/insertar_reserva" method="POST">
             
             <div class="form-group">
                 <label for="tipo_car" id="colortext" class="font-weight-bold"><?=isset($update) && is_object($update) ? $update->nombre_park : '';?></label>
@@ -124,7 +124,7 @@
                                 <h6 class="text-mutted"><?=$ser->descripcion?></h6>
                                 
                                 <?php if (isset($_SESSION['cars_existencia']) && $_SESSION['cars_existencia'] == 'existe'): ?>
-                                    <a href="<?=base_url?>servicios/solicitud&id=<?=$ser->id?>" class="btn btn-primary">Solicitar Servicio</a>                                    
+                                    <a href="<?=base_url?>Servicios/solicitud&id=<?=$ser->id?>" class="btn btn-primary">Solicitar Servicio</a>                                    
                                 <?php elseif (isset($_SESSION['cars_existencia']) && $_SESSION['cars_existencia'] == 'no_existe'): ?>
                                     <div class="alert alert-danger" role="alert">
                                         Necesitas al menos un automóvil registrado para poder reservar!

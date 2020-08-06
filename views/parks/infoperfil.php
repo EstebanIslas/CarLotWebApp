@@ -62,7 +62,7 @@
                         <br>Los días: <?=$_SESSION['estacionamiento']->dia_ini;?> - <?=$_SESSION['estacionamiento']->dia_fin;?>
                     </p>
                     <p class="card-text mb-3">Número total de espacios: <b id="colortext"><?=$_SESSION['estacionamiento']->stock;?></b></p>
-                    <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>parks/update&id=<?=$_SESSION['estacionamiento']->id?>">Actualizar Información</a>
+                    <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>Parks/update&id=<?=$_SESSION['estacionamiento']->id?>">Actualizar Información</a>
                 </div>
             </div>
         </div><br><br>
@@ -126,7 +126,7 @@
                 <p class="lead text-muted font-weight-bold" id="colortext">Tarifas</p>
             </div>
             <div class="col-lg-3 d-flex">
-                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>tarifas/registro">Crear Nueva Tarifa</a>
+                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>Tarifas/registro">Crear Nueva Tarifa</a>
             </div>
         </div>
         <div class="card rounded-0 mt-3">
@@ -138,8 +138,8 @@
                                 <h4 class="text-mutted">Tarifa <b id="colortext"><?=$tar->tipo_car;?></b></h4>
                                 <h5 class="font-weight-bold">$<?=$tar->tarifa;?></h5>
                                 <h6 class="font-weight-light"><?=$tar->descripcion;?></h3>
-                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>tarifas/update&id=<?=$tar->id?>">Administrar</a>
-                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>tarifas/drop&id=<?=$tar->id?>">Eliminar</a>
+                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>Tarifas/update&id=<?=$tar->id?>">Administrar</a>
+                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>Tarifas/drop&id=<?=$tar->id?>">Eliminar</a>
                             </div>
                     </div>
                     <?php endwhile;?>

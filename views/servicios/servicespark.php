@@ -52,8 +52,8 @@
                                         <td><?=$services->hora_arrivo;?></td>
                                         <td><?=$services->nombre;?></td>
                                         <td class="text-center">
-                                            <a class="btn btn-success mb-1 w-100" href="<?=base_url?>servicios/update_on&id=<?=$services->id?>&estado=Aceptada">Aceptar</a><br>
-                                            <a class="btn btn-danger w-100" href="<?=base_url?>servicios/update_on&id=<?=$services->id?>&estado=Rechazada">Rechazar</a>
+                                            <a class="btn btn-success mb-1 w-100" href="<?=base_url?>Servicios/update_on&id=<?=$services->id?>&estado=Aceptada">Aceptar</a><br>
+                                            <a class="btn btn-danger w-100" href="<?=base_url?>Servicios/update_on&id=<?=$services->id?>&estado=Rechazada">Rechazar</a>
                                         </td>
                                     <?php endif;?>
                                 <tr>
@@ -89,7 +89,7 @@
                                             <td><?=$finish->hora_arrivo?></td>
                                             <td><?=$finish->nombre?></td>
                                             <td class="text-center">
-                                                <a class="btn btn-success h-100" href="<?=base_url?>servicios/update_on&id=<?=$finish->id?>&estado=Pagada">Finalizar</a>
+                                                <a class="btn btn-success h-100" href="<?=base_url?>Servicios/update_on&id=<?=$finish->id?>&estado=Pagada">Finalizar</a>
                                             </td>
                                         <?php endif;?>
                                     <tr>
@@ -134,7 +134,7 @@
                 <p class="lead text-muted font-weight-bold" id="colortext">Servicios de mi Estacionamiento</p>
             </div>
             <div class="col-lg-3 d-flex">
-                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>servicios/registro">Crear Nuevo Servicio</a>
+                <a class="btn btn-primary w-100 mt-2 " href="<?=base_url?>Servicios/registro">Crear Nuevo Servicio</a>
             </div>
         </div>
         <div class="card rounded-0">
@@ -146,9 +146,9 @@
                                 <h3 class="font-weight-bold"><?=$res->nombre?></h3>
                                 <h6 class="text-mutted">$<?=$res->costo?></h6>
                                 <h6 class="text-mutted"><?=$res->descripcion?></h6>
-                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>servicios/get_one&id=<?=$res->id?>">Administrar</a>
-                                <a class="btn btn-success w-100 mt-2" href="<?=base_url?>servicios/update&id=<?=$res->id?>">Actualizar</a>
-                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>servicios/drop&id=<?=$res->id?>">Eliminar</a>
+                                <a class="btn btn-primary w-100 mt-2" href="<?=base_url?>Servicios/get_one&id=<?=$res->id?>">Administrar</a>
+                                <a class="btn btn-success w-100 mt-2" href="<?=base_url?>Servicios/update&id=<?=$res->id?>">Actualizar</a>
+                                <a class="btn btn-danger w-100 mt-2" href="<?=base_url?>Servicios/drop&id=<?=$res->id?>">Eliminar</a>
                             </div>
                         </div>
                     <?php endwhile;?>

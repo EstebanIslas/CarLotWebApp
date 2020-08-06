@@ -46,7 +46,7 @@
                                 Ingresar
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?=base_url?>login/index">Iniciar Sesión</a>
+                                <a class="dropdown-item" href="<?=base_url?>Login/index">Iniciar Sesión</a>
                                 <!--div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Registrarse</a-->
                             </div>
@@ -75,7 +75,7 @@
             <img src="<?=base_url?>assets/images/car_lot.png" class="card-img-top mt-3" style="width: 80px; margin: auto auto" alt="Car~Lot">
             <div class="card-body w-100" style="width: 26rem">
                 <div class="">
-                    <form class="form-signin" action="<?=base_url?>parks/save" method="POST">
+                    <form class="form-signin" action="<?=base_url?>Parks/save" method="POST">
                         <h4 class="form-signing-heading text-center">Registra tu estacionamiento</h4>
 
                         <small id="colortext" class="form-text text-muted ml-2 mb-1 mt-5">Nombre de Estacionamiento:</small>
@@ -167,11 +167,11 @@
                     </form>
                     <div class="text-center">
                         <p><small>¿Ya tienes cuenta?</small></p>
-                        <a href="<?=base_url?>login/index" style="color:#f47c04"><small><b>Inicia Sesión</b></small></a>
+                        <a href="<?=base_url?>Login/index" style="color:#f47c04"><small><b>Inicia Sesión</b></small></a>
                     </div>
                     <div class="text-center">
                         <p><small>¿Necesitas encontrar estacionamientos cerca?</small></p>
-                        <a href="<?=base_url?>persons/registro" style="color:#f47c04"><small><b>Registrate como automovilista</b></small></a>
+                        <a href="<?=base_url?>Persons/registro" style="color:#f47c04"><small><b>Registrate como automovilista</b></small></a>
                     </div>
                 </div>
             </div>
