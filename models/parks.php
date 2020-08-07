@@ -317,4 +317,23 @@ class Parks{
         $sql = $this->db->query("SELECT COUNT(id) AS total FROM reservas WHERE id_park = '{$this->getId()}';");
         return $sql->fetch_object();
     }
+
+    public function get_ganancias()
+    {
+        $this->setId($_SESSION['estacionamiento']->id);
+
+        $sql = $this->db->query(
+            "SELECT DATE_FORMAT(entrada, '%M')AS name_mes, MONTH(entrada) as mes, COUNT(entrada) as total_reservas 
+            FROM reservas WHERE id_park = '{$this->getId()}' GROUP BY Mes ORDER BY Mes DESC LIMIT 3;");
+        
+        $filas = $sql->num_rows;
+        $num = (integer)$filas;
+        
+        if ($num >= 1) {
+            $_SESSION['ganancias'] = "existe";
+        }elseif($num == 0) {
+            $_SESSION['ganancias'] = "no_existe";
+        }
+        return $sql;
+    }
 }

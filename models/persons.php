@@ -144,7 +144,7 @@ class Persons{
         $filas = $sql->num_rows;
         $num = (integer)$filas;
         
-        if ($num == 1) {
+        if ($num >= 1) {
             $_SESSION['cars_existencia'] = "existe";
         }elseif($num == 0) {
             $_SESSION['cars_existencia'] = "no_existe";

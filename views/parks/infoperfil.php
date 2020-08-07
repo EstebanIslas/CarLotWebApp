@@ -89,14 +89,16 @@
                         <h6 class="font-weight-bold mb-0">Ingresos</h6>
                     </div>
                     <div class="card-body ">
-                        <h3 class="font-weight-bold">$350</h3>
-                        <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Mes <b id="colortext">Abril</b></h6>
-
-                        <h3 class="font-weight-bold">$400</h3>
-                        <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Mes <b id="colortext">Mayo</b></h6>
-
-                        <h3 class="font-weight-bold">$325</h3>
-                        <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Mes <b id="colortext">Julio</b></h6>
+                        <?php if (isset($_SESSION['ganancias']) && $_SESSION['ganancias'] == 'existe'): ?>
+                            <?php while($money = $get_ganancias->fetch_object()):?>
+                                <?php $count = (int)$money->total_reservas;?>
+                                <h3 class="font-weight-bold">$<?=$count = $count*10;?></h3>
+                                <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Mes <b id="colortext"><?=$money->name_mes;?></b></h6>
+                            <?php endwhile;?>
+                        <?php elseif (isset($_SESSION['ganancias']) && $_SESSION['ganancias'] == 'no_existe'): ?>
+                            <h3 class="font-weight-bold">$0.0</h3>
+                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Aún no hay <b id="colortext">Ganancias</b></h6>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>

@@ -27,6 +27,8 @@ class parksController{
         #Renderizar la vista para que se muestre principal
         $get_puntuaciones = $this->modelPuntuaciones->get_puntuaciones();
         $get_all_puntuaciones = $this->modelPuntuaciones->get_all_puntuaciones();
+
+        $get_ganancias = $this->modelParks->get_ganancias();
         require_once 'views/parks/tablero.php';
 
         require_once 'views/layout/footer.php';
@@ -40,6 +42,7 @@ class parksController{
         $comments = $this->modelPuntuaciones->get_total_comments();
         $calificacion = $this->modelPuntuaciones->get_calificacion();
         $reservas = $this->modelPuntuaciones->get_total_reservas();
+        $get_ganancias = $this->modelParks->get_ganancias();
         require_once 'views/parks/infoperfil.php';
 
         require_once 'views/layout/footer.php';

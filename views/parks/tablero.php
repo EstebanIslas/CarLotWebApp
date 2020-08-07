@@ -17,28 +17,27 @@
     
                         <div class="card rounded-0">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-4 d-flex stat my-3">
-                                        <div class="mx-auto">
-                                            <h6 class="text-mutted">Ingresos por reservas</h6>
-                                            <h3 class="font-weight-bold">$350</h3>
-                                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Abril</h6>
+                                <div class="row text-center">
+                                    <?php if (isset($_SESSION['ganancias']) && $_SESSION['ganancias'] == 'existe'): ?>
+                                        <?php while($money = $get_ganancias->fetch_object()):?>
+                                            <?php $count = (int)$money->total_reservas;?>
+                                            <div class="col-lg-4 d-flex stat my-3">
+                                                <div class="mx-auto">
+                                                    <h6 class="text-mutted font-weight-bold">Ingresos por reservas</h6>
+                                                    <h3 class="font-weight-bold">$<?=$count = $count*10;?></h3>
+                                                    <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i><?=$money->name_mes;?></h6>
+                                                </div>
+                                            </div>
+                                        <?php endwhile;?>
+                                    <?php elseif (isset($_SESSION['ganancias']) && $_SESSION['ganancias'] == 'no_existe'): ?>
+                                        <div class="col-lg-4 d-flex stat my-3">
+                                            <div class="mx-auto">
+                                                <h6 class="text-mutted">Ingresos por reservas</h6>
+                                                <h3 class="font-weight-bold">$0.0</h3>
+                                                <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Aún no hay ganancias</h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 d-flex stat my-3">
-                                        <div class="mx-auto">
-                                            <h6 class="text-mutted">Ingresos por reservas</h6>
-                                            <h3 class="font-weight-bold">$400</h3>
-                                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Mayo</h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 d-flex my-3">
-                                        <div class="mx-auto">
-                                            <h6 class="text-mutted">Ingresos por reservas</h6>
-                                            <h3 class="font-weight-bold">$325</h3>
-                                            <h6 class="text-success"><i class="icon ion-md-cash mr-2 lead"></i>Junio</h6>
-                                        </div>
-                                    </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                         </div>

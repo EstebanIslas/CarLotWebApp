@@ -85,6 +85,7 @@ class loginController{
 
         if (isset($_SESSION['tot_reservas'])) { unset($_SESSION['tot_reservas']); }
 
+        if (isset($_SESSION['ganancias'])) { unset($_SESSION['ganancias']); }
         //header("Location".base_url."login/index");
         echo "<script>location.href='".base_url."Login/index';</script>";
 
